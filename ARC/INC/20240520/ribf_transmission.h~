@@ -1,0 +1,57 @@
+void MakeTransPlot1D(TH1 *hin,TH1 *hout,TGraphErrors *gr){
+
+  Int_t nbin = hin->GetNbinsX();
+
+  if(nbin != hout->GetNbinsX()){
+    cout << "ribf_transmission.h: The number of bins is not the same, quit." << endl;
+    return;
+  }
+
+  //  Double_t valx[nbin],errx[nbin],valy[nbin],erry[nbin];
+  Double_t nin,nout,valx,valy,erry;
+  Double_t xmin,xmax;
+
+  xmin = hin->GetBinCenter(0);
+  xmax = hin->GetBinCenter(nbin+1);
+  
+  for(int j=0;j<nbin;j++){
+    valx = hin->GetBinCenter(j+1);
+
+    if(hin->GetBinContent(j+1)>0){
+      
+      nin  = hin-> GetBinContent(j+1);
+      nout = hout->GetBinContent(j+1);
+
+      valy = nout / nin;
+      erry = sqrt( nout * (1. - valy) ) / nin;
+
+    }else{
+      valy = -0.1;
+      erry = 0.;
+    }
+
+    gr->SetPoint(j,valx,valy);
+    gr->SetPointError(j,0,erry);
+
+  }
+  
+
+  gr->GetXaxis()->SetLimits(xmin,xmax);
+
+    /*
+      for(int j=0;j<nbin[0];j++){
+      xvalx[i][j] = hist[0][i][0]->GetBinCenter(j+1);
+      if(hist[0][i][0]->GetBinContent(j+1)>0){
+	yvalx[i][j] = hist[0][i][1]->GetBinContent(j+1) / hist[0][i][0]->GetBinContent(j+1);
+	yvalex[i][j] = sqrt(hist[0][i][1]->GetBinContent(j+1) * (1. - yvalx[i][j])) / hist[0][i][0]->GetBinContent(j+1);
+      }else{
+	yvalx[i][j] = -0.1;
+	yvalex[i][j] = 0.;
+      }
+
+      gr[0][i]->SetPoint(j,xvalx[i][j],yvalx[i][j]);
+      gr[0][i]->SetPointError(j,0,yvalex[i][j]);
+    }
+    */
+
+}
