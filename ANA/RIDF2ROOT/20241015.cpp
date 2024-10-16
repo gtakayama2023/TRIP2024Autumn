@@ -68,8 +68,8 @@ Double_t emtgate[5][2]={
 
 //void VME2Tree(int runN, bool file_output=0 /* 0 = NO, 1 = Yes */ ,TString runname="run"){
 //void VME2Tree(int runN=285, TString runname="55Ca", bool tree_output=0 /* 0 = NO, 1 = Yes */){
-void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0 /* 0 = NO, 1 = Yes */){
-  
+void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int loadEvt = 10000 /* 0 = NO, 1 = Yes */){
+
   bool file_output = 1;
   
   /*
@@ -1075,6 +1075,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0 /* 0 = NO
     if(tree_output)Ndatabyte = tree->Fill();  
     if(neve==0)cout << Form("1-event data size | %5d bytes",Ndatabyte) << endl;
     neve++;
+    if(neve > loadEvt)break;
 
     //    if(Nevent%500==0){
     if(neve%500==0){
