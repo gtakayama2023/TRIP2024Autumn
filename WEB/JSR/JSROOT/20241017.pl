@@ -13,11 +13,12 @@ my $cgi = CGI->new;
 print $cgi->header('text/html');
 
 # Get the runNo/Name from the query string
+my $hist_or_tree = $cgi->param('hist_or_tree') || 'HIST';
 my $runNo = $cgi->param('runNo') || '';
 my $runName = $cgi->param('runName') || '';
 
 # Define the directory path and construct the file name
-my $dir = "/EXP/RIBF/TRIP/2024/AUTUMN/USR/$default/HIST/";
+my $dir = "/EXP/RIBF/TRIP/2024/AUTUMN/USR/$default/$hist_or_tree/";
 my $file = "${runName}${runNo}.root";
 
 # Output the HTML

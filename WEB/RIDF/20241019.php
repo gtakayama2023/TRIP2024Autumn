@@ -108,7 +108,7 @@ if (($handle = fopen($csvFile, 'r')) !== false) {
         echo "<td><a href='/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/ridf2root?runNo=$runNumber&runName=" . urlencode($runName) . "' target='_blank'>ridf2root</a></td>";
 
         // JSROOT URLを次の列に追加
-        echo "<td><a href='/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/WEB/JSR/jsroot.pl?runNo=$runNumber&runName=" . urlencode($runName) . "' target='_blank'>JSROOT</a></td>";
+        echo "<td><a href='/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/WEB/JSR/jsroot.pl?runNo=$runNumber&runName=" . urlencode($runName) . "' target='_blank'>HIST</a>, <a href='/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/WEB/JSR/jsroot.pl?hist_or_tree=ROOT&runNo=$runNumber&runName=" . urlencode($runName) . "' target='_blank'>TREE</a></td>";
 
         // 残りのデータを出力
         foreach ($data as $cell) {

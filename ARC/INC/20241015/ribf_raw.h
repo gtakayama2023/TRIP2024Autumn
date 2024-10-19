@@ -194,7 +194,7 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     return;
   }
   //===== MADC@F7 ================================================================================
-  if( dev==BIGRIPS && fpl==F7 && det==ICE && mod==MADC32 && geo==2 ){
+  if( dev==USERGR && fpl==F7 && det==ICE && mod==MADC32 && geo==0 ){
 
     adc[0][ch] = buf;
 

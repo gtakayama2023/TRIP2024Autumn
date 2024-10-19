@@ -1,10 +1,10 @@
 <?php
 $title = "TRIP-S3CAN 2024Autumn Analysis Platform";
 $urls = [
-    "/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/ridf.php",
-    "/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/SKD/index.auth.php",
-    "/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/SKD/table.php",
-    "/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/LISE/HTML/"
+    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/ridf.php",
+    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/SKD/index.auth.php",
+    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/SKD/table.php",
+    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/LISE/HTML/"
 ];
 ?>
 

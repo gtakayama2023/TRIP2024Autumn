@@ -11,6 +11,11 @@ show_files() {
     ls ./RIDF/${prefix}*.ridf
 }
 
+show_runInfo() {
+    local prefix=$1
+    csvruninfo ./RIDF/${prefix}*.ridf
+}
+
 # ファイルからヘッダーとrunNoを抽出
 extract_info() {
     local file=$1
@@ -24,6 +29,11 @@ extract_info() {
 
     # root コマンドの実行
     root -l -b -q './ANA/ridf2root.cpp++g('$runNo', "'$header'", '$tree_output', '$loadEvt')'
+
+    # csvruninfo コマンドの実行
+    csvruninfo_output=$(csvruninfo "$file") # ここで csvruninfo コマンドを実行
+    echo "csvruninfo の結果:"
+    echo "$csvruninfo_output"
 }
 
 # multiple ファイルの処理
@@ -50,7 +60,7 @@ while true; do
         if [ "$prefix" = "終了" ]; then
             exit 0
         elif [ -n "$prefix" ]; then
-	    echo ""
+            echo ""
             echo "tree に書き出しますか？"
             select tree_choice in "yes" "no"; do
                 case $tree_choice in
@@ -60,10 +70,10 @@ while true; do
                 esac
             done
 
-	    echo ""
+            echo ""
             echo "single か multiple を選んでください："
             select choice in "single" "multiple"; do
-		echo ""
+                echo ""
                 echo "ロードするイベント数を選んでください："
                 select load_option in "10k" "100k" "1M" "1G" "好きな数字"; do
                     case $load_option in
@@ -71,10 +81,10 @@ while true; do
                         "100k") loadEvt=100000; break ;;
                         "1M") loadEvt=1000000; break ;;
                         "1G") loadEvt=1000000000; break ;;
-                        "好きな数字") 
+                        "好きな数字")
                             echo "数字を入力してください:"
                             read loadEvt
-                            break 
+                            break
                             ;;
                         *) echo "無効な選択です。再度選んでください。" ;;
                     esac
@@ -82,6 +92,8 @@ while true; do
 
                 if [[ "$choice" == "single" ]]; then
                     echo "ファイルリスト："
+		    (show_runInfo "$prefix")
+		    echo ""
                     mapfile -t files < <(show_files "$prefix")
                     select file in "${files[@]}" "戻る"; do
                         if [ "$file" = "戻る" ]; then
@@ -94,7 +106,7 @@ while true; do
                         fi
                     done
                 elif [[ "$choice" == "multiple" ]]; then
-		    echo ""
+                    echo ""
                     echo "開始するrunNoを入力してください:"
                     read runNo_start
                     echo "終了するrunNoを入力してください:"

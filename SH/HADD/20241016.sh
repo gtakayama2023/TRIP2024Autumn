@@ -11,6 +11,11 @@ show_files() {
     ls ./ROOT/${prefix}*.root
 }
 
+show_runInfo() {
+    local prefix=$1
+    csvruninfo ./RIDF/${prefix}*.ridf
+}
+
 # ROOTファイルの結合を実行
 hadd_files() {
     local output_file=$1
@@ -28,6 +33,8 @@ while true; do
             exit 0
         elif [ -n "$prefix" ]; then
             echo "ファイルリスト："
+	    (show_runInfo "$prefix")
+	    echo ""
             mapfile -t files < <(show_files "$prefix")
             printf "以下のファイルがあります:\n"
             printf "%s\n" "${files[@]}"
@@ -57,7 +64,7 @@ while true; do
                         hadd_files "$output_file" "${files_to_merge[@]}"
                         break
                         ;;
-                    "バラバラ")
+                    "自由指定")
                         echo "結合したいファイルの番号をカンマで区切って入力してください（例: 1, 2, 4, 7, 8）:"
                         read indices
                         IFS=',' read -ra idx_array <<< "$indices"
