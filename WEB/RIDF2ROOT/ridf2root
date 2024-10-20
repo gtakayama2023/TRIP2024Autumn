@@ -6,8 +6,9 @@ echo ""
 
 # クエリパラメータから runNo と runName を取得
 query_string="$QUERY_STRING"
-runNo=$(echo "$query_string" | sed -n 's/^.*runNo=\([^&]*\).*$/\1/p')
-runName=$(echo "$query_string" | sed -n 's/^.*runName=\([^&]*\).*$/\1/p')
+runNo=$(echo "$query_string"    | sed -n 's/^.*runNo=\([^&]*\).*$/\1/p')
+runName=$(echo "$query_string"  | sed -n 's/^.*runName=\([^&]*\).*$/\1/p')
+loadEvts=$(echo "$query_string" | sed -n 's/^.*loadEvts=\([^&]*\).*$/\1/p')
 
 # runNo または runName が指定されていない場合はエラーメッセージを表示
 if [ -z "$runNo" ] || [ -z "$runName" ]; then
@@ -27,8 +28,7 @@ export LD_LIBRARY_PATH=$ROOTSYS/lib
 export LD_LIBRARY_PATH=$TARTSYS/install/lib:$LD_LIBRARY_PATH
 
 # ROOT コマンドを実行
-root -b -q "./ANA/ridf2root.cpp++g($runNo, \"$runName\", 1)"
+root -b -q "./ANA/ridf2root.cpp++g($runNo, \"$runName\", 1, $loadEvts)"
 
 # 実行終了
 # echo "ROOT execution completed for runNo: $runNo, runName: $runName"
-

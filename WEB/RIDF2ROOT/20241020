@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Content-Type ヘッダーを出力 (SSE用)
+echo "Content-Type: text/event-stream"
+echo "Cache-Control: no-cache"
+echo "Connection: keep-alive"
+echo
+
+# ヘルパー関数: SSEフォーマットでメッセージを送信
+send_message() {
+    echo "$1"
+}
+
+# クエリパラメータから runNo と runName を取得
+query_string="$QUERY_STRING"
+runNo=$(echo "$query_string"    | sed -n 's/^.*runNo=\([^&]*\).*$/\1/p')
+runName=$(echo "$query_string"  | sed -n 's/^.*runName=\([^&]*\).*$/\1/p')
+loadEvts=$(echo "$query_string" | sed -n 's/^.*loadEvts=\([^&]*\).*$/\1/p')
+
+# runNo または runName が指定されていない場合はエラーメッセージを送信
+if [ -z "$runNo" ] || [ -z "$runName" ]; then
+  send_message "Error: runNo or runName parameter is missing"
+  exit 1
+fi
+
+# runNo を普通の数字に変換（ゼロ埋めを除去）
+runNo=$(echo "$runNo" | sed 's/^0*//')
+
+# ROOT 環境を設定 (必要に応じて変更)
+source /home/exp/ROOT/root/bin/thisroot.sh
+#For ANAROOT
+export TARTSYS=/home/exp/ANAROOT/anaroot
+export LD_LIBRARY_PATH=$ROOTSYS/lib
+export LD_LIBRARY_PATH=$TARTSYS/install/lib:$LD_LIBRARY_PATH
+
+# 実行中メッセージを送信
+send_message "Executing ROOT command for runNo: $runNo, runName: $runName..."
+
+# ROOT コマンドを実行し、その出力を逐次的に送信
+root -b -q "./ANA/ridf2root.cpp++g($runNo, \"$runName\", 1, $loadEvts)" 2>&1 | while IFS= read -r line
+do
+    send_message "$line"
+done
+
+# 実行完了メッセージを送信
+send_message "Execution complete."

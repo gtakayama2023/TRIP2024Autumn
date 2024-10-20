@@ -18,7 +18,7 @@ my $runNo = $cgi->param('runNo') || '';
 my $runName = $cgi->param('runName') || '';
 
 # Define the directory path and construct the file name
-my $dir = "/EXP/RIBF/TRIP/2024/AUTUMN/USR/$default/$hist_or_tree/";
+my $dir = "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/$default/$hist_or_tree/";
 my $file = "${runName}${runNo}.root";
 
 # Output the HTML
@@ -30,7 +30,7 @@ print << "HTML";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Read a ROOT file</title>
     <link rel="shortcut icon" href="img/RootIcon.ico"/>
-    <script type="text/javascript" src="/JSROOT/scripts/JSRootCore.js?gui"></script>
+    <script type="text/javascript" src="/fuji/JSROOT/scripts/JSRootCore.js?gui"></script>
 </head>
 <body>
     <div id="simpleGUI" path="$dir" files="$file"></div>
