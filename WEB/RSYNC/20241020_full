@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Content-Type ヘッダーを出力 (SSE用)
+echo "Content-Type: text/event-stream"
+echo "Cache-Control: no-cache"
+echo "Connection: keep-alive"
+echo
+
+# ヘルパー関数: SSEフォーマットでメッセージを送信
+send_message() {
+    echo "$1"
+}
+
+# リモートサーバーでコマンドを実行し、その出力を逐次送信
+send_message "Executing rsynctrip_trip2402 on the remote server..."
+ssh iRIBF_trip_ana 'rsynctrip_trip2402' 2>&1 | while IFS= read -r line
+do
+    send_message "$line"
+done
+send_message "Remote command completed."
+
+# ローカルでコマンドを実行し、その出力を逐次送信
+send_message "Executing rsync_ridf locally..."
+./rsync_ridf 2>&1 | while IFS= read -r line
+do
+    send_message "$line"
+done
+send_message "Local command completed."
+
+# 完了メッセージ
+send_message "All commands completed."

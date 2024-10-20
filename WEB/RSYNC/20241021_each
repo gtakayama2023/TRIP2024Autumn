@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Content-Type ヘッダーを出力 (SSE用)
+echo "Content-Type: text/event-stream"
+echo "Cache-Control: no-cache"
+echo "Connection: keep-alive"
+echo
+
+# ヘルパー関数: SSEフォーマットでメッセージを送信
+send_message() {
+    echo "$1"
+}
+
+# URLからrunNoとrunNameを取得
+parse_query_string() {
+    local query_string="$1"
+    send_message "Parsing query string: $query_string"
+    
+    runNo=$(echo "$query_string" | sed -n 's/.*runNo=\([^&]*\).*/\1/p')
+    runName=$(echo "$query_string" | sed -n 's/.*runName=\([^&]*\).*/\1/p' | sed 's/+/ /g;s/%/\\x/g' | xargs -0 echo -e)
+    
+    send_message "Extracted runNo: $runNo"
+    send_message "Extracted runName: $runName"
+}
+
+# リモートファイルのパスを構築
+construct_remote_path() {
+    if [ -z "$runNo" ] || [ -z "$runName" ]; then
+        send_message "Error: runNo or runName is empty"
+        exit 1
+    fi
+    echo "iRIBF_trip_ana:/home/trip/S3CAN/2024/AUTUMN/users/default/RIDF/${runName}${runNo}.ridf"
+}
+
+# 環境変数からクエリ文字列を取得
+query_string="${QUERY_STRING}"
+send_message "Received query string: $query_string"
+
+# runNoとrunNameを解析
+parse_query_string "$query_string"
+
+# リモートファイルパスの取得
+remote_path=$(construct_remote_path)
+send_message "Remote path: $remote_path"
+
+# ローカルでrsyncを実行
+local_path="/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/RIDF/"
+send_message "Executing rsync to copy files locally..."
+rsync -avz --progress "${remote_path}" "${local_path}" 2>&1 | while IFS= read -r line; do
+    send_message "$line"
+done
+send_message "Local rsync completed."
