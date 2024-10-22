@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ge検出器計算ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #5af;
+            background-color: #5af;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #38d;
+        }
+        .tab button.active {
+            background-color: #53f;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script src="efficiency.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ge検出器計算ツール</h1>
+        <div>
+            <label for="calculationMode">計算モード:</label>
+            <select id="calculationMode" onchange="toggleCalculationMode()">
+                <option value="efficiency">任意エネルギーの検出効率予想</option>
+                <option value="sourceActivity">標準線源の計数率予想</option>
+            </select>
+        </div>
+        
+        <div id="sourceActivityInputs">
+            <!-- 既存の標準線源計算用の入力フィールド -->
+            <label for="nuclide">核種を選択:</label>
+            <select id="nuclide"></select>
+            <label for="useDate">使用日:</label>
+            <input type="date" id="useDate">
+        </div>
+        
+        <div id="efficiencyInputs" style="display:none;">
+            <label for="customEnergy">γ線エネルギー (keV):</label>
+            <input type="number" id="customEnergy" min="0" max="1600">
+        </div>
+        
+        <label for="distance">線源からの距離 (mm):</label>
+        <input type="number" id="distance" value="45" min="1">
+        
+        <button onclick="calculate()">計算</button>
+        <div id="result">
+            <div id="tabContainer" class="tab"></div>
+        </div>
+    </div>
+
+    <script>
+        const sources = [
+            { location: 'E6', number: '1', nuclide: 'Am-241', activity: 42.2, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '2', nuclide: 'Ba-133', activity: 46.6, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '3', nuclide: 'Cs-137', activity: 46.6, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '4', nuclide: 'Eu-152', activity: 40.9, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '5', nuclide: 'Am-241', activity: 354, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '6', nuclide: 'Eu-152', activity: 462, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '7', nuclide: 'Y-88', activity: 467, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '8', nuclide: 'Ba-133', activity: 453, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '9', nuclide: 'Na-22', activity: 359, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '10', nuclide: 'Cs-137', activity: 384, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '11', nuclide: 'Co-60', activity: 467, referenceDate: '1998-01-01' },
+            { location: 'E6', number: '12', nuclide: 'Sr-90', activity: 370, referenceDate: '2001-10-01' },
+            { location: 'E6', number: '13', nuclide: 'Ru-106', activity: 370, referenceDate: null },
+            { location: 'E6', number: '14', nuclide: 'Np-237', activity: 1.1, referenceDate: '1994-06-22' },
+            { location: 'ターゲット室1', number: '1', nuclide: 'Fe-55', activity: null, referenceDate: null },
+            { location: 'ターゲット室1', number: '2', nuclide: 'Cf-252', activity: 3700, referenceDate: '2006-05-15' },
+            { location: 'ターゲット室1', number: '5', nuclide: 'Na-22', activity: 100, referenceDate: '2010-03-16' },
+            { location: 'ターゲット室1', number: '6', nuclide: 'Co-60', activity: 100, referenceDate: '2010-03-16' },
+            { location: 'ターゲット室1', number: '7', nuclide: 'Y-88', activity: 1000, referenceDate: '2010-03-16' },
+            { location: 'ターゲット室1', number: '8', nuclide: 'Cs-137', activity: 10, referenceDate: '2010-03-16' },
+            { location: 'ターゲット室1', number: '9', nuclide: 'Eu-152', activity: 10, referenceDate: '2010-03-16' },
+            { location: 'ターゲット室1', number: '10', nuclide: 'Y-88', activity: 1000, referenceDate: '2016-07-25' }
+        ];
+
+        const halfLives = {
+            'Am-241': 432.6,
+            'Ba-133': 10.551,
+            'Cs-137': 30.08,
+            'Eu-152': 13.517,
+            'Y-88': 0.292,
+            'Na-22': 2.6018,
+            'Co-60': 5.271,
+            'Sr-90': 28.91,
+            'Ru-106': 1.02,
+            'Np-237': 2.14e6,
+            'Fe-55': 2.737,
+            'Cf-252': 2.645
+        };
+
+        const gammaEnergies = {
+            'Co-60': [
+                { energy: 1173.2, probability: 0.9985 },
+                { energy: 1332.5, probability: 0.999826 }
+            ],
+            'Cs-137': [
+                { energy: 661.7, probability: 0.851 }
+            ],
+            'Ba-133': [
+                { energy: 53.1, probability: 0.0214 },
+                { energy: 79.6142, probability: 0.0265 },
+                { energy: 80.9979, probability: 0.329 },
+                { energy: 160.612, probability: 0.006835 },
+                { energy: 223.23, probability: 0.00453 },
+                { energy: 276.4, probability: 0.0716 },
+                { energy: 302.85, probability: 0.1834 },
+                { energy: 356.01, probability: 0.6215 },
+                { energy: 383.85, probability: 0.0894 }
+            ],
+            'Eu-152': [
+                { energy: 121.78, probability: 0.2853 },
+                { energy: 244.7, probability: 0.0755 },
+                { energy: 344.3, probability: 0.266 },
+                { energy: 411.1, probability: 0.0224 },
+                { energy: 444.0, probability: 0.0311}, 
+                { energy: 778.9, probability: 0.129 },
+                { energy: 867.4, probability: 0.0423 },
+                { energy: 964.1, probability: 0.145 },
+                { energy: 1085.8, probability: 0.101 },
+                { energy: 1089.7, probability: 0.0173 },
+                { energy: 1112.1, probability: 0.137 },
+                { energy: 1299.1, probability: 0.0163 },
+                { energy: 1408.0, probability: 0.209 }
+            ],
+        };
+
+        // ページ読み込み時に効率データを取得
+        window.onload = async function() {
+          populateNuclideSelect();
+          toggleCalculationMode();
+        };
+
+        function populateNuclideSelect() {
+            const select = document.getElementById('nuclide');
+            const uniqueNuclides = [...new Set(sources.map(source => source.nuclide))];
+            uniqueNuclides.forEach((nuclide) => {
+                const option = document.createElement('option');
+                option.value = nuclide;
+                option.textContent = nuclide;
+                select.appendChild(option);
+            });
+
+            // 核種の選択肢を制限
+            const allowedNuclides = ['Ba-133', 'Cs-137', 'Eu-152', 'Co-60'];
+            select.innerHTML = '';
+            allowedNuclides.forEach((nuclide) => {
+                const option = document.createElement('option');
+                option.value = nuclide;
+                option.textContent = nuclide;
+                select.appendChild(option);
+            });
+        }
+
+        function toggleCalculationMode() {
+        // 計算モードの選択値を取得
+        var mode = document.getElementById("calculationMode").value;
+        
+        // 計算モードに応じて表示を切り替え
+        if(mode === "efficiency") {
+          document.getElementById("sourceActivityInputs").style.display = "none";
+          document.getElementById("efficiencyInputs").style.display = "block";
+        } else if(mode === "sourceActivity") {
+          document.getElementById("sourceActivityInputs").style.display = "block";
+          document.getElementById("efficiencyInputs").style.display = "none";
+        }
+
+      }
+
+        function calculate() {
+          const mode = document.getElementById('calculationMode').value;
+          if(mode === 'efficiency') {
+            // alert('Calling calculateCustomEfficiency');
+            calculateCustomEfficiency();
+          } else if(mode === 'sourceActivity') {
+            // alert('Calling calculateAllActivities');
+            calculateAllActivities();
+          }
+        }
+
+        function calculateSolidAngle(distance) {
+          const a = 30; // Ge結晶の1辺の長さ (mm)
+          return Math.asin(Math.pow(a, 2) / (Math.pow(distance, 2) + Math.pow(a, 2)));
+        }
+
+        function adjustEfficiency(efficiency, distance) {
+          const referenceDistance = 45; // mm
+          const referenceAngle = calculateSolidAngle(referenceDistance);
+          const newAngle = calculateSolidAngle(distance);
+          return efficiency * (newAngle / referenceAngle);
+        }
+
+        function interpolateEfficiency(energy, distance) {
+          let lower = efficiencyData[0];
+          let upper = efficiencyData[efficiencyData.length - 1];
+          
+          for (let i = 0; i < efficiencyData.length; i++) {
+            if (efficiencyData[i][0] > energy) {
+              upper = efficiencyData[i];
+              lower = efficiencyData[i - 1];
+              break;
+            }
+          }
+          
+          const slope = (upper[1] - lower[1]) / (upper[0] - lower[0]);
+          const interpolatedEfficiency = lower[1] + slope * (energy - lower[0]);
+          return adjustEfficiency(interpolatedEfficiency, distance);
+        }
+
+        function calculateCustomEfficiency() {
+        //   alert('Call calculateCustomEfficiency');
+          const energy = parseFloat(document.getElementById('customEnergy').value);
+          const distance = parseFloat(document.getElementById('distance').value);
+          const efficiency = interpolateEfficiency(energy, distance);
+
+          const tabContainer = document.getElementById('tabContainer');
+          const resultContainer = document.getElementById('result');
+
+          // Clear existing tabs and content
+        //   alert('Clear existing tabs and content');
+          tabContainer.innerHTML = '';
+        //   alert('resultContainer: ' + resultContainer);
+          resultContainer.innerHTML = '';
+        //   alert('Cleared existing tabs and content');
+          resultContainer.appendChild(tabContainer);
+        //   alert('Appended tabContainer to resultContainer');
+
+          const tabButton = document.createElement('button');
+          tabButton.className = 'tablinks';
+        //   alert('Created tabButton1');
+          tabButton.textContent = `gamma ${energy} keV`;
+        //   alert('Created tabButton2');
+          tabButton.onclick = function() { openTab(event, `source${index}`); };
+        //   alert('Created tabButton3');
+          tabContainer.appendChild(tabButton);
+        //   alert('Appended tabButton to tabContainer');
+          
+          const tabContent = document.createElement('div');
+          tabContent.id = `gamma${energy}keV`;
+          tabContent.className = 'tabcontent';
+          
+          let resultHTML = `<h2>結果: 任意エネルギーの検出効率予想</h2>`;
+          resultHTML += `<p>γ線エネルギー: ${energy} keV</p>`;
+          resultHTML += `<p>線源からの距離: ${distance} mm</p>`;
+          resultHTML += `<p>1結晶の検出効率: ${efficiency.toExponential(4)}</p>`;
+          
+          // 4結晶の合計効率も表示
+          const efficiency4Crystal = efficiency * 4;
+          resultHTML += `<p>4結晶合計の検出効率: ${efficiency4Crystal.toExponential(4)}</p>`;
+          resultHTML += `<p>8結晶合計の検出効率: ${(efficiency4Crystal * 2).toExponential(4)}</p>`;
+          
+          resultHTML += '<p><em>注意: この計算は簡易的な近似に基づいています。</em></p>';
+        //   alert('End of calculateCustomEfficiency');
+        //   alert('resultHTML: ' + resultHTML);
+        //   document.getElementById('result').innerHTML = resultHTML;
+          tabContent.innerHTML = resultHTML;
+          resultContainer.appendChild(tabContent);
+        //   alert('Appended tabContent to resultContainer');
+          
+          document.getElementsByClassName('tablinks')[0].click();
+          openTab(event, `gamma${energy}keV`);
+        }
+
+        function calculateAllActivities() {
+            // alert('Call calculateAllActivities');
+            const selectedNuclide = document.getElementById('nuclide').value;
+            const useDate = new Date(document.getElementById('useDate').value);
+            const distance = document.getElementById('distance').value;
+            const relevantSources = sources.filter(source => source.nuclide === selectedNuclide);
+
+            const tabContainer = document.getElementById('tabContainer');
+            const resultContainer = document.getElementById('result');
+
+            // Clear existing tabs and content
+            // alert('Clear existing tabs and content');
+            tabContainer.innerHTML = '';
+            // alert('resultContainer: ' + resultContainer);
+            resultContainer.innerHTML = '';
+            // alert('Cleared existing tabs and content');
+            resultContainer.appendChild(tabContainer);
+            // alert('Appended tabContainer to resultContainer');
+            
+            // alert('Start loop');
+            relevantSources.forEach((source, index) => {
+                const tabButton = document.createElement('button');
+                tabButton.className = 'tablinks';
+                tabButton.textContent = `${source.location} ${source.number}`;
+                tabButton.onclick = function() { openTab(event, `source${index}`); };
+                tabContainer.appendChild(tabButton);
+
+                const tabContent = document.createElement('div');
+                tabContent.id = `source${index}`;
+                tabContent.className = 'tabcontent';
+
+                if (!source.referenceDate || source.activity === null) {
+                    tabContent.innerHTML = '参照日または初期線源強度が不明なため、計算できません。';
+                } else {
+                    const referenceDate = new Date(source.referenceDate);
+                    const yearsDiff = (useDate - referenceDate) / (1000 * 60 * 60 * 24 * 365.25);
+                    const halfLife = halfLives[source.nuclide];
+
+                    if (!halfLife) {
+                        tabContent.innerHTML = '半減期が不明な核種です。';
+                    } else {
+                        const currentActivity = source.activity * Math.pow(2, -yearsDiff / halfLife);
+
+                        let resultHTML = `
+                            <h2>結果: ${source.location} ${source.number}</h2>
+                            <p>核種: ${source.nuclide}</p>
+                            <p>保管場所: ${source.location}</p>
+                            <p>基準日: ${source.referenceDate}</p>
+                            <p>基準日での線源強度: ${source.activity} kBq</p>
+                            <p>半減期: ${halfLife} 年</p>
+                            <p>使用日での線源強度: ${currentActivity.toFixed(2)} kBq</p>
+                        `;
+
+                        if (gammaEnergies[source.nuclide]) {
+                          resultHTML += '<h3>γ線エネルギーと放出確率</h3>';
+                          resultHTML += '<table><tr><th>エネルギー (keV)</th><th>放出確率</th><th>1秒間の放出数</th><th>検出効率 (1結晶)</th><th>予想計数率 (cps, 1結晶)</th><th>予想計数率 (cps, 4結晶)</th></tr>';
+                            gammaEnergies[source.nuclide].forEach(gamma => {
+                              const emissionsPerSecond = currentActivity * 1000 * gamma.probability;
+                              const efficiency = interpolateEfficiency(gamma.energy, distance);
+                              const expectedCountRate = emissionsPerSecond * efficiency;
+                              const expectedCountRate4Crystal = expectedCountRate * 4;  // 4結晶の合計
+                              resultHTML += `<tr>
+                                <td>${gamma.energy}</td>
+                                <td>${gamma.probability}</td>
+                                <td>${emissionsPerSecond.toFixed(2)}</td>
+                                <td>${efficiency.toExponential(4)}</td>
+                                <td>${expectedCountRate.toFixed(2)}</td>
+                                <td>${expectedCountRate4Crystal.toFixed(2)}</td>
+                              </tr>`;
+                            });
+                            resultHTML += '</table>';
+                            
+                            // 全エネルギーの合計計数率を計算
+                            const totalCountRate1Crystal = gammaEnergies[source.nuclide].reduce((sum, gamma) => {
+                              const emissionsPerSecond = currentActivity * 1000 * gamma.probability;
+                              const efficiency = interpolateEfficiency(gamma.energy, distance);
+                              return sum + emissionsPerSecond * efficiency;
+                            }, 0);
+                            const totalCountRate4Crystal = totalCountRate1Crystal * 4;
+                            
+                            resultHTML += `<p>合計予想計数率 (1結晶): ${totalCountRate1Crystal.toFixed(2)} cps</p>`;
+                            resultHTML += `<p>合計予想計数率 (4結晶): ${totalCountRate4Crystal.toFixed(2)} cps</p>`;
+
+                            resultHTML += '<p><em>注意: この計算は簡易的な近似に基づいています。</em></p>';
+                          } else {
+                            resultHTML += '<p>この核種のγ線データは利用できません。</p>';
+                          }
+                          
+                          tabContent.innerHTML = resultHTML;
+                        }
+                      }
+                      
+                      resultContainer.appendChild(tabContent);
+                    });
+                    
+                    // alert('End of calculateAllActivities');
+                    // 最初のタブを自動的に開く
+                    if (relevantSources.length > 0) {
+                      document.getElementsByClassName('tablinks')[0].click();
+                    }
+                  }
+                
+                  
+        function openTab(evt, tabName) {
+            // alert('Call openTab : ' + tabName);
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+    </script>
+</body>
+</html>

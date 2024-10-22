@@ -251,7 +251,9 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hraw_IC_Eraw[1] = new TH2D("hraw_IC_Eraw_F08","F08IC Eraw;ID;Eraw (ch)",3,0,3, 860,-200, 8400);
   hraw_IC_Eraw[2] = new TH2D("hraw_IC_Eraw_F11","F11IC Eraw;ID;Eraw (ch)",6,0,6, 430,-100, 4200);
   hraw_IC_Eraw[3] = new TH2D("hraw_IC_Eraw_F03","F03IC Eraw;ID;Eraw (ch)",6,0,6, 860,-200, 8400);
-
+  //===== Ge =============
+  TH2D *hraw_Ge_Eraw[1];
+  hraw_Ge_Eraw[0] = new TH2D("hraw_Ge_Eraw_F07","F07Ge Eraw;ID;Eraw (ch)",8,0,8, 8000,-200,8400);
 
   //===== PPAC =================================
   TH2D *hcalib_PPAC_TsumX;
@@ -810,7 +812,8 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<3;n++)hraw_IC_Eraw[1]->Fill(n, F8IC_Eraw[n]);
     for(int n=0;n<6;n++)hraw_IC_Eraw[2]->Fill(n,F11IC_Eraw[n]);
     for(int n=0;n<6;n++)hraw_IC_Eraw[3]->Fill(n, F3IC_Eraw[n]);
-
+    //===== Ge-Eraw ==========
+    for(int n=0;n<8;n++)hraw_Ge_Eraw[0]->Fill(n, F7Ge_Eraw[n]);
 
     if(PLA_Mhit[7][0]==2){
       hcalib_pileup_IC[0]->Fill((PLA_MT[7][0][1]-PLA_MT[7][0][0])*0.001,F7IC_Esum );

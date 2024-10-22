@@ -13,7 +13,8 @@ $urls = [
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/SKD/table.php" => "測定メニュー",
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/SKD/index.auth.php" => "測定メニュー管理",
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/LISE/HTML/" => "LISE++ 設定一覧",
-    "/fuji_jn/doc/tree/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/JPY/" => "Jupyter ( 上級者向け )"
+    "/fuji_jn/doc/tree/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/JPY/" => "Jupyter ( 上級者向け )",
+    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/Ge_calc/source.html" => "Ge 検出器計算ツール",
 ];
 ?>
 
