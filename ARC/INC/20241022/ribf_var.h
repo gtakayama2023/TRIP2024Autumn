@@ -30,10 +30,10 @@ unsigned int  mpv_10kclock[6];
 //===== V1190 =================================
 // [32]: Channel
 // [10]: 1st/2nd/.../10th-hit event
-long long v1190[2][128][N_Mhit];
-long long v1190raw[2][128][N_Mhit];
-Int_t v1190num[2][128];
-long long v1190tref[2];
+long long v1190[3][128][N_Mhit];
+long long v1190raw[3][128][N_Mhit];
+Int_t v1190num[3][128];
+long long v1190tref[3];
 //===== V1290 =================================
 // [32]: Channel
 // [10]: 1st/2nd/.../10th-hit event
@@ -95,9 +95,9 @@ Int_t F3IC_Gas;
 Int_t F7IC_Gas;
 Int_t F8IC_Gas;
 Int_t F11IC_Gas;
-
-//===== IC ====================================
+//===== Ge ====================================
 Int_t F7Ge_Eraw[8];
+Int_t F7Ge_Traw[9][4];
 
 //===== Mhit TDC ========================
 Double_t PLA_MT[Nfpl_PLA][2][N_Mhit];

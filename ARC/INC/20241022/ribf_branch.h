@@ -69,6 +69,7 @@ void ribf_branch_raw(TTree *tree){
 
   //===== Ge =====
   tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[8]/I");
+  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[9]/I");
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -226,6 +227,10 @@ void ribf_branch(TTree *tree){
   tree->Branch("F8IC_Gas",&F8IC_Gas,"F8IC_Gas/I");
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
+  //===== Ge =====
+  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
+  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[9]/I");
+
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
   tree->Branch("PLA_Mhit",PLA_Mhit,Form("PLA_Mhit[%d][2]/I",Nfpl_PLA));
@@ -309,6 +314,9 @@ void ribf_branch(TTree *tree){
   tree->Branch("F7IC_Esum",&F7IC_Esum,"F7IC_Esum/D");
   tree->Branch("F8IC_Esum",&F8IC_Esum,"F8IC_Esum/D");
   tree->Branch("F11IC_Esum",&F11IC_Esum,"F11IC_Esum/D");
+  //===== Ge ======================================================
+  //tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
+  //tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[9]/I");
 
   //===== Reconstruction =========================================
   tree->Branch("RecoF8Angle",RecoF8Angle,"RecoF8Angle[3]/D");

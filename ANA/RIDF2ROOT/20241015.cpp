@@ -247,7 +247,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hraw_PLA_Mhit = new TH2D("hraw_PLA_Mhit","Ratio of Multiplicity;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Multiplicity",16,0,16,5,0,5);
   //===== MUSIC ==========
   TH2D *hraw_IC_Eraw[4];
-  hraw_IC_Eraw[0] = new TH2D("hraw_IC_Eraw_F07","F07IC Eraw;ID;Eraw (ch)",6,0,6, 860,-200, 8400);
+  hraw_IC_Eraw[0] = new TH2D("hraw_IC_Eraw_F07","F07IC Eraw;ID;Eraw (ch)",6,0,6, 8400,-200, 8400);
   hraw_IC_Eraw[1] = new TH2D("hraw_IC_Eraw_F08","F08IC Eraw;ID;Eraw (ch)",3,0,3, 860,-200, 8400);
   hraw_IC_Eraw[2] = new TH2D("hraw_IC_Eraw_F11","F11IC Eraw;ID;Eraw (ch)",6,0,6, 430,-100, 4200);
   hraw_IC_Eraw[3] = new TH2D("hraw_IC_Eraw_F03","F03IC Eraw;ID;Eraw (ch)",6,0,6, 860,-200, 8400);

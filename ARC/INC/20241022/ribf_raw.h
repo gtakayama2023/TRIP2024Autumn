@@ -3,9 +3,9 @@
 void rawdata_reset(){
 
   //===== module data =====
-  for(int l=0;l<2;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190[l][n][m] = -9999;
-  for(int l=0;l<2;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190raw[l][n][m] = -9999;
-  for(int l=0;l<2;l++)for(int n=0;n<128;n++)v1190num[l][n] = 0;
+  for(int l=0;l<3;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190[l][n][m] = -9999;
+  for(int l=0;l<3;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190raw[l][n][m] = -9999;
+  for(int l=0;l<3;l++)for(int n=0;n<128;n++)v1190num[l][n] = 0;
 
   for(int l=0;l<2;l++)for(int n=0;n<32;n++)for(int m=0;m<N_Mhit;m++)v1290L[l][n][m] = -9999;
   for(int l=0;l<2;l++)for(int n=0;n<32;n++)for(int m=0;m<N_Mhit;m++)v1290Lraw[l][n][m] = -9999;
@@ -152,6 +152,14 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for PPAC-T",geo) << endl;
     return;
   }
+  if( dev==USERGR && fpl==F7 && det==SSDE && mod==V1190 && geo==0 ){
+    
+    if(v1190num[2][ch]<N_Mhit)v1190raw[2][ch][v1190num[2][ch]] = buf;
+    v1190num[2][ch]++;
+    
+    if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for Ge-T",geo) << endl;
+    return;
+  }
   //===== V1290 ===============================================================================
   if( dev==BIGRIPS && fpl==B3F && det==PLAT && mod==V1290 && (geo==6||geo==9) ){
     
@@ -235,9 +243,10 @@ void rawdata_fill(){
   //===== V1190/V1290 ==================
   v1190tref[0] = v1190raw[0][0][0];
   v1190tref[1] = v1190raw[1][0][0];
+  v1190tref[2] = v1190raw[2][16][0]; // Ge-T
   v1290tref[0] = v1290Lraw[0][0][0];
   v1290tref[1] = v1290Lraw[1][31][0];
-  for(int l=0;l<2;l++)for(int m=0;m<128;m++)for(int n=0;n<N_Mhit;n++)v1190[l][m][n] = v1190raw[l][m][n]-v1190tref[l];
+  for(int l=0;l<3;l++)for(int m=0;m<128;m++)for(int n=0;n<N_Mhit;n++)v1190[l][m][n] = v1190raw[l][m][n]-v1190tref[l];
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)v1290L[l][m][n] = v1290Lraw[l][m][n]-v1290tref[l];
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)v1290T[l][m][n] = v1290Traw[l][m][n]-v1290tref[l];
 
@@ -287,6 +296,16 @@ void rawdata_fill(){
 
     }// if Use_PPAC
   }// for l
+   
+  //===== Ge-T =========================
+  for (int l=0; l<8; l++){
+    for (int n=0; n<4; n++) {
+      F7Ge_Traw[l][n] = v1190[2][l][n];
+    }
+  }
+  for (int n=0; n<4; n++) {
+    F7Ge_Traw[8][n] = v1190[2][18][n]; // F7Pla-L
+  }
 
   //===== Plastic T =============================
   //  int temp_CHid_plat[12]={0,0,0,16,0,18,0,20,22,28,0,24};
