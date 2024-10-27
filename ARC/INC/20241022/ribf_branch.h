@@ -6,6 +6,7 @@ void ribf_branch_raw(TTree *tree){
   //===== Scaler in sva01/02 =====
   tree->Branch("sva_Nevent",sva_Nevent,"sva_Nevent[2]/i");
   tree->Branch("sva_10kclock",sva_10kclock,"sva_10kclock[2]/i");
+  tree->Branch("F7GeScaler",F7Ge_Scaler,"F7Ge_Scaler[32]/i");
   //===== time stemp =====
   //  tree->Branch("mpv_Nevent",mpv_Nevent,"mpv_Nevent[3]/i");
   //  tree->Branch("mpv_ts0",mpv_ts0,"mpv_ts0[3][2]/l");
@@ -31,7 +32,7 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("v1290Tnum",v1290Tnum,"v1290Tnum[2][32]/I");
   //===== QDC/ADC =====
   tree->Branch("qdc",qdc,"qdc[32]/I");
-  tree->Branch("adc",adc,"adc[5][32]/I");
+  tree->Branch("adc",adc,"adc[6][32]/I");
 
 
   //===== PPAC =====
@@ -68,8 +69,9 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[9]/I");
+  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[32]/I");
+  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[32]/I");
+  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[32]/I");
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -92,6 +94,7 @@ void ribf_branch_raw_read(TTree *tree2){
   //===== module ====================
   tree2->SetBranchAddress("sva_Nevent",sva_Nevent);
   tree2->SetBranchAddress("sva_10kclock",sva_10kclock);
+  tree2->SetBranchAddress("F7Ge_Scaler",F7Ge_Scaler);
 
   tree2->SetBranchAddress("mpv_Nevent",mpv_Nevent);
   tree2->SetBranchAddress("mpv_ts0",mpv_ts0);
@@ -166,6 +169,7 @@ void ribf_branch(TTree *tree){
   //===== Scaler in sva01/02 =====
   tree->Branch("sva_Nevent",sva_Nevent,"sva_Nevent[2]/i");
   tree->Branch("sva_10kclock",sva_10kclock,"sva_10kclock[2]/i");
+  tree->Branch("F7GeScaler",F7Ge_Scaler,"F7Ge_Scaler[32]/i");
   //===== time stemp =====
   //  tree->Branch("mpv_Nevent",mpv_Nevent,"mpv_Nevent[3]/i");
   //  tree->Branch("mpv_ts0",mpv_ts0,"mpv_ts0[3][2]/l");
@@ -191,7 +195,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("v1290Tnum",v1290Tnum,"v1290Tnum[2][32]/I");
   //===== QDC/ADC =====
   tree->Branch("qdc",qdc,"qdc[32]/I");
-  tree->Branch("adc",adc,"adc[5][32]/I");
+  tree->Branch("adc",adc,"adc[6][32]/I");
 
 
   //===== PPAC =====
@@ -228,8 +232,9 @@ void ribf_branch(TTree *tree){
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[9]/I");
+  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[32]/I");
+  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[32]/I");
+  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[32]/I");
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -316,7 +321,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("F11IC_Esum",&F11IC_Esum,"F11IC_Esum/D");
   //===== Ge ======================================================
   //tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
-  //tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[9]/I");
+  //tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[32]/I");
 
   //===== Reconstruction =========================================
   tree->Branch("RecoF8Angle",RecoF8Angle,"RecoF8Angle[3]/D");
@@ -431,6 +436,7 @@ void ribf_branch_read(TTree *tree2){
   //===== module ====================
   tree2->SetBranchAddress("sva_Nevent",sva_Nevent);
   tree2->SetBranchAddress("sva_10kclock",sva_10kclock);
+  tree2->SetBranchAddress("F7Ge_Scaler",F7Ge_Scaler);
 
   tree2->SetBranchAddress("mpv_Nevent",mpv_Nevent);
   tree2->SetBranchAddress("mpv_ts0",mpv_ts0);

@@ -168,22 +168,21 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 
   //===== Histograms =======================================================
   TH2D *hraw_v1190[2];
-  hraw_v1190[0] = new TH2D("hraw_v1190_0","V1190-0 (PPAC) rawdata;ID;T (ns)",128,0,128,1000,0,1000);
-  hraw_v1190[1] = new TH2D("hraw_v1190_1","V1190-1 (PPAC) rawdata;ID;T (ns)",128,0,128,1000,0,1000);
+  hraw_v1190[0] = new TH2D("hraw_v1190_0",Form("V1190-0 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,1000);
+  hraw_v1190[1] = new TH2D("hraw_v1190_1",Form("V1190-1 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,1000);
   TH2D *hraw_v1190num[2];
-  hraw_v1190num[0] = new TH2D("hraw_v1190num_0","V1190 (PPAC) Multiplicity;ID;#it{N}_{hit}",128,0,128,5,0,5);
-  hraw_v1190num[1] = new TH2D("hraw_v1190num_1","V1190 (PPAC) Multiplicity;ID;#it{N}_{hit}",128,0,128,5,0,5);
+  hraw_v1190num[0] = new TH2D("hraw_v1190num_0",Form("V1190 (PPAC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
+  hraw_v1190num[1] = new TH2D("hraw_v1190num_1",Form("V1190 (PPAC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
 
   TH2D *hraw_v1290L[2];
-  hraw_v1290L[0] = new TH2D("hraw_v1290L_0","V1290L (PLA-T) rawdata;ID;T (ns)",32,0,32,1000,0,25000);
-  //  hraw_v1290L[0] = new TH2D("hraw_v1290L_0","V1290L-0 (PLA-T) rawdata;ID;T (ns)",32,0,32,1000,6000,7000);
-  hraw_v1290L[1] = new TH2D("hraw_v1290L_1","V1290 Leading  (PLA-QTC) rawdata;ID;T (ns)",32,0,32,500,0,3000);
+  hraw_v1290L[0] = new TH2D("hraw_v1290L_0",Form("V1290L (PLA-T) rawdata | run%04d;ID;T (ns)"          ,runN),32,0,32,1000,0,25000);
+  hraw_v1290L[1] = new TH2D("hraw_v1290L_1",Form("V1290 Leading  (PLA-QTC) rawdata | run%04d;ID;T (ns)",runN),32,0,32,500,0,3000);
   TH2D *hraw_v1290Lnum[2];
-  hraw_v1290Lnum[0] = new TH2D("hraw_v1290Lnum_0","V1290 (PLA-T) Multiplicity;ID;#it{N}_{hit}",32,0,32,10,0,10);
-  hraw_v1290Lnum[1] = new TH2D("hraw_v1290Lnum_1","V1290 Leading (PLA-QTC) Multiplicity;ID;#it{N}_{hit}",32,0,32,10,0,10);
+  hraw_v1290Lnum[0] = new TH2D("hraw_v1290Lnum_0",Form("V1290 (PLA-T) Multiplicity | run%04d;ID;#it{N}_{hit}"          ,runN),32,0,32,10,0,10);
+  hraw_v1290Lnum[1] = new TH2D("hraw_v1290Lnum_1",Form("V1290 Leading (PLA-QTC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),32,0,32,10,0,10);
   TH2D *hraw_v1290Lnum2[2];
-  hraw_v1290Lnum2[0] = new TH2D("hraw_v1290Lnum2_0","V1290 (PLA-T) Multiplicity2;ID;#it{N}_{hit}",32,0,32,10,0,10);
-  hraw_v1290Lnum2[1] = new TH2D("hraw_v1290Lnum2_1","V1290 Leading (PLA-QTC) Multiplicity2;ID;#it{N}_{hit}",32,0,32,10,0,10);
+  hraw_v1290Lnum2[0] = new TH2D("hraw_v1290Lnum2_0",Form("V1290 (PLA-T) Multiplicity2 | run%04d;ID;#it{N}_{hit}"          ,runN),32,0,32,10,0,10);
+  hraw_v1290Lnum2[1] = new TH2D("hraw_v1290Lnum2_1",Form("V1290 Leading (PLA-QTC) Multiplicity2 | run%04d;ID;#it{N}_{hit}",runN),32,0,32,10,0,10);
   /*
   TH2D *hraw_v1290T[2];
   hraw_v1290T[0] = new TH2D("hraw_v1290T_0","V1290L-0 (PLA-T) rawdata;ID;T (ns)",32,0,32,1200,0,12000);
@@ -193,74 +192,75 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hraw_v1290Tnum[1] = new TH2D("hraw_v1290Tnum_1","V1290L (PLA-QTC) Multiplicity;ID;#it{N}_{hit}",32,0,32,10,0,10);
   */
   TH2D *hraw_v1290T;
-  hraw_v1290T = new TH2D("hraw_v1290T","V1290 Trailing (PLA-QTC) rawdata;ID;T (ns)",32,0,32,1500,0,3000);
+  hraw_v1290T = new TH2D("hraw_v1290T",Form("V1290 Trailing (PLA-QTC) rawdata | run%04d;ID;T (ns)" ,runN),32,0,32,1500,0,3000);
   TH2D *hraw_v1290W;
-  hraw_v1290W = new TH2D("hraw_v1290W","V1290 Width (PLA-QTC) rawdata;ID;Width (ns)",32,0,32,400,-100,1100);
+  hraw_v1290W = new TH2D("hraw_v1290W",Form("V1290 Width (PLA-QTC) rawdata | run%04d;ID;Width (ns)",runN),32,0,32,400,-100,1100);
 
   TH2D *hraw_qdc;
-  hraw_qdc = new TH2D("hraw_qdc","QDC (PLA) rawdata;ID;Q (ch)",16,0,16,430,-100,4200);
+  hraw_qdc = new TH2D("hraw_qdc",Form("QDC (PLA) rawdata | run%04d;ID;Q (ch)",runN),16,0,16,430,-100,4200);
   TH2D *hraw_adc[4];
-  hraw_adc[0] = new TH2D("hraw_adc_F07IC","ADC (F07MUSIC) rawdata;ID;ADC (ch)",8,0,8,860,-200,8400);
-  hraw_adc[1] = new TH2D("hraw_adc_F08IC","ADC (F08MUSIC) rawdata;ID;ADC (ch)",4,0,4,860,-200,8400);
-  hraw_adc[2] = new TH2D("hraw_adc_F11IC","ADC (F11MUSIC) rawdata;ID;ADC (ch)",8,0,8,430,-100,4200);
-  hraw_adc[3] = new TH2D("hraw_adc_F03IC","ADC (F03MUSIC) rawdata;ID;ADC (ch)",8,0,8,860,-200,8400);
+  hraw_adc[0] = new TH2D("hraw_adc_F07IC",Form("ADC (F07MUSIC) rawdata | run%04d;ID;ADC (ch)",runN),8,0,8,860,-200,8400);
+  hraw_adc[1] = new TH2D("hraw_adc_F08IC",Form("ADC (F08MUSIC) rawdata | run%04d;ID;ADC (ch)",runN),4,0,4,860,-200,8400);
+  hraw_adc[2] = new TH2D("hraw_adc_F11IC",Form("ADC (F11MUSIC) rawdata | run%04d;ID;ADC (ch)",runN),8,0,8,430,-100,4200);
+  hraw_adc[3] = new TH2D("hraw_adc_F03IC",Form("ADC (F03MUSIC) rawdata | run%04d;ID;ADC (ch)",runN),8,0,8,860,-200,8400);
 
   //=====
   TH2D *hraw_PPAC_v1190[7];
-  hraw_PPAC_v1190[0] = new TH2D("hraw_PPAC_v1190_F03","F03PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[1] = new TH2D("hraw_PPAC_v1190_F05","F05PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[2] = new TH2D("hraw_PPAC_v1190_F07","F07PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[3] = new TH2D("hraw_PPAC_v1190_F08","F08PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[4] = new TH2D("hraw_PPAC_v1190_F09","F09PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,4000,10000);
-  hraw_PPAC_v1190[5] = new TH2D("hraw_PPAC_v1190_F10","F10PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,4000,10000);
-  hraw_PPAC_v1190[6] = new TH2D("hraw_PPAC_v1190_F11","F11PPAC V1190raw;ID;V1190raw (ch)",20,0,20,500,4000,10000);
+  hraw_PPAC_v1190[0] = new TH2D("hraw_PPAC_v1190_F03",Form("F03PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
+  hraw_PPAC_v1190[1] = new TH2D("hraw_PPAC_v1190_F05",Form("F05PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
+  hraw_PPAC_v1190[2] = new TH2D("hraw_PPAC_v1190_F07",Form("F07PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
+  hraw_PPAC_v1190[3] = new TH2D("hraw_PPAC_v1190_F08",Form("F08PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
+  hraw_PPAC_v1190[4] = new TH2D("hraw_PPAC_v1190_F09",Form("F09PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
+  hraw_PPAC_v1190[5] = new TH2D("hraw_PPAC_v1190_F10",Form("F10PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
+  hraw_PPAC_v1190[6] = new TH2D("hraw_PPAC_v1190_F11",Form("F11PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
 
   TH2D *hraw_PLA_v1290[2];
-  hraw_PLA_v1290[0] = new TH2D("hraw_PLA_v1290_T"  ,"PLA-T   V1290raw;F03/F05/F07/F08/F09/F11/F8VETO/F11Long/F3-2/F5-2/F7-2;V1290raw (ch)",22,0,22,500,400e3,600e3);
-  hraw_PLA_v1290[1] = new TH2D("hraw_PLA_v1290_QTC","PLA-QTC V1290raw;F03/F05/F07/F08/F09/F11/F8VETO/F11Long;V1290raw (ch)",16,0,16,500,   0*40,1000*40);
+  hraw_PLA_v1290[0] = new TH2D("hraw_PLA_v1290_T"  ,Form("PLA-T   V1290raw | run%04d;F03/F05/F07/F08/F09/F11/F8VETO/F11Long/F3-2/F5-2/F7-2;V1290raw (ch)",runN),22,0,22,500,400e3,600e3);
+  hraw_PLA_v1290[1] = new TH2D("hraw_PLA_v1290_QTC",Form("PLA-QTC V1290raw | run%04d;F03/F05/F07/F08/F09/F11/F8VETO/F11Long;V1290raw (ch)"               ,runN),16,0,16,500,   0*40,1000*40);
 
   // 
   TH2D *hcalib_pileup_IC[3];
-  hcalib_pileup_IC[0] = new TH2D("hcalib_pileup_IC_F7" ,"#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F07IC};#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F08IC} (MeV)",650,-0.5,12.5,400,0,300);
-  hcalib_pileup_IC[1] = new TH2D("hcalib_pileup_IC_F8" ,"#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F08IC};#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F08IC} (MeV)",650,-0.5,12.5,400,0,300);
-  hcalib_pileup_IC[2] = new TH2D("hcalib_pileup_IC_F11","#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F11IC};#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F11IC} (MeV)",650,-0.5,12.5,400,0,300);
+  hcalib_pileup_IC[0] = new TH2D("hcalib_pileup_IC_F7" ,Form("#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F07IC} | run%04d;#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F08IC} (MeV)",runN),650,-0.5,12.5,400,0,300);
+  hcalib_pileup_IC[1] = new TH2D("hcalib_pileup_IC_F8" ,Form("#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F08IC} | run%04d;#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F08IC} (MeV)",runN),650,-0.5,12.5,400,0,300);
+  hcalib_pileup_IC[2] = new TH2D("hcalib_pileup_IC_F11",Form("#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F11IC} | run%04d;#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F11IC} (MeV)",runN),650,-0.5,12.5,400,0,300);
 
 
   //===== Rawdata ============================
   //===== PPAC ==========
   TH2D *hraw_PPAC_T[7];
-  hraw_PPAC_T[0] = new TH2D("hraw_PPAC_T_F03","F03PPAC T;ID;T (ns)",20,0,20,400,-300,100);
-  hraw_PPAC_T[1] = new TH2D("hraw_PPAC_T_F05","F05PPAC T;ID;T (ns)",20,0,20,400,-300,100);
-  hraw_PPAC_T[2] = new TH2D("hraw_PPAC_T_F07","F07PPAC T;ID;T (ns)",20,0,20,400,-300,100);
-  hraw_PPAC_T[3] = new TH2D("hraw_PPAC_T_F08","F08PPAC T;ID;T (ns)",20,0,20,400,-300,100);
-  hraw_PPAC_T[4] = new TH2D("hraw_PPAC_T_F09","F09PPAC T;ID;T (ns)",20,0,20,400,   0,400);
-  hraw_PPAC_T[5] = new TH2D("hraw_PPAC_T_F10","F10PPAC T;ID;T (ns)",20,0,20,400,   0,400);
-  hraw_PPAC_T[6] = new TH2D("hraw_PPAC_T_F11","F11PPAC T;ID;T (ns)",20,0,20,400, 100,500);
+  hraw_PPAC_T[0] = new TH2D("hraw_PPAC_T_F03",Form("F03PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
+  hraw_PPAC_T[1] = new TH2D("hraw_PPAC_T_F05",Form("F05PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
+  hraw_PPAC_T[2] = new TH2D("hraw_PPAC_T_F07",Form("F07PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
+  hraw_PPAC_T[3] = new TH2D("hraw_PPAC_T_F08",Form("F08PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
+  hraw_PPAC_T[4] = new TH2D("hraw_PPAC_T_F09",Form("F09PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,   0,400);
+  hraw_PPAC_T[5] = new TH2D("hraw_PPAC_T_F10",Form("F10PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,   0,400);
+  hraw_PPAC_T[6] = new TH2D("hraw_PPAC_T_F11",Form("F11PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400, 100,500);
   //===== Plastic ==========
   TH2D *hraw_PLA_T;
-  hraw_PLA_T = new TH2D("hraw_PLA_T","Plastic T;F3/F5/F7/F8/F9/F11/F8VETO/F11Long/F3-2/F5-2/F7-2;T(ns)",22,0,22,600,-300,300);
+  hraw_PLA_T    = new TH2D("hraw_PLA_T",   Form("Plastic T | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long/F3-2/F5-2/F7-2;T(ns)"    ,runN),22,0,22,600,-300,300);
   TH2D *hraw_PLA_QTC;
-  hraw_PLA_QTC = new TH2D("hraw_PLA_QTC","Plastic QTC;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;QTC (ns)",16,0,16,500,-50,950);
+  hraw_PLA_QTC  = new TH2D("hraw_PLA_QTC", Form("Plastic QTC | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;QTC (ns)"              ,runN),16,0,16,500,-50,950);
   TH2D *hraw_PLA_Qraw;
-  hraw_PLA_Qraw = new TH2D("hraw_PLA_Qraw","Plastic Qraw;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Qraw (ch)",16,0,16,430,-100,4200);
+  hraw_PLA_Qraw = new TH2D("hraw_PLA_Qraw",Form("Plastic Qraw | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Qraw (ch)"            ,runN),16,0,16,430,-100,4200);
   TH2D *hraw_PLA_Mhit;
-  hraw_PLA_Mhit = new TH2D("hraw_PLA_Mhit","Ratio of Multiplicity;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Multiplicity",16,0,16,5,0,5);
+  hraw_PLA_Mhit = new TH2D("hraw_PLA_Mhit",Form("Ratio of Multiplicity | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Multiplicity",runN),16,0,16,5,0,5);
   //===== MUSIC ==========
   TH2D *hraw_IC_Eraw[4];
-  hraw_IC_Eraw[0] = new TH2D("hraw_IC_Eraw_F07","F07IC Eraw;ID;Eraw (ch)",6,0,6, 8400,-200, 8400);
-  hraw_IC_Eraw[1] = new TH2D("hraw_IC_Eraw_F08","F08IC Eraw;ID;Eraw (ch)",3,0,3, 860,-200, 8400);
-  hraw_IC_Eraw[2] = new TH2D("hraw_IC_Eraw_F11","F11IC Eraw;ID;Eraw (ch)",6,0,6, 430,-100, 4200);
-  hraw_IC_Eraw[3] = new TH2D("hraw_IC_Eraw_F03","F03IC Eraw;ID;Eraw (ch)",6,0,6, 860,-200, 8400);
+  hraw_IC_Eraw[0] = new TH2D("hraw_IC_Eraw_F07",Form("F07IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 8400,-200, 8400);
+  hraw_IC_Eraw[1] = new TH2D("hraw_IC_Eraw_F08",Form("F08IC Eraw | run%04d;ID;Eraw (ch)",runN),3,0,3, 860,-200, 8400);
+  hraw_IC_Eraw[2] = new TH2D("hraw_IC_Eraw_F11",Form("F11IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 430,-100, 4200);
+  hraw_IC_Eraw[3] = new TH2D("hraw_IC_Eraw_F03",Form("F03IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 860,-200, 8400);
   //===== Ge =============
-  TH2D *hraw_Ge_Eraw[1];
-  hraw_Ge_Eraw[0] = new TH2D("hraw_Ge_Eraw_F07","F07Ge Eraw;ID;Eraw (ch)",8,0,8, 8000,-200,8400);
+  TH2D *hraw_Ge_Eraw[2];
+  hraw_Ge_Eraw[0] = new TH2D("hraw_Ge_Eraw_F07",Form("F07Ge Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
+  hraw_Ge_Eraw[1] = new TH2D("hraw_Ge2_Eraw_F07",Form("F07Ge2 Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
 
   //===== PPAC =================================
   TH2D *hcalib_PPAC_TsumX;
-  hcalib_PPAC_TsumX = new TH2D("hcalib_PPAC_TsumX","PPAC TsumX;F03/05/07/08/09/10/11;TsumX (ns)",28,0,28,300,-20,20);
+  hcalib_PPAC_TsumX = new TH2D("hcalib_PPAC_TsumX",Form("PPAC TsumX | run%04d;F03/05/07/08/09/10/11;TsumX (ns)",runN),28,0,28,300,-20,20);
   //  hcalib_PPAC_TsumX = new TH2D("hcalib_PPAC_TsumX","PPAC TsumX;F03/05/07/08/09/10/11;TsumX (ns)",28,0,28,50,-3,3);
   TH2D *hcalib_PPAC_TsumY;
-  hcalib_PPAC_TsumY = new TH2D("hcalib_PPAC_TsumY","PPAC TsumY;F03/05/07/08/09/10/11;TsumY (ns)",28,0,28,300,-20,20);
+  hcalib_PPAC_TsumY = new TH2D("hcalib_PPAC_TsumY",Form("PPAC TsumY | run%04d;F03/05/07/08/09/10/11;TsumY (ns)",runN),28,0,28,300,-20,20);
   //  hcalib_PPAC_TsumY = new TH2D("hcalib_PPAC_TsumY","PPAC TsumY;F03/05/07/08/09/10/11;TsumY (ns)",28,0,28,50,-3,3);
   /*
   TH2D *hcalib_PPAC_TsumX[7];
@@ -302,102 +302,101 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 
   TH2D *hcalib_PPAC_Pos[7][4];
   string tlabel[2]={"A","B"};
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[0][i] = new TH2D(Form("hcalib_PPAC_Pos_F03_%d",i),Form("F03PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300, -60, 60,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[1][i] = new TH2D(Form("hcalib_PPAC_Pos_F05_%d",i),Form("F05PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300,-120,120,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[2][i] = new TH2D(Form("hcalib_PPAC_Pos_F07_%d",i),Form("F07PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300, -60, 60,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[3][i] = new TH2D(Form("hcalib_PPAC_Pos_F08_%d",i),Form("F08PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300, -60, 60,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[4][i] = new TH2D(Form("hcalib_PPAC_Pos_F09_%d",i),Form("F09PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300,-150,150,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[5][i] = new TH2D(Form("hcalib_PPAC_Pos_F10_%d",i),Form("F10PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300,-150,150,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[6][i] = new TH2D(Form("hcalib_PPAC_Pos_F11_%d",i),Form("F11PPAC%d%s X vs Y;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str()),300, -60, 60,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[0][i] = new TH2D(Form("hcalib_PPAC_Pos_F03_%d",i),Form("F03PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[1][i] = new TH2D(Form("hcalib_PPAC_Pos_F05_%d",i),Form("F05PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-120,120,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[2][i] = new TH2D(Form("hcalib_PPAC_Pos_F07_%d",i),Form("F07PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[3][i] = new TH2D(Form("hcalib_PPAC_Pos_F08_%d",i),Form("F08PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[4][i] = new TH2D(Form("hcalib_PPAC_Pos_F09_%d",i),Form("F09PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-150,150,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[5][i] = new TH2D(Form("hcalib_PPAC_Pos_F10_%d",i),Form("F10PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-150,150,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[6][i] = new TH2D(Form("hcalib_PPAC_Pos_F11_%d",i),Form("F11PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
 
 
   TH2D *hcalib_Fpl_XY[7];
-  hcalib_Fpl_XY[0] = new TH2D("hcalib_Fpl_XY_F03","F03 X vs Y;X (mm);Y (mm)",300,  -60,  60, 300, -60, 60);
-  hcalib_Fpl_XY[1] = new TH2D("hcalib_Fpl_XY_F05","F05 X vs Y;X (mm);Y (mm)",300, -120, 120, 300, -60, 60);
-  hcalib_Fpl_XY[2] = new TH2D("hcalib_Fpl_XY_F07","F07 X vs Y;X (mm);Y (mm)",300,  -60,  60, 300, -60, 60);
-  hcalib_Fpl_XY[3] = new TH2D("hcalib_Fpl_XY_F08","F08 X vs Y;X (mm);Y (mm)",300,  -60,  60, 300, -60, 60);
-  hcalib_Fpl_XY[4] = new TH2D("hcalib_Fpl_XY_F09","F09 X vs Y;X (mm);Y (mm)",300, -120, 120, 300, -60, 60);
-  hcalib_Fpl_XY[5] = new TH2D("hcalib_Fpl_XY_F10","F10 X vs Y;X (mm);Y (mm)",300, -120, 120, 300, -60, 60);
-  hcalib_Fpl_XY[6] = new TH2D("hcalib_Fpl_XY_F11","F11 X vs Y;X (mm);Y (mm)",300,  -60,  60, 300, -60, 60);
+  hcalib_Fpl_XY[0] = new TH2D("hcalib_Fpl_XY_F03",Form("F03 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
+  hcalib_Fpl_XY[1] = new TH2D("hcalib_Fpl_XY_F05",Form("F05 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -120, 120, 300, -60, 60);
+  hcalib_Fpl_XY[2] = new TH2D("hcalib_Fpl_XY_F07",Form("F07 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
+  hcalib_Fpl_XY[3] = new TH2D("hcalib_Fpl_XY_F08",Form("F08 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
+  hcalib_Fpl_XY[4] = new TH2D("hcalib_Fpl_XY_F09",Form("F09 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -120, 120, 300, -60, 60);
+  hcalib_Fpl_XY[5] = new TH2D("hcalib_Fpl_XY_F10",Form("F10 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -120, 120, 300, -60, 60);
+  hcalib_Fpl_XY[6] = new TH2D("hcalib_Fpl_XY_F11",Form("F11 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
 
   TH2D *hcalib_Fpl_XA[7];
-  hcalib_Fpl_XA[0] = new TH2D("hcalib_Fpl_XA_F03","F03 X vs A;X (mm);A (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_XA[1] = new TH2D("hcalib_Fpl_XA_F05","F05 X vs A;X (mm);A (mrad)",300, -120, 120, 300, -50, 50);
-  hcalib_Fpl_XA[2] = new TH2D("hcalib_Fpl_XA_F07","F07 X vs A;X (mm);A (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_XA[3] = new TH2D("hcalib_Fpl_XA_F08","F08 X vs A;X (mm);A (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_XA[4] = new TH2D("hcalib_Fpl_XA_F09","F09 X vs A;X (mm);A (mrad)",300, -120, 120, 300, -50, 50);
-  hcalib_Fpl_XA[5] = new TH2D("hcalib_Fpl_XA_F10","F10 X vs A;X (mm);A (mrad)",300, -120, 120, 300, -50, 50);
-  hcalib_Fpl_XA[6] = new TH2D("hcalib_Fpl_XA_F11","F11 X vs A;X (mm);A (mrad)",300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_XA[0] = new TH2D("hcalib_Fpl_XA_F03",Form("F03 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_XA[1] = new TH2D("hcalib_Fpl_XA_F05",Form("F05 X vs A | run%04d;X (mm);A (mrad)",runN),300, -120, 120, 300, -50, 50);
+  hcalib_Fpl_XA[2] = new TH2D("hcalib_Fpl_XA_F07",Form("F07 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_XA[3] = new TH2D("hcalib_Fpl_XA_F08",Form("F08 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_XA[4] = new TH2D("hcalib_Fpl_XA_F09",Form("F09 X vs A | run%04d;X (mm);A (mrad)",runN),300, -120, 120, 300, -50, 50);
+  hcalib_Fpl_XA[5] = new TH2D("hcalib_Fpl_XA_F10",Form("F10 X vs A | run%04d;X (mm);A (mrad)",runN),300, -120, 120, 300, -50, 50);
+  hcalib_Fpl_XA[6] = new TH2D("hcalib_Fpl_XA_F11",Form("F11 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
 
   TH2D *hcalib_Fpl_YB[7];
-  hcalib_Fpl_YB[0] = new TH2D("hcalib_Fpl_YB_F03","F03 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_YB[1] = new TH2D("hcalib_Fpl_YB_F05","F05 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_YB[2] = new TH2D("hcalib_Fpl_YB_F07","F07 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_YB[3] = new TH2D("hcalib_Fpl_YB_F08","F08 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_YB[4] = new TH2D("hcalib_Fpl_YB_F09","F09 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_YB[5] = new TH2D("hcalib_Fpl_YB_F10","F10 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-  hcalib_Fpl_YB[6] = new TH2D("hcalib_Fpl_YB_F11","F11 Y vs B;X (mm);B (mrad)",300,  -60,  60, 300, -50, 50);
-
+  hcalib_Fpl_YB[0] = new TH2D("hcalib_Fpl_YB_F03",Form("F03 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_YB[1] = new TH2D("hcalib_Fpl_YB_F05",Form("F05 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_YB[2] = new TH2D("hcalib_Fpl_YB_F07",Form("F07 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_YB[3] = new TH2D("hcalib_Fpl_YB_F08",Form("F08 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_YB[4] = new TH2D("hcalib_Fpl_YB_F09",Form("F09 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_YB[5] = new TH2D("hcalib_Fpl_YB_F10",Form("F10 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_YB[6] = new TH2D("hcalib_Fpl_YB_F11",Form("F11 Y vs B | run%04d;X (mm);B (mrad)",runN),300,  -60,  60, 300, -50, 50);
 
   TH2D *hcalib_PLA_T;
-  hcalib_PLA_T = new TH2D("hcalib_PLA_T","Plastic T;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Traw (ch)",16,0,16,400,-400,400);
+  hcalib_PLA_T = new TH2D("hcalib_PLA_T",Form("Plastic T | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Traw (ch)",runN),16,0,16,400,-400,400);
 
   TH2D *hcalib_PLA_LRQ[7];
-  hcalib_PLA_LRQ[0] = new TH2D("hcalib_PLA_LRQ_F03",    "F03PLA LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[1] = new TH2D("hcalib_PLA_LRQ_F05",    "F05PLA LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[2] = new TH2D("hcalib_PLA_LRQ_F07",    "F07PLA LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[3] = new TH2D("hcalib_PLA_LRQ_F08",    "F08PLA LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[4] = new TH2D("hcalib_PLA_LRQ_F09",    "F09PLA LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[5] = new TH2D("hcalib_PLA_LRQ_F11",    "F11PLA LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[6] = new TH2D("hcalib_PLA_LRQ_F8VETO", "F8VETO LQ vs RQ;LQ (ch);RQ (ch)", 430,-100,4200,430,-100,4200);
-  hcalib_PLA_LRQ[7] = new TH2D("hcalib_PLA_LRQ_F11Long","F11Long LQ vs RQ;LQ (ch);RQ (ch)",430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[0] = new TH2D("hcalib_PLA_LRQ_F03",    Form(" F03PLA LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[1] = new TH2D("hcalib_PLA_LRQ_F05",    Form(" F05PLA LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[2] = new TH2D("hcalib_PLA_LRQ_F07",    Form(" F07PLA LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[3] = new TH2D("hcalib_PLA_LRQ_F08",    Form(" F08PLA LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[4] = new TH2D("hcalib_PLA_LRQ_F09",    Form(" F09PLA LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[5] = new TH2D("hcalib_PLA_LRQ_F11",    Form(" F11PLA LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[6] = new TH2D("hcalib_PLA_LRQ_F8VETO", Form(" F8VETO LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  hcalib_PLA_LRQ[7] = new TH2D("hcalib_PLA_LRQ_F11Long",Form("F11Long LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
   
   TH2D *hcalib_PLA_LRQTC[7];
-  hcalib_PLA_LRQTC[0] = new TH2D("hcalib_PLA_LRQTC_F03",    "F03PLA QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 700,400,-10, 700);
-  hcalib_PLA_LRQTC[1] = new TH2D("hcalib_PLA_LRQTC_F05",    "F05PLA QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 700,400,-10, 700);
-  hcalib_PLA_LRQTC[2] = new TH2D("hcalib_PLA_LRQTC_F07",    "F07PLA QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 700,400,-10, 700);
-  hcalib_PLA_LRQTC[3] = new TH2D("hcalib_PLA_LRQTC_F08",    "F08PLA QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 200,400,-10, 200);
-  hcalib_PLA_LRQTC[4] = new TH2D("hcalib_PLA_LRQTC_F09",    "F09PLA QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 700,400,-10, 700);
-  hcalib_PLA_LRQTC[5] = new TH2D("hcalib_PLA_LRQTC_F11",    "F11PLA QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 200,400,-10, 200);
-  hcalib_PLA_LRQTC[6] = new TH2D("hcalib_PLA_LRQTC_F8VETO", "F8VETO QTC LQ vs RQ;LQ (ns);RQ (ns)", 400,-10, 700,400,-10, 700);
-  hcalib_PLA_LRQTC[7] = new TH2D("hcalib_PLA_LRQTC_F11Long","F11Long QTC LQ vs RQ;LQ (ns);RQ (ns)",400,-10, 700,400,-10, 700);
+  hcalib_PLA_LRQTC[0] = new TH2D("hcalib_PLA_LRQTC_F03",    Form("F03PLA QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 700,400,-10, 700);
+  hcalib_PLA_LRQTC[1] = new TH2D("hcalib_PLA_LRQTC_F05",    Form("F05PLA QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 700,400,-10, 700);
+  hcalib_PLA_LRQTC[2] = new TH2D("hcalib_PLA_LRQTC_F07",    Form("F07PLA QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 700,400,-10, 700);
+  hcalib_PLA_LRQTC[3] = new TH2D("hcalib_PLA_LRQTC_F08",    Form("F08PLA QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 200,400,-10, 200);
+  hcalib_PLA_LRQTC[4] = new TH2D("hcalib_PLA_LRQTC_F09",    Form("F09PLA QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 700,400,-10, 700);
+  hcalib_PLA_LRQTC[5] = new TH2D("hcalib_PLA_LRQTC_F11",    Form("F11PLA QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 200,400,-10, 200);
+  hcalib_PLA_LRQTC[6] = new TH2D("hcalib_PLA_LRQTC_F8VETO", Form("F8VETO QTC LQ vs RQ  | run%04d;LQ (ns);RQ (ns)" ,runN), 400,-10, 700,400,-10, 700);
+  hcalib_PLA_LRQTC[7] = new TH2D("hcalib_PLA_LRQTC_F11Long",Form("F11Long QTC LQ vs RQ | run%04d;LQ (ns);RQ (ns)" ,runN),400,-10, 700,400,-10, 700);
 
   TH2D *hcalib_PLA_Qdiff_Pos[7];
-  hcalib_PLA_Qdiff_Pos[0] = new TH2D("hcalib_PLA_Qdiff_Pos_F03",    "F03PLA LQ-RQ vs F03X;F03X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[1] = new TH2D("hcalib_PLA_Qdiff_Pos_F05",    "F05PLA LQ-RQ vs F05X;F05X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[2] = new TH2D("hcalib_PLA_Qdiff_Pos_F07",    "F07PLA LQ-RQ vs F07X;F07X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[3] = new TH2D("hcalib_PLA_Qdiff_Pos_F08",    "F08PLA LQ-RQ vs F08X;F08X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[4] = new TH2D("hcalib_PLA_Qdiff_Pos_F09",    "F09PLA LQ-RQ vs F09X;F09X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[5] = new TH2D("hcalib_PLA_Qdiff_Pos_F11",    "F11PLA LQ-RQ vs F11X;F11X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[6] = new TH2D("hcalib_PLA_Qdiff_Pos_F8VETO", "F8VETO LQ-RQ vs F08X;F08X (mm);LQ-RQ (ch)",  300,-50,50,300,-1000,1000);
-  hcalib_PLA_Qdiff_Pos[7] = new TH2D("hcalib_PLA_Qdiff_Pos_F11Long","F11Long LQ-RQ vs F11X;F11X (mm);LQ-RQ (ch)", 300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[0] = new TH2D("hcalib_PLA_Qdiff_Pos_F03",    Form("F03PLA LQ-RQ vs F03X  | run%04d;F03X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[1] = new TH2D("hcalib_PLA_Qdiff_Pos_F05",    Form("F05PLA LQ-RQ vs F05X  | run%04d;F05X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[2] = new TH2D("hcalib_PLA_Qdiff_Pos_F07",    Form("F07PLA LQ-RQ vs F07X  | run%04d;F07X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[3] = new TH2D("hcalib_PLA_Qdiff_Pos_F08",    Form("F08PLA LQ-RQ vs F08X  | run%04d;F08X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[4] = new TH2D("hcalib_PLA_Qdiff_Pos_F09",    Form("F09PLA LQ-RQ vs F09X  | run%04d;F09X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[5] = new TH2D("hcalib_PLA_Qdiff_Pos_F11",    Form("F11PLA LQ-RQ vs F11X  | run%04d;F11X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[6] = new TH2D("hcalib_PLA_Qdiff_Pos_F8VETO", Form("F8VETO LQ-RQ vs F08X  | run%04d;F08X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
+  hcalib_PLA_Qdiff_Pos[7] = new TH2D("hcalib_PLA_Qdiff_Pos_F11Long",Form("F11Long LQ-RQ vs F11X | run%04d;F11X (mm);LQ-RQ (ch)",runN), 300,-50,50,300,-1000,1000);
 
 
   TH2D *hcalib_PPAC_fX[7];
-  hcalib_PPAC_fX[0] = new TH2D("hcalib_PPAC_fX_F03","F03PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fX[1] = new TH2D("hcalib_PPAC_fX_F05","F05PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fX[2] = new TH2D("hcalib_PPAC_fX_F07","F07PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fX[3] = new TH2D("hcalib_PPAC_fX_F08","F08PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fX[4] = new TH2D("hcalib_PPAC_fX_F09","F09PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fX[5] = new TH2D("hcalib_PPAC_fX_F10","F10PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fX[6] = new TH2D("hcalib_PPAC_fX_F11","F11PPAC fX;ID;fired(1) or not(0)",4,0,4,2,0,2);
+  hcalib_PPAC_fX[0] = new TH2D("hcalib_PPAC_fX_F03",Form("F03PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fX[1] = new TH2D("hcalib_PPAC_fX_F05",Form("F05PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fX[2] = new TH2D("hcalib_PPAC_fX_F07",Form("F07PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fX[3] = new TH2D("hcalib_PPAC_fX_F08",Form("F08PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fX[4] = new TH2D("hcalib_PPAC_fX_F09",Form("F09PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fX[5] = new TH2D("hcalib_PPAC_fX_F10",Form("F10PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fX[6] = new TH2D("hcalib_PPAC_fX_F11",Form("F11PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
 
   TH2D *hcalib_PPAC_fY[7];
-  hcalib_PPAC_fY[0] = new TH2D("hcalib_PPAC_fY_F03","F03PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fY[1] = new TH2D("hcalib_PPAC_fY_F05","F05PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fY[2] = new TH2D("hcalib_PPAC_fY_F07","F07PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fY[3] = new TH2D("hcalib_PPAC_fY_F08","F08PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fY[4] = new TH2D("hcalib_PPAC_fY_F09","F09PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fY[5] = new TH2D("hcalib_PPAC_fY_F10","F10PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
-  hcalib_PPAC_fY[6] = new TH2D("hcalib_PPAC_fY_F11","F11PPAC fY;ID;fired(1) or not(0)",4,0,4,2,0,2);
+  hcalib_PPAC_fY[0] = new TH2D("hcalib_PPAC_fY_F03",Form("F03PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fY[1] = new TH2D("hcalib_PPAC_fY_F05",Form("F05PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fY[2] = new TH2D("hcalib_PPAC_fY_F07",Form("F07PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fY[3] = new TH2D("hcalib_PPAC_fY_F08",Form("F08PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fY[4] = new TH2D("hcalib_PPAC_fY_F09",Form("F09PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fY[5] = new TH2D("hcalib_PPAC_fY_F10",Form("F10PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
+  hcalib_PPAC_fY[6] = new TH2D("hcalib_PPAC_fY_F11",Form("F11PPAC fY | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
 
   // [7] : F03/05/07/08/09/10/11
   // [2] : X/Y
   // [4] : 1A/1B/2A/2B
 
   TH1D *hcalib_PPAC_eff2D0[2];
-  hcalib_PPAC_eff2D0[0] = new TH1D("hcalib_eff2D_total_0","F07IC_Esum for PPAC (Total);F07IC_Esum (MeV);#it{N} (events)",100,0,200);
-  hcalib_PPAC_eff2D0[1] = new TH1D("hcalib_eff2D_total_1","F11IC_Esum for PPAC (Total);F11IC_Esum (MeV);#it{N} (events)",100,0,200);
+  hcalib_PPAC_eff2D0[0] = new TH1D("hcalib_eff2D_total_0",Form("F07IC_Esum for PPAC (Total) | run%04d;F07IC_Esum (MeV);#it{N} (events)",runN),100,0,200);
+  hcalib_PPAC_eff2D0[1] = new TH1D("hcalib_eff2D_total_1",Form("F11IC_Esum for PPAC (Total) | run%04d;F11IC_Esum (MeV);#it{N} (events)",runN),100,0,200);
   TH1D *hcalib_PPAC_eff2D[7][2][4];
   string tlabel_eff2D1[7]={"F03","F05","F07","F08","F09","F10","F11"};
   string tlabel_eff2D2[2]={"X","Y"};
@@ -407,106 +406,103 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   for(int ii=0;ii<3;ii++)for(int kk=0;kk<4;kk++){
       hcalib_PPAC_eff2D[ii][0][kk] = 
 	new TH1D(Form("hcalib_eff2D_%sPPAC_%s_%s",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[0].c_str()),
-		 Form("F07IC_Esum for %sPPAC-%s-%s (Fired);F07IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[0].c_str()),
+		 Form("F07IC_Esum for %sPPAC-%s-%s (Fired) | run%04d;F07IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[0].c_str(), runN),
 		 100,0,200);
     }
   // F08/09/10/11-X
   for(int ii=3;ii<7;ii++)for(int kk=0;kk<4;kk++){
       hcalib_PPAC_eff2D[ii][0][kk] = 
 	new TH1D(Form("hcalib_eff2D_%sPPAC_%s_%s",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[0].c_str()),
-		 Form("F11IC_Esum for %sPPAC-%s-%s (Fired);F11IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[0].c_str()),
+		 Form("F11IC_Esum for %sPPAC-%s-%s (Fired) | run%04d;F11IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[0].c_str(), runN),
 		 100,0,200);
     }
   // F03/05/07-Y
   for(int ii=0;ii<3;ii++)for(int kk=0;kk<4;kk++){
       hcalib_PPAC_eff2D[ii][1][kk] = 
 	new TH1D(Form("hcalib_eff2D_%sPPAC_%s_%s",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str()),
-		 Form("F07IC_Esum for %sPPAC-%s-%s (Fired);F07IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str()),
+		 Form("F07IC_Esum for %sPPAC-%s-%s (Fired) | run%04d;F07IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str(), runN),
 		 100,0,200);
     }
   // F08/09/10/11-Y
   for(int ii=3;ii<7;ii++)for(int kk=0;kk<4;kk++){
       hcalib_PPAC_eff2D[ii][1][kk] = 
 	new TH1D(Form("hcalib_eff2D_%sPPAC_%s_%s",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str()),
-		 Form("F11IC_Esum for %sPPAC-%s-%s (Fired);F11IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str()),
+		 Form("F11IC_Esum for %sPPAC-%s-%s (Fired) | run%04d;F11IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str(), runN),
 		 100,0,200);
     }
 
 
   //========================================================================
   TH2D *hana_PID35[4];
-  hana_PID35[0] = new TH2D("hana_PID35_0","AoQ35_2  vs Zet3;AoQ35_2;Zet7",1500,1.5,3.0,1500,0,50);
-  hana_PID35[1] = new TH2D("hana_PID35_1","AoQ35_2  vs Zet3;AoQ35_2;Zet7", 500,1.8,2.2,400,10,17);
-  hana_PID35[2] = new TH2D("hana_PID35_2","AoQ35_2  vs Zet3;AoQ35_2;Zet7", 500,1.8,2.2,400,17,24);
-  hana_PID35[3] = new TH2D("hana_PID35_3","AoQ35_2  vs Zet3;AoQ35_2;Zet7", 500,1.8,2.2,400,24,31);
+  hana_PID35[0] = new TH2D("hana_PID35_0",Form("AoQ35_2  vs Zet3 | run%04d;AoQ35_2;Zet7", runN),1500,1.5,3.0,1500,0,50);
+  hana_PID35[1] = new TH2D("hana_PID35_1",Form("AoQ35_2  vs Zet3 | run%04d;AoQ35_2;Zet7", runN), 500,1.8,2.2,400,10,17);
+  hana_PID35[2] = new TH2D("hana_PID35_2",Form("AoQ35_2  vs Zet3 | run%04d;AoQ35_2;Zet7", runN), 500,1.8,2.2,400,17,24);
+  hana_PID35[3] = new TH2D("hana_PID35_3",Form("AoQ35_2  vs Zet3 | run%04d;AoQ35_2;Zet7", runN), 500,1.8,2.2,400,24,31);
 
   TH2D *hana_PID57[4];
-  hana_PID57[0] = new TH2D("hana_PID57_0","AoQ57_2  vs Zet7;AoQ57_2;Zet7",1500,1.5,3.0,1500,0,50);
-  hana_PID57[1] = new TH2D("hana_PID57_1","AoQ57_2  vs Zet7;AoQ57_2;Zet7", 500,1.8,2.2,400,10,17);
-  hana_PID57[2] = new TH2D("hana_PID57_2","AoQ57_2  vs Zet7;AoQ57_2;Zet7", 500,1.8,2.2,400,17,24);
-  hana_PID57[3] = new TH2D("hana_PID57_3","AoQ57_2  vs Zet7;AoQ57_2;Zet7", 500,1.8,2.2,400,24,31);
+  hana_PID57[0] = new TH2D("hana_PID57_0",Form("AoQ57_2  vs Zet7 | run%04d;AoQ57_2;Zet7", runN),1500,1.5,3.0,1500,0,50);
+  hana_PID57[1] = new TH2D("hana_PID57_1",Form("AoQ57_2  vs Zet7 | run%04d;AoQ57_2;Zet7", runN), 500,1.8,2.2,400,10,17);
+  hana_PID57[2] = new TH2D("hana_PID57_2",Form("AoQ57_2  vs Zet7 | run%04d;AoQ57_2;Zet7", runN), 500,1.8,2.2,400,17,24);
+  hana_PID57[3] = new TH2D("hana_PID57_3",Form("AoQ57_2  vs Zet7 | run%04d;AoQ57_2;Zet7", runN), 500,1.8,2.2,400,24,31);
 
   TH2D *hana_PID37[4];
-  hana_PID37[0] = new TH2D("hana_PID37_0","AoQ57[1]  vs Zet7;AoQ57[1];Zet7",1500,1.5,3.0,1500,0,50);
-  hana_PID37[1] = new TH2D("hana_PID37_1","AoQ57[1]  vs Zet7;AoQ57[1];Zet7", 500,1.8,2.2,400,10,17);
-  hana_PID37[2] = new TH2D("hana_PID37_2","AoQ57[1]  vs Zet7;AoQ57[1];Zet7", 500,1.8,2.2,400,17,24);
-  hana_PID37[3] = new TH2D("hana_PID37_3","AoQ57[1]  vs Zet7;AoQ57[1];Zet7", 500,1.8,2.2,400,24,31);
+  hana_PID37[0] = new TH2D("hana_PID37_0",Form("AoQ57[1] vs Zet7 | run%04d;AoQ57[1];Zet7", runN),1500,1.5,3.0,1500,0,50);
+  hana_PID37[1] = new TH2D("hana_PID37_1",Form("AoQ57[1] vs Zet7 | run%04d;AoQ57[1];Zet7", runN), 500,1.8,2.2,400,10,17);
+  hana_PID37[2] = new TH2D("hana_PID37_2",Form("AoQ57[1] vs Zet7 | run%04d;AoQ57[1];Zet7", runN), 500,1.8,2.2,400,17,24);
+  hana_PID37[3] = new TH2D("hana_PID37_3",Form("AoQ57[1] vs Zet7 | run%04d;AoQ57[1];Zet7", runN), 500,1.8,2.2,400,24,31);
 
   TH1D *hana_AoQ[3];
-  hana_AoQ[0] = new TH1D("hana_AoQ_35","AoQ35_2;AoQ35_2 from PLA35",1000,1.5,3.0);
-  hana_AoQ[1] = new TH1D("hana_AoQ_57","AoQ57_2;AoQ57_2 from PLA57",1000,1.5,3.0);
-  hana_AoQ[2] = new TH1D("hana_AoQ_37","AoQ57[1];AoQ57[1] from PLA37",1000,1.5,3.0);
+  hana_AoQ[0] = new TH1D("hana_AoQ_35",Form("AoQ35_2  | run%04d;AoQ35_2 from PLA35" , runN),1000,1.5,3.0);
+  hana_AoQ[1] = new TH1D("hana_AoQ_57",Form("AoQ57_2  | run%04d;AoQ57_2 from PLA57" , runN),1000,1.5,3.0);
+  hana_AoQ[2] = new TH1D("hana_AoQ_37",Form("AoQ57[1] | run%04d;AoQ57[1] from PLA37", runN),1000,1.5,3.0);
 
   TH1D *hana_Zet[4];
-  hana_Zet[0] = new TH1D("hana_Zet_F3" ,"Zet3;#it{N} (events)" ,400,10,35);
-  hana_Zet[1] = new TH1D("hana_Zet_F7" ,"Zet7;#it{N} (events)" ,400,10,35);
-  hana_Zet[2] = new TH1D("hana_Zet_F8" ,"Zet8;#it{N} (events)" ,400,10,35);
-  hana_Zet[3] = new TH1D("hana_Zet_F11","Zet11;#it{N} (events)",400,10,35);
-
+  hana_Zet[0] = new TH1D("hana_Zet_F3" ,Form("Zet3  | run%04d;#it{N} (events)",runN) ,400,10,35);
+  hana_Zet[1] = new TH1D("hana_Zet_F7" ,Form("Zet7  | run%04d;#it{N} (events)",runN) ,400,10,35);
+  hana_Zet[2] = new TH1D("hana_Zet_F8" ,Form("Zet8  | run%04d;#it{N} (events)",runN) ,400,10,35);
+  hana_Zet[3] = new TH1D("hana_Zet_F11",Form("Zet11 | run%04d;#it{N} (events)",runN) ,400,10,35);
 
   TH2D *hana_PID[2][2];
-  hana_PID[0][0] = new TH2D("hana_PID_up_wogate",  "AoQ57[1] vs Zet7;AoQ57[1] from PLA37;Zet7", 300,2.66,2.71,300,17,21);
-  hana_PID[0][1] = new TH2D("hana_PID_up_wgate",   "AoQ57[1] vs Zet7;AoQ57[1] from PLA37;Zet7", 300,2.66,2.71,300,17,21);
-  hana_PID[1][0] = new TH2D("hana_PID_down_wogate","AoQ911[1] vs Zet11;AoQ911[1] from PLA811;Zet7",300,2.66,2.71,300,17,21);
-  hana_PID[1][1] = new TH2D("hana_PID_down_wgate", "AoQ911[1] vs Zet11;AoQ911[1] from PLA811;Zet7",300,2.66,2.71,300,17,21);
+  hana_PID[0][0] = new TH2D("hana_PID_up_wogate",  Form("AoQ57[1] vs Zet7   | run%04d;AoQ57[1] from PLA37;Zet7"  ,runN),300,2.66,2.71,300,17,21);
+  hana_PID[0][1] = new TH2D("hana_PID_up_wgate",   Form("AoQ57[1] vs Zet7   | run%04d;AoQ57[1] from PLA37;Zet7"  ,runN),300,2.66,2.71,300,17,21);
+  hana_PID[1][0] = new TH2D("hana_PID_down_wogate",Form("AoQ911[1] vs Zet11 | run%04d;AoQ911[1] from PLA811;Zet7",runN),300,2.66,2.71,300,17,21);
+  hana_PID[1][1] = new TH2D("hana_PID_down_wgate", Form("AoQ911[1] vs Zet11 | run%04d;AoQ911[1] from PLA811;Zet7",runN),300,2.66,2.71,300,17,21);
 
   TH2D *hana_PID2[2][2];
-  hana_PID2[0][0] = new TH2D("hana_PID2_up_wogate",  "AoQ57[1] vs Zet7 (wEMT);AoQ57[1] from PLA37;Zet7", 300,2.66,2.71,300,17,21);
-  hana_PID2[0][1] = new TH2D("hana_PID2_up_wgate",   "AoQ57[1] vs Zet7 (wEMT);AoQ57[1] from PLA37;Zet7", 300,2.66,2.71,300,17,21);
-  hana_PID2[1][0] = new TH2D("hana_PID2_down_wogate","AoQ911[1] vs Zet11 (wEMT);AoQ911[1] from PLA811;Zet7",300,2.66,2.71,300,17,21);
-  hana_PID2[1][1] = new TH2D("hana_PID2_down_wgate", "AoQ911[1] vs Zet11 (wEMT);AoQ911[1] from PLA811;Zet7",300,2.66,2.71,300,17,21);
+  hana_PID2[0][0] = new TH2D("hana_PID2_up_wogate",  Form("AoQ57[1] vs Zet7 (wEMT)   | run%04d;AoQ57[1] from PLA37;Zet7"  ,runN), 300,2.66,2.71,300,17,21);
+  hana_PID2[0][1] = new TH2D("hana_PID2_up_wgate",   Form("AoQ57[1] vs Zet7 (wEMT)   | run%04d;AoQ57[1] from PLA37;Zet7"  ,runN), 300,2.66,2.71,300,17,21);
+  hana_PID2[1][0] = new TH2D("hana_PID2_down_wogate",Form("AoQ911[1] vs Zet11 (wEMT) | run%04d;AoQ911[1] from PLA811;Zet7",runN),300,2.66,2.71,300,17,21);
+  hana_PID2[1][1] = new TH2D("hana_PID2_down_wgate", Form("AoQ911[1] vs Zet11 (wEMT) | run%04d;AoQ911[1] from PLA811;Zet7",runN),300,2.66,2.71,300,17,21);
 
   TH2D *hana_F7QF8Q;
-  hana_F7QF8Q = new TH2D("hana_F7QF8Q","F7Pla_Q vs F8Pla_Q;F7Pla_Q (ch);F8Pla_Q (ch)",400,0,4000,400,0,4000);
+  hana_F7QF8Q = new TH2D("hana_F7QF8Q",Form("F7Pla_Q vs F8Pla_Q | run%04d;F7Pla_Q (ch);F8Pla_Q (ch)",runN),400,0,4000,400,0,4000);
 
   TH2D *hana_profile1[7];
-  hana_profile1[0] = new TH2D("hana_profile1_0",  "F03 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
-  hana_profile1[1] = new TH2D("hana_profile1_1",  "F05 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
-  hana_profile1[2] = new TH2D("hana_profile1_2",  "F07 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
-  hana_profile1[3] = new TH2D("hana_profile1_3",  "F08 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
-  hana_profile1[4] = new TH2D("hana_profile1_4",  "F09 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
-  hana_profile1[5] = new TH2D("hana_profile1_5",  "F10 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
-  hana_profile1[6] = new TH2D("hana_profile1_6",  "F11 X vs Y gated;X (mm);Y (mm)", 400,-150,150,400,-150,150);
+  hana_profile1[0] = new TH2D("hana_profile1_0", Form("F03 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
+  hana_profile1[1] = new TH2D("hana_profile1_1", Form("F05 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
+  hana_profile1[2] = new TH2D("hana_profile1_2", Form("F07 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
+  hana_profile1[3] = new TH2D("hana_profile1_3", Form("F08 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
+  hana_profile1[4] = new TH2D("hana_profile1_4", Form("F09 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
+  hana_profile1[5] = new TH2D("hana_profile1_5", Form("F10 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
+  hana_profile1[6] = new TH2D("hana_profile1_6", Form("F11 X vs Y gated | run%04d;X (mm);Y (mm)",runN), 400,-150,150,400,-150,150);
 
   TH2D *hana_profile2[7];
-  hana_profile2[0] = new TH2D("hana_profile2_0",  "F03 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
-  hana_profile2[1] = new TH2D("hana_profile2_1",  "F05 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
-  hana_profile2[2] = new TH2D("hana_profile2_2",  "F07 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
-  hana_profile2[3] = new TH2D("hana_profile2_3",  "F08 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
-  hana_profile2[4] = new TH2D("hana_profile2_4",  "F09 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
-  hana_profile2[5] = new TH2D("hana_profile2_5",  "F10 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
-  hana_profile2[6] = new TH2D("hana_profile2_6",  "F11 X vs A gated;X (mm);A (mrad)", 400,-150,150,400,-50,50);
+  hana_profile2[0] = new TH2D("hana_profile2_0", Form("F03 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile2[1] = new TH2D("hana_profile2_1", Form("F05 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile2[2] = new TH2D("hana_profile2_2", Form("F07 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile2[3] = new TH2D("hana_profile2_3", Form("F08 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile2[4] = new TH2D("hana_profile2_4", Form("F09 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile2[5] = new TH2D("hana_profile2_5", Form("F10 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile2[6] = new TH2D("hana_profile2_6", Form("F11 X vs A gated | run%04d;X (mm);A (mrad)",runN), 400,-150,150,400,-50,50);
 
   TH2D *hana_profile3[7];
-  hana_profile3[0] = new TH2D("hana_profile3_0",  "F03 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-  hana_profile3[1] = new TH2D("hana_profile3_1",  "F05 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-  hana_profile3[2] = new TH2D("hana_profile3_2",  "F07 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-  hana_profile3[3] = new TH2D("hana_profile3_3",  "F08 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-  hana_profile3[4] = new TH2D("hana_profile3_4",  "F09 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-  hana_profile3[5] = new TH2D("hana_profile3_5",  "F10 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-  hana_profile3[6] = new TH2D("hana_profile3_6",  "F11 Y vs B gated;Y (mm);B (mrad)", 400,-150,150,400,-50,50);
-
-
+  hana_profile3[0] = new TH2D("hana_profile3_0", Form("F03 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile3[1] = new TH2D("hana_profile3_1", Form("F05 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile3[2] = new TH2D("hana_profile3_2", Form("F07 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile3[3] = new TH2D("hana_profile3_3", Form("F08 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile3[4] = new TH2D("hana_profile3_4", Form("F09 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile3[5] = new TH2D("hana_profile3_5", Form("F10 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
+  hana_profile3[6] = new TH2D("hana_profile3_6", Form("F11 Y vs B gated | run%04d;Y (mm);B (mrad)",runN), 400,-150,150,400,-50,50);
 
   TH1D *hana_emt[3][2][5];
   {
@@ -515,11 +511,11 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     double range[5]={20,40,20,40,4.0};
     
     for(int i=0;i<3;i++)for(int j=0;j<2;j++){
-	hana_emt[i][j][0] = new TH1D(Form("EMT_X_%d_%d",i,j),Form("F8X %s %s;F8X (mm)   ;#it{N} (events/mm)",       label_emt1[i].c_str(),label_emt2[j].c_str()),2*(int)range[0],  -1.*range[0], range[0]);
-	hana_emt[i][j][1] = new TH1D(Form("EMT_A_%d_%d",i,j),Form("F8A %s %s;F8A (mrad) ;#it{N} (events/mrad)" ,    label_emt1[i].c_str(),label_emt2[j].c_str()),2*(int)range[1],  -1.*range[1], range[1]);
-	hana_emt[i][j][2] = new TH1D(Form("EMT_Y_%d_%d",i,j),Form("F8Y %s %s;F8Y (mm)   ;#it{N} (events/mm)",       label_emt1[i].c_str(),label_emt2[j].c_str()),2*(int)range[2],  -1.*range[2], range[2]);
-	hana_emt[i][j][3] = new TH1D(Form("EMT_B_%d_%d",i,j),Form("F8B %s %s;F8B (mrad) ;#it{N} (events/mrad)" ,    label_emt1[i].c_str(),label_emt2[j].c_str()),2*(int)range[3],  -1.*range[3], range[3]);
-	hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str()),10*(int)range[4], -1.*range[4], range[4]);
+	hana_emt[i][j][0] = new TH1D(Form("EMT_X_%d_%d",i,j),Form("F8X %s %s | run%04d;F8X (mm)   ;#it{N} (events/mm)",       label_emt1[i].c_str(),label_emt2[j].c_str(),runN),2*(int)range[0],  -1.*range[0], range[0]);
+	hana_emt[i][j][1] = new TH1D(Form("EMT_A_%d_%d",i,j),Form("F8A %s %s | run%04d;F8A (mrad) ;#it{N} (events/mrad)" ,    label_emt1[i].c_str(),label_emt2[j].c_str(),runN),2*(int)range[1],  -1.*range[1], range[1]);
+	hana_emt[i][j][2] = new TH1D(Form("EMT_Y_%d_%d",i,j),Form("F8Y %s %s | run%04d;F8Y (mm)   ;#it{N} (events/mm)",       label_emt1[i].c_str(),label_emt2[j].c_str(),runN),2*(int)range[2],  -1.*range[2], range[2]);
+	hana_emt[i][j][3] = new TH1D(Form("EMT_B_%d_%d",i,j),Form("F8B %s %s | run%04d;F8B (mrad) ;#it{N} (events/mrad)" ,    label_emt1[i].c_str(),label_emt2[j].c_str(),runN),2*(int)range[3],  -1.*range[3], range[3]);
+	hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
       }
   }
 
@@ -813,7 +809,8 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<6;n++)hraw_IC_Eraw[2]->Fill(n,F11IC_Eraw[n]);
     for(int n=0;n<6;n++)hraw_IC_Eraw[3]->Fill(n, F3IC_Eraw[n]);
     //===== Ge-Eraw ==========
-    for(int n=0;n<8;n++)hraw_Ge_Eraw[0]->Fill(n, F7Ge_Eraw[n]);
+    for(int n=0;n<32;n++)hraw_Ge_Eraw[0]->Fill(n, F7Ge_Eraw[n]);
+    for(int n=0;n<32;n++)hraw_Ge_Eraw[1]->Fill(n, F7Ge2_Eraw[n]);
 
     if(PLA_Mhit[7][0]==2){
       hcalib_pileup_IC[0]->Fill((PLA_MT[7][0][1]-PLA_MT[7][0][0])*0.001,F7IC_Esum );
@@ -1081,7 +1078,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     if(neve > loadEvt)break;
 
     //    if(Nevent%500==0){
-    if(neve%500==0){
+    if(neve%10000==0){
       TDatime *T1=new TDatime();
       int t1[3];  
       t1[0]= T1->GetHour();t1[1]= T1->GetMinute();t1[2]= T1->GetSecond();
@@ -1092,8 +1089,8 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 	//	   << setw(10) << Nevent <<" events; " 
 	   << setw(10) << neve <<" events; " 
 	   << setw(6) << time << " s; " 
-	   << setw(6) << rate << " cps"
-	   << flush << "\r";
+	   << setw(6) << rate << " cps" << endl;
+	   //<< flush << "\r";
     }
 
   } // End of event loop

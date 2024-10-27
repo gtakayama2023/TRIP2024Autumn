@@ -217,6 +217,19 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     if(nj==0 && neve==0)cout << "MADC32 for F7Ge" << endl;
     return;
   }
+  if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==1 ){
+
+    adc[5][ch] = buf;
+
+    if(nj==0 && neve==0)cout << "MADC32 for F7Ge#2" << endl;
+    return;
+  }
+  //===== F7Ge Scaler =========================================================================== 
+  if( dev==57 && fpl==7 && det==63 && mod==36){
+    F7Ge_Scaler[ch] = buf;
+
+    if(nj==0 && neve==0)cout << "Scaler for F7Ge" << endl;
+  }
   //===== MADC@F8 ================================================================================
   if( dev==USERGR && fpl==F8 && det==ICE && mod==MADC32 && geo==32 ){
 
@@ -298,12 +311,12 @@ void rawdata_fill(){
   }// for l
    
   //===== Ge-T =========================
-  for (int l=0; l<8; l++){
+  for (int l=0; l<32; l++){
     for (int n=0; n<4; n++) {
       F7Ge_Traw[l][n] = v1190[2][l][n];
     }
   }
-  for (int n=0; n<4; n++) {
+  for (int n=0; n<32; n++) {
     F7Ge_Traw[8][n] = v1190[2][18][n]; // F7Pla-L
   }
 
@@ -440,7 +453,8 @@ void rawdata_fill(){
   }
 
   //===== MUSIC ===================================
-  for(int n=0;n<8;n++)F7Ge_Eraw[n]  = adc[4][n];
+  for(int n=0;n<32;n++)F7Ge_Eraw[n] = adc[4][n];
+  for(int n=0;n<32;n++)F7Ge2_Eraw[n]= adc[5][n];
   for(int n=0;n<6;n++)F3IC_Eraw[n]  = adc[3][n];
   for(int n=0;n<6;n++)F7IC_Eraw[n]  = adc[0][n];
   for(int n=0;n<3;n++)F8IC_Eraw[n]  = adc[1][n];

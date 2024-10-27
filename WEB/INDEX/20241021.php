@@ -10,8 +10,9 @@ $title = "TRIP-S3CAN 2024秋 解析プラットフォーム (ユーザー: {$usr
 $urls = [
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/index.php" => "ユーザー選択",
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/ridf.php" => "取得データの一覧",
-    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/SKD/table.php" => "測定メニュー",
-    "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/SKD/index.auth.php" => "測定メニュー管理",
+    "https://docs.google.com/spreadsheets/d/1Xntk6p_rG18zV7XRLKAp2G0sOPb8qTSSpk4pFhRGLsk/edit?usp=sharing" => "測定メニュー",
+    //"/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/SKD/table.php" => "測定メニュー",
+    //"/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/SKD/index.auth.php" => "測定メニュー管理",
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/LISE/HTML/" => "LISE++ 設定一覧",
     "/fuji_jn/doc/tree/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/JPY/" => "Jupyter ( 上級者向け )",
     "/fuji/EXP/RIBF/TRIP/2024/AUTUMN/USR/{$usr_name}/WEB/Ge_calc/source.html" => "Ge 検出器計算ツール",

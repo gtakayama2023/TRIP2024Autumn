@@ -50,7 +50,7 @@ long long v1290tref[2];
 //===== QDC ==================================
 Int_t qdc[32];
 //===== ADC ==================================
-Int_t adc[5][32];
+Int_t adc[6][32];
 
 //===== Default DAQ ===========================
 //===== PPAC ==================================
@@ -96,8 +96,10 @@ Int_t F7IC_Gas;
 Int_t F8IC_Gas;
 Int_t F11IC_Gas;
 //===== Ge ====================================
-Int_t F7Ge_Eraw[8];
-Int_t F7Ge_Traw[9][4];
+Int_t F7Ge_Eraw[32];
+Int_t F7Ge2_Eraw[32];
+Int_t F7Ge_Traw[32][4];
+Int_t F7Ge_Scaler[32];
 
 //===== Mhit TDC ========================
 Double_t PLA_MT[Nfpl_PLA][2][N_Mhit];
