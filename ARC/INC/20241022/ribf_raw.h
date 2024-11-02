@@ -1,11 +1,12 @@
+//for TRIP2024Autumn, see https://docs.google.com/spreadsheets/d/1d11_88mObA7OXC8nCw2cu8NwEl2QN8_2JAX0d5anV0s/edit?gid=0#gid=0
 #include "./bigrips_zds.h"
 
 void rawdata_reset(){
 
   //===== module data =====
-  for(int l=0;l<3;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190[l][n][m] = -9999;
-  for(int l=0;l<3;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190raw[l][n][m] = -9999;
-  for(int l=0;l<3;l++)for(int n=0;n<128;n++)v1190num[l][n] = 0;
+  for(int l=0;l<4;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190[l][n][m] = -9999e6;
+  for(int l=0;l<4;l++)for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)v1190raw[l][n][m] = -9999e6;
+  for(int l=0;l<4;l++)for(int n=0;n<128;n++)v1190num[l][n] = 0;
 
   for(int l=0;l<2;l++)for(int n=0;n<32;n++)for(int m=0;m<N_Mhit;m++)v1290L[l][n][m] = -9999;
   for(int l=0;l<2;l++)for(int n=0;n<32;n++)for(int m=0;m<N_Mhit;m++)v1290Lraw[l][n][m] = -9999;
@@ -144,7 +145,7 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     return;
   }
   //===== V1190 ===============================================================================
-  if( dev==BIGRIPS && fpl==B3F && det==PPACT && mod==V1190 && (geo==7||geo==8) ){
+  if( dev==BIGRIPS && fpl==B3F && det==PPACT && mod==V1190 && (geo==7||geo==8||geo==9) ){
     
     if(v1190num[geo-7][ch]<N_Mhit)v1190raw[geo-7][ch][v1190num[geo-7][ch]] = buf;
     v1190num[geo-7][ch]++;
@@ -152,10 +153,10 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for PPAC-T",geo) << endl;
     return;
   }
-  if( dev==USERGR && fpl==F7 && det==SSDE && mod==V1190 && geo==0 ){
+  if( dev==USERGR && fpl==F7 && det==SSDT && mod==V1190 && geo==0 ){
     
-    if(v1190num[2][ch]<N_Mhit)v1190raw[2][ch][v1190num[2][ch]] = buf;
-    v1190num[2][ch]++;
+    if(v1190num[3][ch]<N_Mhit)v1190raw[3][ch][v1190num[3][ch]] = buf;
+    v1190num[3][ch]++;
     
     if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for Ge-T",geo) << endl;
     return;
@@ -194,7 +195,8 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     return;
   }
   //===== MADC@F3 ================================================================================
-  if( dev==USERGR && fpl==F3 && det==ICE && mod==MADC32 && geo==32 ){
+  //  if( dev==USERGR && fpl==F3 && det==ICE && mod==MADC32 && geo==32 ){
+  if( dev==USERGR && fpl==F3 && det==ICE && mod==MADC32 && geo==0 ){ // 2024/10/29 MADC ID changed by R. Taguchi
 
     adc[3][ch] = buf;
 
@@ -220,15 +222,18 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
   if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==1 ){
 
     adc[5][ch] = buf;
-
+    
     if(nj==0 && neve==0)cout << "MADC32 for F7Ge#2" << endl;
     return;
   }
   //===== F7Ge Scaler =========================================================================== 
   if( dev==57 && fpl==7 && det==63 && mod==36){
+      
     F7Ge_Scaler[ch] = buf;
+    /* cout << "hoge_s" << endl; */
 
     if(nj==0 && neve==0)cout << "Scaler for F7Ge" << endl;
+    return;
   }
   //===== MADC@F8 ================================================================================
   if( dev==USERGR && fpl==F8 && det==ICE && mod==MADC32 && geo==32 ){
@@ -254,20 +259,22 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
 void rawdata_fill(){
 
   //===== V1190/V1290 ==================
-  v1190tref[0] = v1190raw[0][0][0];
-  v1190tref[1] = v1190raw[1][0][0];
-  v1190tref[2] = v1190raw[2][16][0]; // Ge-T
+  v1190tref[0] = v1190raw[0][0][0]; // PPAC
+  v1190tref[1] = v1190raw[1][0][0]; // PPAC
+  v1190tref[2] = v1190raw[2][0][0]; // PPAC
+  v1190tref[3] = v1190raw[3][16][0]; // Ge-T
   v1290tref[0] = v1290Lraw[0][0][0];
   v1290tref[1] = v1290Lraw[1][31][0];
-  for(int l=0;l<3;l++)for(int m=0;m<128;m++)for(int n=0;n<N_Mhit;n++)v1190[l][m][n] = v1190raw[l][m][n]-v1190tref[l];
+  for(int l=0;l<4;l++)for(int m=0;m<128;m++)for(int n=0;n<N_Mhit;n++)v1190[l][m][n] = v1190raw[l][m][n]-v1190tref[l];
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)v1290L[l][m][n] = v1290Lraw[l][m][n]-v1290tref[l];
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)v1290T[l][m][n] = v1290Traw[l][m][n]-v1290tref[l];
 
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)if(v1290L[l][m][n]<3000.)v1290Lnum2[l][m]++;
 
   //===== PPAC Cathode =========================
-  int temp_Mid[12]={0,0,0,0,0,0,0,0,0,0,1,0,}; 
-  int temp_CHid[12]={0,0,0,16,0,32,0,48,80,96,48,112};
+                    //F0, F1, F2, F3, F4, F5, F6, F7, F8, F9,F10,F11
+  int temp_Mid[12]  = {0,  0,  0,  0,  0,  1,  0,  2,  0,  0,  1,  0}; // Module geo7, 8, or 9
+  int temp_CHid[12] = {0,  0,  0, 16,  0,112,  0, 16, 80, 96, 48,112}; // Channel
 
   for(int l=0;l<12;l++){
     if(Use_PPAC[l]){
@@ -288,8 +295,9 @@ void rawdata_fill(){
   }// for l
 
   //===== PPAC Anode =========================
-  int temp_Mid_a[12]={0,0,0,0,0,0,0,0,0,0,1,0,}; 
-  int temp_CHid_a[12]={0,0,0,4,0,8,0,12,64,68,44,76};
+                      //F0, F1, F2, F3, F4, F5, F6, F7, F8, F9,F10,F11
+  int temp_Mid_a[12]  = {0,  0,  0,  0,  0,  1,  0,  2,  0,  0,  1,  0}; // Module geo7, 8, or 9
+  int temp_CHid_a[12] = {0,  0,  0,  4,  0, 96,  0,  4, 64, 68, 44, 76};
 
   for(int l=0;l<12;l++){
     if(Use_PPAC[l]){
@@ -313,11 +321,11 @@ void rawdata_fill(){
   //===== Ge-T =========================
   for (int l=0; l<32; l++){
     for (int n=0; n<4; n++) {
-      F7Ge_Traw[l][n] = v1190[2][l][n];
+      F7Ge_Traw[l][n] = v1190[3][l][n];
     }
   }
   for (int n=0; n<32; n++) {
-    F7Ge_Traw[8][n] = v1190[2][18][n]; // F7Pla-L
+    F7Ge_Traw[8][n] = v1190[3][18][n]; // F7Pla-L
   }
 
   //===== Plastic T =============================
@@ -341,7 +349,6 @@ void rawdata_fill(){
   
     }// if Use_PPAC
   }// for l
-
 
   for(int n=0;n<2;n++){    
     for(int o=0;o<N_Mhit;o++){

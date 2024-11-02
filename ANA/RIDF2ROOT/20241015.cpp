@@ -167,12 +167,14 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   cout << "=================================================================================" << endl;
 
   //===== Histograms =======================================================
-  TH2D *hraw_v1190[2];
-  hraw_v1190[0] = new TH2D("hraw_v1190_0",Form("V1190-0 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,1000);
-  hraw_v1190[1] = new TH2D("hraw_v1190_1",Form("V1190-1 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,1000);
-  TH2D *hraw_v1190num[2];
+  TH2D *hraw_v1190[3];
+  hraw_v1190[0] = new TH2D("hraw_v1190_0",Form("V1190-0 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,200000);
+  hraw_v1190[1] = new TH2D("hraw_v1190_1",Form("V1190-1 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,200000);
+  hraw_v1190[2] = new TH2D("hraw_v1190_2",Form("V1190-2 (F7Ge) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,200000);
+  TH2D *hraw_v1190num[3];
   hraw_v1190num[0] = new TH2D("hraw_v1190num_0",Form("V1190 (PPAC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
   hraw_v1190num[1] = new TH2D("hraw_v1190num_1",Form("V1190 (PPAC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
+  hraw_v1190num[2] = new TH2D("hraw_v1190num_2",Form("V1190 (F7Ge) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
 
   TH2D *hraw_v1290L[2];
   hraw_v1290L[0] = new TH2D("hraw_v1290L_0",Form("V1290L (PLA-T) rawdata | run%04d;ID;T (ns)"          ,runN),32,0,32,1000,0,25000);
@@ -206,10 +208,10 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 
   //=====
   TH2D *hraw_PPAC_v1190[7];
-  hraw_PPAC_v1190[0] = new TH2D("hraw_PPAC_v1190_F03",Form("F03PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[1] = new TH2D("hraw_PPAC_v1190_F05",Form("F05PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[2] = new TH2D("hraw_PPAC_v1190_F07",Form("F07PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[3] = new TH2D("hraw_PPAC_v1190_F08",Form("F08PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
+  hraw_PPAC_v1190[0] = new TH2D("hraw_PPAC_v1190_F03",Form("F03PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,150000);
+  hraw_PPAC_v1190[1] = new TH2D("hraw_PPAC_v1190_F05",Form("F05PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,150000);
+  hraw_PPAC_v1190[2] = new TH2D("hraw_PPAC_v1190_F07",Form("F07PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,150000);
+  hraw_PPAC_v1190[3] = new TH2D("hraw_PPAC_v1190_F08",Form("F08PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,150000);
   hraw_PPAC_v1190[4] = new TH2D("hraw_PPAC_v1190_F09",Form("F09PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
   hraw_PPAC_v1190[5] = new TH2D("hraw_PPAC_v1190_F10",Form("F10PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
   hraw_PPAC_v1190[6] = new TH2D("hraw_PPAC_v1190_F11",Form("F11PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
@@ -254,6 +256,8 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   TH2D *hraw_Ge_Eraw[2];
   hraw_Ge_Eraw[0] = new TH2D("hraw_Ge_Eraw_F07",Form("F07Ge Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
   hraw_Ge_Eraw[1] = new TH2D("hraw_Ge2_Eraw_F07",Form("F07Ge2 Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
+  TH2D *hraw_Ge_Traw[1];
+  hraw_Ge_Traw[0] = new TH2D("hraw_Ge_Traw_F07",Form("G07Ge Traw | run%04d;ID;Traw (ch)",runN),128,0,128, 5000,-100000,100000);
 
   //===== PPAC =================================
   TH2D *hcalib_PPAC_TsumX;
@@ -590,6 +594,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
       // to skip the number of odd-channels reading
       // for may10th0001.ridf
       bool tempflag = false;
+      if (Nevent < 10) if (mod == 36) cout << Form("dev: %d, fpl: %d, det: %d, mod: %d, EFN: %d, num: %d, ", dev, fpl, det, mod, EFN, num ) << endl;
 
       //===== Data read from one segment ===============
       for(int j=0; j<num; j++){	    
