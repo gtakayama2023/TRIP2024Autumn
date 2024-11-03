@@ -167,12 +167,14 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   cout << "=================================================================================" << endl;
 
   //===== Histograms =======================================================
-  TH2D *hraw_v1190[2];
-  hraw_v1190[0] = new TH2D("hraw_v1190_0",Form("V1190-0 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,1000);
-  hraw_v1190[1] = new TH2D("hraw_v1190_1",Form("V1190-1 (PPAC) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,1000);
-  TH2D *hraw_v1190num[2];
-  hraw_v1190num[0] = new TH2D("hraw_v1190num_0",Form("V1190 (PPAC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
-  hraw_v1190num[1] = new TH2D("hraw_v1190num_1",Form("V1190 (PPAC) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
+  TH2D *hraw_v1190[3];
+  hraw_v1190[0] = new TH2D("hraw_v1190_0",Form("V1190-0 (PPAC| F3) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,200000);
+  hraw_v1190[1] = new TH2D("hraw_v1190_1",Form("V1190-1 (PPAC| F5) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,200000);
+  hraw_v1190[2] = new TH2D("hraw_v1190_2",Form("V1190-2 (PPAC| F7) rawdata | run%04d;ID;T (ns)",runN),128,0,128,1000,0,200000);
+  TH2D *hraw_v1190num[3];
+  hraw_v1190num[0] = new TH2D("hraw_v1190num_0",Form("V1190 (PPAC| F3) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
+  hraw_v1190num[1] = new TH2D("hraw_v1190num_1",Form("V1190 (PPAC| F5) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
+  hraw_v1190num[2] = new TH2D("hraw_v1190num_2",Form("V1190 (PPAC| F7) Multiplicity | run%04d;ID;#it{N}_{hit}",runN),128,0,128,5,0,5);
 
   TH2D *hraw_v1290L[2];
   hraw_v1290L[0] = new TH2D("hraw_v1290L_0",Form("V1290L (PLA-T) rawdata | run%04d;ID;T (ns)"          ,runN),32,0,32,1000,0,25000);
@@ -206,10 +208,10 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 
   //=====
   TH2D *hraw_PPAC_v1190[7];
-  hraw_PPAC_v1190[0] = new TH2D("hraw_PPAC_v1190_F03",Form("F03PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[1] = new TH2D("hraw_PPAC_v1190_F05",Form("F05PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[2] = new TH2D("hraw_PPAC_v1190_F07",Form("F07PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
-  hraw_PPAC_v1190[3] = new TH2D("hraw_PPAC_v1190_F08",Form("F08PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,1000,7000);
+  hraw_PPAC_v1190[0] = new TH2D("hraw_PPAC_v1190_F03",Form("F03PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,165000);
+  hraw_PPAC_v1190[1] = new TH2D("hraw_PPAC_v1190_F05",Form("F05PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,165000);
+  hraw_PPAC_v1190[2] = new TH2D("hraw_PPAC_v1190_F07",Form("F07PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,165000);
+  hraw_PPAC_v1190[3] = new TH2D("hraw_PPAC_v1190_F08",Form("F08PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,0000,150000);
   hraw_PPAC_v1190[4] = new TH2D("hraw_PPAC_v1190_F09",Form("F09PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
   hraw_PPAC_v1190[5] = new TH2D("hraw_PPAC_v1190_F10",Form("F10PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
   hraw_PPAC_v1190[6] = new TH2D("hraw_PPAC_v1190_F11",Form("F11PPAC V1190raw | run%04d;ID;V1190raw (ch)",runN),20,0,20,500,4000,10000);
@@ -224,24 +226,42 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hcalib_pileup_IC[1] = new TH2D("hcalib_pileup_IC_F8" ,Form("#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F08IC} | run%04d;#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F08IC} (MeV)",runN),650,-0.5,12.5,400,0,300);
   hcalib_pileup_IC[2] = new TH2D("hcalib_pileup_IC_F11",Form("#it{T}_{2nd} #minus #it{T}_{1st} of F7PLA-L vs #Delta#it{E}_{F11IC} | run%04d;#it{T}_{2nd} #minus #it{T}_{1st};#Delta#it{E}_{F11IC} (MeV)",runN),650,-0.5,12.5,400,0,300);
 
-
   //===== Rawdata ============================
   //===== PPAC ==========
+  TH2D *hraw_PPAC_Traw[7];
+  hraw_PPAC_Traw[0] = new TH2D("hraw_PPAC_Traw_F03",Form("F03PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
+  hraw_PPAC_Traw[1] = new TH2D("hraw_PPAC_Traw_F05",Form("F05PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
+  hraw_PPAC_Traw[2] = new TH2D("hraw_PPAC_Traw_F07",Form("F07PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
+  hraw_PPAC_Traw[3] = new TH2D("hraw_PPAC_Traw_F08",Form("F08PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
+  hraw_PPAC_Traw[4] = new TH2D("hraw_PPAC_Traw_F09",Form("F09PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
+  hraw_PPAC_Traw[5] = new TH2D("hraw_PPAC_Traw_F10",Form("F10PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
+  hraw_PPAC_Traw[6] = new TH2D("hraw_PPAC_Traw_F11",Form("F11PPAC Traw | run%04d;ID;T (ns)",runN),20,0,20,400,-200000,200000);
   TH2D *hraw_PPAC_T[7];
-  hraw_PPAC_T[0] = new TH2D("hraw_PPAC_T_F03",Form("F03PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
-  hraw_PPAC_T[1] = new TH2D("hraw_PPAC_T_F05",Form("F05PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
-  hraw_PPAC_T[2] = new TH2D("hraw_PPAC_T_F07",Form("F07PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
-  hraw_PPAC_T[3] = new TH2D("hraw_PPAC_T_F08",Form("F08PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-300,100);
-  hraw_PPAC_T[4] = new TH2D("hraw_PPAC_T_F09",Form("F09PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,   0,400);
-  hraw_PPAC_T[5] = new TH2D("hraw_PPAC_T_F10",Form("F10PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,   0,400);
-  hraw_PPAC_T[6] = new TH2D("hraw_PPAC_T_F11",Form("F11PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400, 100,500);
+  hraw_PPAC_T[0] = new TH2D("hraw_PPAC_T_F03",Form("F03PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
+  hraw_PPAC_T[1] = new TH2D("hraw_PPAC_T_F05",Form("F05PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
+  hraw_PPAC_T[2] = new TH2D("hraw_PPAC_T_F07",Form("F07PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
+  hraw_PPAC_T[3] = new TH2D("hraw_PPAC_T_F08",Form("F08PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
+  hraw_PPAC_T[4] = new TH2D("hraw_PPAC_T_F09",Form("F09PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
+  hraw_PPAC_T[5] = new TH2D("hraw_PPAC_T_F10",Form("F10PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
+  hraw_PPAC_T[6] = new TH2D("hraw_PPAC_T_F11",Form("F11PPAC T | run%04d;ID;T (ns)",runN),20,0,20,400,-2000,2000);
   //===== Plastic ==========
   TH2D *hraw_PLA_T;
   hraw_PLA_T    = new TH2D("hraw_PLA_T",   Form("Plastic T | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long/F3-2/F5-2/F7-2;T(ns)"    ,runN),22,0,22,600,-300,300);
+  TH1D *hraw_PLA_T1[3][2];
+  hraw_PLA_T1[0][0]= new TH1D("hraw_PLA_T_00",   Form("F3Pla-L T | run%04d;T(ns)" ,runN),600,-300,300);
+  hraw_PLA_T1[0][1]= new TH1D("hraw_PLA_T_01",   Form("F3Pla-R T | run%04d;T(ns)" ,runN),600,-300,300);
+  hraw_PLA_T1[1][0]= new TH1D("hraw_PLA_T_10",   Form("F5Pla-L T | run%04d;T(ns)" ,runN),600,-300,300);
+  hraw_PLA_T1[1][1]= new TH1D("hraw_PLA_T_11",   Form("F5Pla-R T | run%04d;T(ns)" ,runN),600,-300,300);
+  hraw_PLA_T1[2][0]= new TH1D("hraw_PLA_T_20",   Form("F7Pla-L T | run%04d;T(ns)" ,runN),600,-300,300);
+  hraw_PLA_T1[2][1]= new TH1D("hraw_PLA_T_21",   Form("F7Pla-R T | run%04d;T(ns)" ,runN),600,-300,300);
   TH2D *hraw_PLA_QTC;
   hraw_PLA_QTC  = new TH2D("hraw_PLA_QTC", Form("Plastic QTC | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;QTC (ns)"              ,runN),16,0,16,500,-50,950);
   TH2D *hraw_PLA_Qraw;
   hraw_PLA_Qraw = new TH2D("hraw_PLA_Qraw",Form("Plastic Qraw | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Qraw (ch)"            ,runN),16,0,16,430,-100,4200);
+  TH2D *hraw_PLA_Qraw2[3];
+  hraw_PLA_Qraw2[0] = new TH2D("hraw_PLA_Qraw2_0", Form("F3Pla Q (L vs R)| run%04d;Q_L(ch);Q_R(ch)" ,runN),600,0,3000,600,0,3000);
+  hraw_PLA_Qraw2[1] = new TH2D("hraw_PLA_Qraw2_1", Form("F5Pla Q (L vs R)| run%04d;Q_L(ch);Q_R(ch)" ,runN),600,0,3000,600,0,3000);
+  hraw_PLA_Qraw2[2] = new TH2D("hraw_PLA_Qraw2_2", Form("F7Pla Q (L vs R)| run%04d;Q_L(ch);Q_R(ch)" ,runN),600,0,3000,600,0,3000);
   TH2D *hraw_PLA_Mhit;
   hraw_PLA_Mhit = new TH2D("hraw_PLA_Mhit",Form("Ratio of Multiplicity | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Multiplicity",runN),16,0,16,5,0,5);
   //===== MUSIC ==========
@@ -250,17 +270,22 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hraw_IC_Eraw[1] = new TH2D("hraw_IC_Eraw_F08",Form("F08IC Eraw | run%04d;ID;Eraw (ch)",runN),3,0,3, 860,-200, 8400);
   hraw_IC_Eraw[2] = new TH2D("hraw_IC_Eraw_F11",Form("F11IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 430,-100, 4200);
   hraw_IC_Eraw[3] = new TH2D("hraw_IC_Eraw_F03",Form("F03IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 860,-200, 8400);
+  TH1D *hraw_IC_Esum[2];
+  hraw_IC_Esum[0] = new TH1D("hraw_IC_Esum_F03",Form("F03IC Esum | run%04d;ID;Eraw (ch)",runN),10e3, 0, 60e3);
+  hraw_IC_Esum[1] = new TH1D("hraw_IC_Esum_F07",Form("F07IC Esum | run%04d;ID;Eraw (ch)",runN),10e3, 0, 60e3);
   //===== Ge =============
   TH2D *hraw_Ge_Eraw[2];
   hraw_Ge_Eraw[0] = new TH2D("hraw_Ge_Eraw_F07",Form("F07Ge Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
   hraw_Ge_Eraw[1] = new TH2D("hraw_Ge2_Eraw_F07",Form("F07Ge2 Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
+  TH2D *hraw_Ge_Traw[1];
+  hraw_Ge_Traw[0] = new TH2D("hraw_Ge_Traw_F07",Form("G07Ge Traw | run%04d;ID;Traw (ch)",runN),128,0,128, 5000,-100000,100000);
 
   //===== PPAC =================================
   TH2D *hcalib_PPAC_TsumX;
-  hcalib_PPAC_TsumX = new TH2D("hcalib_PPAC_TsumX",Form("PPAC TsumX | run%04d;F03/05/07/08/09/10/11;TsumX (ns)",runN),28,0,28,300,-20,20);
+  hcalib_PPAC_TsumX = new TH2D("hcalib_PPAC_TsumX",Form("PPAC TsumX | run%04d;F03/05/07/08/09/10/11;TsumX (ns)",runN),28,0,28,300,-2000,2000);
   //  hcalib_PPAC_TsumX = new TH2D("hcalib_PPAC_TsumX","PPAC TsumX;F03/05/07/08/09/10/11;TsumX (ns)",28,0,28,50,-3,3);
   TH2D *hcalib_PPAC_TsumY;
-  hcalib_PPAC_TsumY = new TH2D("hcalib_PPAC_TsumY",Form("PPAC TsumY | run%04d;F03/05/07/08/09/10/11;TsumY (ns)",runN),28,0,28,300,-20,20);
+  hcalib_PPAC_TsumY = new TH2D("hcalib_PPAC_TsumY",Form("PPAC TsumY | run%04d;F03/05/07/08/09/10/11;TsumY (ns)",runN),28,0,28,300,-200000,200000);
   //  hcalib_PPAC_TsumY = new TH2D("hcalib_PPAC_TsumY","PPAC TsumY;F03/05/07/08/09/10/11;TsumY (ns)",28,0,28,50,-3,3);
   /*
   TH2D *hcalib_PPAC_TsumX[7];
@@ -304,17 +329,16 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   string tlabel[2]={"A","B"};
   for(int i=0;i<4;i++)hcalib_PPAC_Pos[0][i] = new TH2D(Form("hcalib_PPAC_Pos_F03_%d",i),Form("F03PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
   for(int i=0;i<4;i++)hcalib_PPAC_Pos[1][i] = new TH2D(Form("hcalib_PPAC_Pos_F05_%d",i),Form("F05PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-120,120,300,-60,60);
-  for(int i=0;i<4;i++)hcalib_PPAC_Pos[2][i] = new TH2D(Form("hcalib_PPAC_Pos_F07_%d",i),Form("F07PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
+  for(int i=0;i<4;i++)hcalib_PPAC_Pos[2][i] = new TH2D(Form("hcalib_PPAC_Pos_F07_%d",i),Form("F07PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-150,150,300,-60,60);
   for(int i=0;i<4;i++)hcalib_PPAC_Pos[3][i] = new TH2D(Form("hcalib_PPAC_Pos_F08_%d",i),Form("F08PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
   for(int i=0;i<4;i++)hcalib_PPAC_Pos[4][i] = new TH2D(Form("hcalib_PPAC_Pos_F09_%d",i),Form("F09PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-150,150,300,-60,60);
   for(int i=0;i<4;i++)hcalib_PPAC_Pos[5][i] = new TH2D(Form("hcalib_PPAC_Pos_F10_%d",i),Form("F10PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300,-150,150,300,-60,60);
   for(int i=0;i<4;i++)hcalib_PPAC_Pos[6][i] = new TH2D(Form("hcalib_PPAC_Pos_F11_%d",i),Form("F11PPAC%d%s X vs Y | run%04d;X (mm);Y (mm)",i/2+1,tlabel[i%2].c_str(),runN),300, -60, 60,300,-60,60);
 
-
   TH2D *hcalib_Fpl_XY[7];
   hcalib_Fpl_XY[0] = new TH2D("hcalib_Fpl_XY_F03",Form("F03 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
   hcalib_Fpl_XY[1] = new TH2D("hcalib_Fpl_XY_F05",Form("F05 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -120, 120, 300, -60, 60);
-  hcalib_Fpl_XY[2] = new TH2D("hcalib_Fpl_XY_F07",Form("F07 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
+  hcalib_Fpl_XY[2] = new TH2D("hcalib_Fpl_XY_F07",Form("F07 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -150, 150, 300, -60, 60);
   hcalib_Fpl_XY[3] = new TH2D("hcalib_Fpl_XY_F08",Form("F08 X vs Y | run%04d;X (mm);Y (mm)",runN),300,  -60,  60, 300, -60, 60);
   hcalib_Fpl_XY[4] = new TH2D("hcalib_Fpl_XY_F09",Form("F09 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -120, 120, 300, -60, 60);
   hcalib_Fpl_XY[5] = new TH2D("hcalib_Fpl_XY_F10",Form("F10 X vs Y | run%04d;X (mm);Y (mm)",runN),300, -120, 120, 300, -60, 60);
@@ -323,7 +347,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   TH2D *hcalib_Fpl_XA[7];
   hcalib_Fpl_XA[0] = new TH2D("hcalib_Fpl_XA_F03",Form("F03 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
   hcalib_Fpl_XA[1] = new TH2D("hcalib_Fpl_XA_F05",Form("F05 X vs A | run%04d;X (mm);A (mrad)",runN),300, -120, 120, 300, -50, 50);
-  hcalib_Fpl_XA[2] = new TH2D("hcalib_Fpl_XA_F07",Form("F07 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
+  hcalib_Fpl_XA[2] = new TH2D("hcalib_Fpl_XA_F07",Form("F07 X vs A | run%04d;X (mm);A (mrad)",runN),300, -150, 150, 300, -50, 50);
   hcalib_Fpl_XA[3] = new TH2D("hcalib_Fpl_XA_F08",Form("F08 X vs A | run%04d;X (mm);A (mrad)",runN),300,  -60,  60, 300, -50, 50);
   hcalib_Fpl_XA[4] = new TH2D("hcalib_Fpl_XA_F09",Form("F09 X vs A | run%04d;X (mm);A (mrad)",runN),300, -120, 120, 300, -50, 50);
   hcalib_Fpl_XA[5] = new TH2D("hcalib_Fpl_XA_F10",Form("F10 X vs A | run%04d;X (mm);A (mrad)",runN),300, -120, 120, 300, -50, 50);
@@ -590,6 +614,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
       // to skip the number of odd-channels reading
       // for may10th0001.ridf
       bool tempflag = false;
+      if (Nevent < 10) if (mod == 36) cout << Form("dev: %d, fpl: %d, det: %d, mod: %d, EFN: %d, num: %d, ", dev, fpl, det, mod, EFN, num ) << endl;
 
       //===== Data read from one segment ===============
       for(int j=0; j<num; j++){	    
@@ -676,11 +701,14 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     if(g2d[1] && g2d[1]->IsInside(TOF37,F7IC_Esum)){tgate[81]=true;}
 
     //===== Fill data in histogram/tree ======
-   
+     
+    //for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n])cout << v1190raw[0][n][m]*0.1 << endl;
     for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n])hraw_v1190[0]->Fill(n,v1190raw[0][n][m]*0.1);
     for(int n=0;n<128;n++)hraw_v1190num[0]->Fill(n,v1190num[0][n]);
     for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[1][n])hraw_v1190[1]->Fill(n,v1190raw[1][n][m]*0.1);
     for(int n=0;n<128;n++)hraw_v1190num[1]->Fill(n,v1190num[1][n]);
+    for(int n=0;n<128;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[2][n])hraw_v1190[2]->Fill(n,v1190raw[2][n][m]*0.1);
+    for(int n=0;n<128;n++)hraw_v1190num[2]->Fill(n,v1190num[2][n]);
 
     for(int n=0;n<32;n++)for(int m=0;m<N_Mhit;m++)if(m<v1290Lnum[0][n])hraw_v1290L[0]->Fill(n,v1290Lraw[0][n][m]*0.025);
     for(int n=0;n<32;n++)hraw_v1290Lnum[0]->Fill(n,v1290Lnum[0][n]);
@@ -708,16 +736,18 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<6;n++)hraw_adc[3]->Fill(n,adc[3][n]);
 
 
+    // PPAC Anode
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+ 4])hraw_PPAC_v1190[0]->Fill(n,v1190raw[0][n+ 4][m]); // F03
-    for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+ 8])hraw_PPAC_v1190[1]->Fill(n,v1190raw[0][n+ 8][m]); // F05
-    for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+12])hraw_PPAC_v1190[2]->Fill(n,v1190raw[0][n+12][m]); // F07
+    for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[1][n+96])hraw_PPAC_v1190[1]->Fill(n,v1190raw[1][n+96][m]); // F05
+    for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[2][n+ 4])hraw_PPAC_v1190[2]->Fill(n,v1190raw[2][n+ 4][m]); // F07
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+64])hraw_PPAC_v1190[3]->Fill(n,v1190raw[0][n+64][m]); // F08
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+68])hraw_PPAC_v1190[4]->Fill(n,v1190raw[0][n+68][m]); // F09
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[1][n+44])hraw_PPAC_v1190[5]->Fill(n,v1190raw[1][n+44][m]); // F10
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+76])hraw_PPAC_v1190[6]->Fill(n,v1190raw[0][n+76][m]); // F11
+    // PPAC Cathode
     for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][l*4+n+ 16])hraw_PPAC_v1190[0]->Fill(l*4+n+4,v1190raw[0][l*4+n+ 16][m]);
-    for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][l*4+n+ 32])hraw_PPAC_v1190[1]->Fill(l*4+n+4,v1190raw[0][l*4+n+ 32][m]);
-    for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][l*4+n+ 48])hraw_PPAC_v1190[2]->Fill(l*4+n+4,v1190raw[0][l*4+n+ 48][m]);
+    for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[1][l*4+n+112])hraw_PPAC_v1190[1]->Fill(l*4+n+4,v1190raw[1][l*4+n+112][m]);
+    for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[2][l*4+n+ 16])hraw_PPAC_v1190[2]->Fill(l*4+n+4,v1190raw[2][l*4+n+ 16][m]);
     for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][l*4+n+ 80])hraw_PPAC_v1190[3]->Fill(l*4+n+4,v1190raw[0][l*4+n+ 80][m]);
     for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][l*4+n+ 96])hraw_PPAC_v1190[4]->Fill(l*4+n+4,v1190raw[0][l*4+n+ 96][m]);
     for(int l=0;l<4;l++)for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[1][l*4+n+ 48])hraw_PPAC_v1190[5]->Fill(l*4+n+4,v1190raw[1][l*4+n+ 48][m]);
@@ -744,11 +774,24 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<2;n++)for(int m=0;m<N_Mhit;m++)if(m<v1290Lnum[1][n+10])hraw_PLA_v1290[1]->Fill(n+12,v1290Lraw[1][n+10][m]); // F08VETO
     for(int n=0;n<2;n++)for(int m=0;m<N_Mhit;m++)if(m<v1290Lnum[1][n+14])hraw_PLA_v1290[1]->Fill(n+14,v1290Lraw[1][n+14][m]); // F11Long
 
-
     //    for(int ii=0;ii<4;ii++)cout << ii << " " << PPAC_ATraw[7][ii] << " " << PPAC_AT[7][ii] << endl;
     //    if(tgate[3]){
     //===== Rawdata ===============
     //===== PPAC-T =========
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[0]->Fill(n,PPAC_ATraw[ 3][n]);
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[1]->Fill(n,PPAC_ATraw[ 5][n]);
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[2]->Fill(n,PPAC_ATraw[ 7][n]);
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[3]->Fill(n,PPAC_ATraw[ 8][n]);
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[4]->Fill(n,PPAC_ATraw[ 9][n]);
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[5]->Fill(n,PPAC_ATraw[10][n]);
+    for(int n=0;n<4;n++)hraw_PPAC_Traw[6]->Fill(n,PPAC_ATraw[11][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[0]->Fill(m*4+n+4,PPAC_Traw[ 3][m][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[1]->Fill(m*4+n+4,PPAC_Traw[ 5][m][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[2]->Fill(m*4+n+4,PPAC_Traw[ 7][m][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[3]->Fill(m*4+n+4,PPAC_Traw[ 8][m][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[4]->Fill(m*4+n+4,PPAC_Traw[ 9][m][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[5]->Fill(m*4+n+4,PPAC_Traw[10][m][n]);
+    for(int m=0;m<4;m++)for(int n=0;n<4;n++)hraw_PPAC_Traw[6]->Fill(m*4+n+4,PPAC_Traw[11][m][n]);
 
     for(int n=0;n<4;n++)hraw_PPAC_T[0]->Fill(n,PPAC_AT[ 3][n]);
     for(int n=0;n<4;n++)hraw_PPAC_T[1]->Fill(n,PPAC_AT[ 5][n]);
@@ -776,6 +819,9 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<2;n++)hraw_PLA_T->Fill(n+16,F3PLA2_T[n]);
     for(int n=0;n<2;n++)hraw_PLA_T->Fill(n+18,F5PLA2_T[n]);
     for(int n=0;n<2;n++)hraw_PLA_T->Fill(n+20,F7PLA2_T[n]);
+    for(int lr=0;lr<2;lr++)hraw_PLA_T1[0][lr]->Fill(F3PLA2_T[lr]);
+    for(int lr=0;lr<2;lr++)hraw_PLA_T1[1][lr]->Fill(F5PLA2_T[lr]);
+    for(int lr=0;lr<2;lr++)hraw_PLA_T1[2][lr]->Fill(F7PLA2_T[lr]);
     //===== PLA-QTC ==========
     for(int n=0;n<2;n++)hraw_PLA_QTC->Fill(n   ,PLA_QTC[ 3][n]);
     for(int n=0;n<2;n++)hraw_PLA_QTC->Fill(n+ 2,PLA_QTC[ 5][n]);
@@ -794,6 +840,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<2;n++)hraw_PLA_Qraw->Fill(n+10,PLA_Qraw[11][n]);
     for(int n=0;n<2;n++)hraw_PLA_Qraw->Fill(n+12,F8VETO_Qraw[n]);
     for(int n=0;n<2;n++)hraw_PLA_Qraw->Fill(n+14,F11Long_Qraw[n]);
+    for(int n=0;n<3;n++)hraw_PLA_Qraw2[n]->Fill(PLA_Qraw[2*n+3][0], PLA_Qraw[2*n+3][1]);
     //===== Pla_Mhit =========
     for(int n=0;n<2;n++)hraw_PLA_Mhit->Fill(n   ,PLA_Mhit[ 3][n]);
     for(int n=0;n<2;n++)hraw_PLA_Mhit->Fill(n+ 2,PLA_Mhit[ 5][n]);
@@ -808,6 +855,8 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<3;n++)hraw_IC_Eraw[1]->Fill(n, F8IC_Eraw[n]);
     for(int n=0;n<6;n++)hraw_IC_Eraw[2]->Fill(n,F11IC_Eraw[n]);
     for(int n=0;n<6;n++)hraw_IC_Eraw[3]->Fill(n, F3IC_Eraw[n]);
+    hraw_IC_Esum[0]->Fill(F3IC_Eraw[0]+F3IC_Eraw[1]+F3IC_Eraw[2]+F3IC_Eraw[3]+F3IC_Eraw[4]+F3IC_Eraw[5]); 
+    hraw_IC_Esum[1]->Fill(F7IC_Eraw[0]+F7IC_Eraw[1]+F7IC_Eraw[2]+F7IC_Eraw[3]+F7IC_Eraw[4]+F7IC_Eraw[5]);
     //===== Ge-Eraw ==========
     for(int n=0;n<32;n++)hraw_Ge_Eraw[0]->Fill(n, F7Ge_Eraw[n]);
     for(int n=0;n<32;n++)hraw_Ge_Eraw[1]->Fill(n, F7Ge2_Eraw[n]);
@@ -817,7 +866,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
       hcalib_pileup_IC[1]->Fill((PLA_MT[7][0][1]-PLA_MT[7][0][0])*0.001,F8IC_Esum );
       hcalib_pileup_IC[2]->Fill((PLA_MT[7][0][1]-PLA_MT[7][0][0])*0.001,F11IC_Esum);
     }
-
 
     //===== Calibratied information ===============================================================
     //===== PPAC Tsum ===========================
@@ -905,7 +953,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     hcalib_Fpl_YB[5]->Fill(Fpl_YP[10],Fpl_YT[10]);
     hcalib_Fpl_YB[6]->Fill(Fpl_YP[11],Fpl_YT[11]);
 
-
     //===== PLA-T ==========
     for(int n=0;n<2;n++)hcalib_PLA_T->Fill(n   ,PLA_T[ 3][n]);
     for(int n=0;n<2;n++)hcalib_PLA_T->Fill(n+ 2,PLA_T[ 5][n]);
@@ -943,9 +990,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     hcalib_PLA_Qdiff_Pos[6]->Fill(Fpl_XP[ 8], F8VETO_Qdiff);
     hcalib_PLA_Qdiff_Pos[7]->Fill(Fpl_XP[11],F11Long_Qdiff);
 
-
     //    }
-
 
     //    if(tgate[50]){
     //    if(abs(Zet7-20)<0.3 && abs(Zet8-20)<0.3 && 800<PLA_Qave[11][1]<1200){
@@ -1005,7 +1050,7 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
       hana_Zet[2]->Fill(Zet8);
       hana_Zet[3]->Fill(Zet11);
     }
-    
+     
     if(tgate[ 4])hana_PID[0][0]->Fill(AoQ57[1] ,Zet7);
     if(tgate[10])hana_PID[0][1]->Fill(AoQ57[1] ,Zet7);
     if(tgate[10])hana_PID[1][0]->Fill(AoQ911[1],Zet11);
@@ -1045,8 +1090,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
       hana_profile3[5]->Fill(Fpl_YP[10],Fpl_YT[10]);
       hana_profile3[6]->Fill(Fpl_YP[11],Fpl_YT[11]);
     }
-    
-
 
     if(tgate[10]){
       Double_t temp_fillemt;
@@ -1095,7 +1138,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 
   } // End of event loop
 
-
   TDatime *T1=new TDatime();
   int t1[3];
   t1[0]= T1->GetHour();t1[1]= T1->GetMinute();t1[2]= T1->GetSecond();
@@ -1109,7 +1151,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
        << setw(6) << time << " s; " 
        << setw(6) << rate << " cps"
        << endl;
-
 
   //===== Efficiency of PPAC against IC_Esum ====
   hcalib_PPAC_eff2D0[0]->Sumw2();
@@ -1266,6 +1307,37 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   ctrans->Print(Form("ps/transmission/pdf/%s%04d.pdf",runname.Data(),runN));
 #endif  
 
+  // ====== PPAC canvas =====================================================
+  TCanvas *cPPAC = new TCanvas("cPPAC","cPPAC",1200,1200*0.7);
+  cPPAC->Divide(3, 3);
+  for(int j=0;j<3;j++){
+    cPPAC->cd(j+1); hcalib_Fpl_XY[j]->Draw("colz");
+    cPPAC->cd(j+4); hcalib_Fpl_XA[j]->Draw("colz");
+    cPPAC->cd(j+7); hcalib_Fpl_YB[j]->Draw("colz");
+  }
+  cPPAC->Modified();
+  cPPAC->Update();
+  cPPAC->Write();
+
+  // ====== IC canvas =======================================================
+  TCanvas *cIC = new TCanvas("cIC","cIC",1200,1200*0.7);
+  cIC->Divide(2, 1);
+  for (int ii = 0; ii < 2; ii++) {
+    cIC->cd(ii + 1); hraw_IC_Esum[ii]->Draw("");
+  }
+  cIC->Modified();
+  cIC->Update();
+  cIC->Write();
+
+  // ====== PLA canvas ======================================================
+  TCanvas *cPLA = new TCanvas("cPLA","cPLA",1200,1200*0.7);
+  cPLA->Divide(3, 3);
+  for(int j=0;j<3;j++) {cPLA->cd(j+1); hraw_PLA_T1[j][0]->Draw("colz");};
+  for(int j=0;j<3;j++) {cPLA->cd(j+4); hraw_PLA_T1[j][1]->Draw("colz");};
+  for(int j=0;j<3;j++) {cPLA->cd(j+7); hraw_PLA_Qraw2[j]->Draw("colz");};
+  cPLA->Modified();
+  cPLA->Update();
+  cPLA->Write();
 
   if(file_output){
 
@@ -1326,6 +1398,8 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     legend->Write();
     ctrans->Write();
 #endif
+
+
 
     fout->Write();
     //    fout->Close();    

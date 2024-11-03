@@ -220,15 +220,18 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
   if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==1 ){
 
     adc[5][ch] = buf;
-
+    
     if(nj==0 && neve==0)cout << "MADC32 for F7Ge#2" << endl;
     return;
   }
   //===== F7Ge Scaler =========================================================================== 
   if( dev==57 && fpl==7 && det==63 && mod==36){
+      
     F7Ge_Scaler[ch] = buf;
+    cout << "hoge_s" << endl;
 
     if(nj==0 && neve==0)cout << "Scaler for F7Ge" << endl;
+    return;
   }
   //===== MADC@F8 ================================================================================
   if( dev==USERGR && fpl==F8 && det==ICE && mod==MADC32 && geo==32 ){

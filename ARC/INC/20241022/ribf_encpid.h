@@ -178,9 +178,9 @@ void ribf_encpid(int runN,TRandom *grand){
       
 	//===== Fired or not ==========
 	for(int n=0;n<4;n++){
-	  if(-8000<PPAC_Traw[l][m][n]&&PPAC_Traw[l][m][n]<8000){PPAC_fT[l][m][n]=true;}else{PPAC_fT[l][m][n]=false;}
+	  if(-8000000<PPAC_Traw[l][m][n]&&PPAC_Traw[l][m][n]<800000){PPAC_fT[l][m][n]=true;}else{PPAC_fT[l][m][n]=false;}
 	}
-	if(-8000<PPAC_ATraw[l][m]&&PPAC_ATraw[l][m]<8000){PPAC_fAT[l][m]=true;}else{PPAC_fAT[l][m]=false;}
+	if(-8000000<PPAC_ATraw[l][m]&&PPAC_ATraw[l][m]<8000000){PPAC_fAT[l][m]=true;}else{PPAC_fAT[l][m]=false;}
       
 	//===== ch2ns =================
 	//	for(int n=0;n<4;n++)PPAC_T[l][m][n] = (double)PPAC_Traw[l][m][n] * ch2ns_PPAC[l][m][n];

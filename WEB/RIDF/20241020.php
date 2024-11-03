@@ -19,7 +19,7 @@ if (($handle = fopen($csvFile, 'r')) !== false) {
     $headers = fgetcsv($handle, 1000, ',', '"');
 
     // ヘッダーに ridf2root と JSROOT を追加
-    array_unshift($headers, 'rsync', 'ridf2root (イベント数を選択)', 'JSROOT');
+    array_unshift($headers, 'rsync', 'RIDF2TREE @Fuji', 'JSROOT');
 
     // CSSスタイルの追加
     echo "<style>
@@ -133,7 +133,7 @@ if (($handle = fopen($csvFile, 'r')) !== false) {
     #echo "<p><a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/RIDF/runsummary.sh' style='color: #4CAF50; text-decoration: none;'>Update runsummary</a></p>";
     echo "<div style='display: flex; justify-content: center; align-items: center;'>
               <a href='/$base_url/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/WEB/index.php' class='update_button' style='margin-right: 20px;'>ホーム</a>
-              <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/WEB/rsync_full' class='update_button' style='margin-right: 20px;'>rsync (full)</a>
+              <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/WEB/rsync_full' class='update_button' style='margin-right: 20px;'>rsync (gtn000 → gtn009 → Fuji)</a>
               <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/RIDF/runsummary.sh' class='update_button' style='margin-right: 20px;'>一覧表を更新する</a>
               <a href='https://docs.google.com/spreadsheets/d/1RUte0R5B9rzbLZ0xoQrSmysUAloWTyCzLD17C4qUaBs/edit?usp=sharing' class='update_button'>Run summary (Google Sheet)</a>
           </div>";

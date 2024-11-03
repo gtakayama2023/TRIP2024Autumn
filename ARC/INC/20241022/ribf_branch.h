@@ -17,9 +17,9 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("mpv_ts",mpv_ts,"mpv_ts[6]/l");
   tree->Branch("mpv_10kclock",mpv_10kclock,"mpv_10kclock[6]/i");
   //===== V1190 =====
-  tree->Branch("v1190",v1190,Form("v1190[2][128][%d]/L",N_Mhit));
-  tree->Branch("v1190raw",v1190raw,Form("v1190raw[2][128][%d]/L",N_Mhit));
-  tree->Branch("v1190num",v1190num,"v1190num[2][128]/I");
+  tree->Branch("v1190",v1190,Form("v1190[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190raw",v1190raw,Form("v1190raw[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190num",v1190num,"v1190num[3][128]/I");
   //===== V1290 =====
   // Leading
   tree->Branch("v1290L",v1290L,Form("v1290L[2][32][%d]/L",N_Mhit));
@@ -180,9 +180,9 @@ void ribf_branch(TTree *tree){
   tree->Branch("mpv_ts",mpv_ts,"mpv_ts[6]/l");
   tree->Branch("mpv_10kclock",mpv_10kclock,"mpv_10kclock[6]/i");
   //===== V1190 =====
-  tree->Branch("v1190",v1190,Form("v1190[2][128][%d]/L",N_Mhit));
-  tree->Branch("v1190raw",v1190raw,Form("v1190raw[2][128][%d]/L",N_Mhit));
-  tree->Branch("v1190num",v1190num,"v1190num[2][128]/I");
+  tree->Branch("v1190",v1190,Form("v1190[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190raw",v1190raw,Form("v1190raw[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190num",v1190num,"v1190num[3][128]/I");
   //===== V1290 =====
   // Leading
   tree->Branch("v1290L",v1290L,Form("v1290L[2][32][%d]/L",N_Mhit));

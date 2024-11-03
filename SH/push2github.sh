@@ -1,3 +1,1 @@
-git add .
-git commit -m "comment"
-git push origin main
+./PUSH/20241103.sh

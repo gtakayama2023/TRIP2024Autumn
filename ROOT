@@ -1,1 +1,1 @@
-/home/exp/EXP/RIBF/TRIP/2024/AUTUMN//DATA/ROOT/default
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN//DATA/ROOT/gen
