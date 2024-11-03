@@ -16,9 +16,11 @@ Int_t Nevent;
 
 //===== Raw data ==============================
 Double_t Brho_NMR[8];
+
 //===== Scaler in sva01/02 ===================
 unsigned int sva_Nevent[2];
 unsigned int sva_10kclock[2];
+
 //===== TS in MPV61/64/70 =====================
 //unsigned int mpv_Nevent[3];
 //unsigned long long mpv_ts0[3][2];
@@ -33,13 +35,15 @@ unsigned long long  mpv_ts[6];
 //Double_t mpv_ts[3];
 //Double_t mpv_10kclock[3];
 unsigned int  mpv_10kclock[6];
+
 //===== V1190 =================================
 // [32]: Channel
 // [10]: 1st/2nd/.../10th-hit event
 long long v1190[4][128][N_Mhit];
 long long v1190raw[4][128][N_Mhit];
 Int_t v1190num[4][128];
-long long v1190tref[4];
+long long v1190tref;
+
 //===== V1290 =================================
 // [32]: Channel
 // [10]: 1st/2nd/.../10th-hit event
@@ -53,8 +57,10 @@ long long v1290T[2][32][N_Mhit];
 long long v1290Traw[2][32][N_Mhit];
 Int_t v1290Tnum[2][32];
 long long v1290tref[2];
+
 //===== QDC ==================================
 Int_t qdc[32];
+
 //===== ADC ==================================
 Int_t adc[6][32];
 
@@ -66,29 +72,29 @@ Int_t adc[6][32];
 // [4] : X1/Y1/X2/Y2
 Int_t PPAC_Qraw[Nfpl_PPAC][4][4];
 Int_t PPAC_Traw[Nfpl_PPAC][4][4];
+
 //===== Anodes ================================
 // [Nfpl_PPAC]: Focal plane
 // [4] : 1A/1B/2A/2B
 Int_t PPAC_AQraw[Nfpl_PPAC][4];
 Int_t PPAC_ATraw[Nfpl_PPAC][4];
+
 //===== Plastic ===============================
 // [Nfpl_PLA]: Focal plane
 // [2] : L/R
 Int_t PLA_Qraw[Nfpl_PLA][2];
 Int_t PLA_Traw[Nfpl_PLA][2];
-Int_t PLA_QTCraw[Nfpl_PLA][2];
-//Int_t PLA2_Qraw[Nfpl_PLA][2];
-//Int_t PLA2_Traw[Nfpl_PLA][2];
+
 //===== F8VETO ==========================
 // [2] : L/R
 Int_t F8VETO_Qraw[2];
 Int_t F8VETO_Traw[2];
-Int_t F8VETO_QTCraw[2];
+
 //===== F11Long ==========================
 // [2] : L/R
 Int_t F11Long_Qraw[2];
 Int_t F11Long_Traw[2];
-Int_t F11Long_QTCraw[2];
+
 //===== IC ====================================
 // [6/3/6]: anode number
 //Int_t IC_ERaw[Nfpl_IC][8];
@@ -101,6 +107,7 @@ Int_t F3IC_Gas;
 Int_t F7IC_Gas;
 Int_t F8IC_Gas;
 Int_t F11IC_Gas;
+
 //===== Ge ====================================
 Int_t F7Ge_Eraw[8];
 Int_t F7Ge2_Eraw[8];
@@ -150,6 +157,7 @@ bool fY[Nfpl_PPAC][4];
 // [3] : 0:all / 1:upstream / 2:downstream
 Int_t Num_fPPAC_X[Nfpl_PPAC][3];
 Int_t Num_fPPAC_Y[Nfpl_PPAC][3];
+
 //===== Tracking ==============================
 // [Nfpl_PPAC]: Focal Plane
 // [4] : 1A/1B/2A/2B
@@ -167,6 +175,7 @@ Double_t Fpl_YT[Nfpl_PPAC];// Y-Theta
 // Flag
 Bool_t Fpl_XFlag[Nfpl_PPAC];// XFlag
 Bool_t Fpl_YFlag[Nfpl_PPAC];// XFlag
+
 //===== Plastic ===============================
 // [Nfpl_PLA]: Focal plane 
 // [2] : L/R
@@ -184,10 +193,7 @@ Double_t PLA_Save[Nfpl_PLA]; // Slew corrected
 // T difference (L-R)
 Double_t PLA_Tdiff[Nfpl_PLA];
 Double_t PLA_Sdiff[Nfpl_PLA]; // Slew corrected
-// QTC
-Double_t PLA_QTC[Nfpl_PLA][2];
-Double_t PLA_QTCave[Nfpl_PLA][2];
-Double_t PLA_QTCdiff[Nfpl_PLA];
+
 //===== F8VETO ================================
 Double_t F8VETO_Q[2];
 Double_t F8VETO_T[2];
@@ -195,9 +201,7 @@ Double_t F8VETO_Qave[2];
 Double_t F8VETO_Qdiff;
 Double_t F8VETO_Tave;
 Double_t F8VETO_Tdiff;
-Double_t F8VETO_QTC[2];
-Double_t F8VETO_QTCave[2];
-Double_t F8VETO_QTCdiff;
+
 //===== F11Long ================================
 Double_t F11Long_Q[2];
 Double_t F11Long_T[2];
@@ -205,9 +209,7 @@ Double_t F11Long_Qave[2];
 Double_t F11Long_Qdiff;
 Double_t F11Long_Tave;
 Double_t F11Long_Tdiff;
-Double_t F11Long_QTC[2];
-Double_t F11Long_QTCave[2];
-Double_t F11Long_QTCdiff;
+
 //===== Ion Chamber ===========================
 // [6] : Anode
 // calibrated
@@ -234,11 +236,13 @@ Double_t Delta[6];
 Double_t Brho[6];
 Double_t DeltaD7,DeltaD8;
 Double_t BrhoD7,BrhoD8;
+
 //===== Reconstructed angle @F8 ===============
 // 0 = "1", if "1" is not valid, "2".
 // 1 = from X(F8), X(F9), and A(F9)
 // 2 = from X(F8), X(F10), and A(F10)
 Double_t RecoF8Angle[3];
+
 //===== TOF ===================================
 // [6] : 0 = F03-F07 | 1 = F08-F11
 //       2 = F03-F05 | 3 = F05-F07
@@ -264,6 +268,7 @@ Double_t Gamma35[2],Gamma57[2],Gamma89[2],Gamma911[2];
 //===== A/Q ===================================
 Double_t AoQ37,AoQ811;
 Double_t AoQ35[2],AoQ57[2],AoQ89[2],AoQ911[2];
+
 //===== Z =====================================
 Double_t Zet3,Zet7,Zet8,Zet11;
 
