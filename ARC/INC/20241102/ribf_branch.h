@@ -68,11 +68,14 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("F7IC_Gas",&F7IC_Gas,"F7IC_Gas/I");
   tree->Branch("F8IC_Gas",&F8IC_Gas,"F8IC_Gas/I");
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
-
+  
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
+  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[8]/I");
+  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_E",F7Ge_E,"F7Ge_E[8]/D");
+  tree->Branch("F7Ge2_E",F7Ge2_E,"F7Ge2_E[8]/D");
+  tree->Branch("F7Ge_T",F7Ge_T,"F7Ge_T[17][5]/D");
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));

@@ -406,7 +406,21 @@ void ribf_encpid(int runN,TRandom *grand){
     F11IC_Esum += F11IC_E[m];
   }
   
-
+  //===== F7Ge =============================================
+  for(int m=0;m<8;m++){
+    F7Ge_E[m] = ch2keV_F7Ge[m][0] * (F7Ge_Eraw[m] + grand->Uniform(0,1\
+) + ch2keV_F7Ge[m][1]);
+    F7Ge2_E[m] = ch2keV_F7Ge[m][0] * (F7Ge2_Eraw[m] + grand->Uniform(0\
+,1) + ch2keV_F7Ge[m][1]);
+  }
+  F7Ge_Esum[0] = F7Ge_E[0]+F7Ge_E[1]+F7Ge_E[2]+F7Ge_E[3];
+  F7Ge_Esum[1] = F7Ge_E[4]+F7Ge_E[5]+F7Ge_E[6]+F7Ge_E[7];
+  for(int m=0; m<17; m++){
+    for(int n=0; n<5; n++){
+      F7Ge_T[m][n] = ch2ns_F7Ge[m] * F7Ge_Traw[m][n];
+    }
+  }
+  
   //===== Brho =============================================
   for(int l=0;l<6;l++){
     
