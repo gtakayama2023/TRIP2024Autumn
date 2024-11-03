@@ -154,14 +154,14 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for PPAC-T",geo) << endl;
     return;
   }
-  //if( dev==USERGR && fpl==F7 && det==SSDT && mod==V1190 && geo==0 ){
-  //  
-  //  if(v1190num[3][ch]<N_Mhit)v1190raw[3][ch][v1190num[3][ch]] = buf;
-  //  v1190num[3][ch]++;
-  //  
-  //  if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for Ge-T",geo) << endl;
-  //  return;
-  //}
+  if( dev==USERGR && fpl==F7 && det==SSDT && mod==V1190 && geo==0 ){
+    
+    if(v1190num[3][ch]<N_Mhit)v1190raw[3][ch][v1190num[3][ch]] = buf;
+    v1190num[3][ch]++;
+    
+    if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for Ge-T",geo) << endl;
+    return;
+  }
   //===== V1290 ===============================================================================
   if( dev==BIGRIPS && fpl==B3F && det==PLAT && mod==V1290 && (geo==6||geo==9) ){
     
@@ -213,29 +213,29 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     return;
   }
   //===== MADC@F7Ge ==============================================================================
-  //if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==0 ){
+  if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==0 ){
 
-  //  adc[4][ch] = buf;
+    adc[4][ch] = buf;
 
-  //  if(nj==0 && neve==0)cout << "MADC32 for F7Ge" << endl;
-  //  return;
-  //}
-  //if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==1 ){
+    if(nj==0 && neve==0)cout << "MADC32 for F7Ge" << endl;
+    return;
+  }
+  if( dev==USERGR && fpl==F7 && det==SSDE && mod==MADC32 && geo==1 ){
 
-  //  adc[5][ch] = buf;
-  //  
-  //  if(nj==0 && neve==0)cout << "MADC32 for F7Ge#2" << endl;
-  //  return;
-  //}
+    adc[5][ch] = buf;
+    
+    if(nj==0 && neve==0)cout << "MADC32 for F7Ge#2" << endl;
+    return;
+  }
   //===== F7Ge Scaler =========================================================================== 
-  //if( dev==57 && fpl==7 && det==63 && mod==36){
-  //    
-  //  F7Ge_Scaler[ch] = buf;
-  //  /* cout << "hoge_s" << endl; */
+  if( dev==57 && fpl==7 && det==63 && mod==36){
+      
+    F7Ge_Scaler[ch] = buf;
+    /* cout << "hoge_s" << endl; */
 
-  //  if(nj==0 && neve==0)cout << "Scaler for F7Ge" << endl;
-  //  return;
-  //}
+    if(nj==0 && neve==0)cout << "Scaler for F7Ge" << endl;
+    return;
+  }
   //===== MADC@F8 ================================================================================
   if( dev==USERGR && fpl==F8 && det==ICE && mod==MADC32 && geo==32 ){
 
@@ -320,14 +320,14 @@ void rawdata_fill(){
   }// for l
    
   //===== Ge-T =========================
-  //for (int l=0; l<32; l++){
-  //  for (int n=0; n<4; n++) {
-  //    F7Ge_Traw[l][n] = v1190[3][l][n];
-  //  }
-  //}
-  //for (int n=0; n<32; n++) {
-  //  F7Ge_Traw[8][n] = v1190[3][18][n]; // F7Pla-L
-  //}
+  for (int l=0; l<32; l++){
+    for (int n=0; n<4; n++) {
+      F7Ge_Traw[l][n] = v1190[3][l][n];
+    }
+  }
+  for (int n=0; n<32; n++) {
+    F7Ge_Traw[8][n] = v1190[3][18][n]; // F7Pla-L
+  }
 
   //===== Plastic T =============================
   //  int temp_CHid_plat[12]={0,0,0,16,0,18,0,20,22,28,0,24};
@@ -343,6 +343,7 @@ void rawdata_fill(){
 	  if(   vgate_PLA_T[l][n][0] < v1290Lraw[0][ n + temp_CHid_plat[l] ][o] 
 	     && vgate_PLA_T[l][n][1] > v1290Lraw[0][ n + temp_CHid_plat[l] ][o] ){
 	    PLA_Traw[l][n] = v1290L[0][ n + temp_CHid_plat[l] ][o];
+	    //cout << PLA_Traw[l][n] << endl;
 	    break;
 	  }
 	}// for N_Mhit loop
@@ -403,7 +404,6 @@ void rawdata_fill(){
       }
     }// for N_Mhit loop
   }// n loop
-
 
   //===== Plastic QTC =============================
   int temp_CHid_plaqtc[12]={0,0,0,0,0,2,0,4,6,12,0,8};
@@ -471,7 +471,6 @@ void rawdata_fill(){
   for(int n=0;n<3;n++)F8IC_Eraw[n]  = adc[1][n];
   for(int n=0;n<6;n++)F11IC_Eraw[n] = adc[2][n];
   F8IC_Gas = adc[1][4];
-
 
   //===== V1290 wide-range V1290 ==================
   for(int n=0;n<N_Mhit;n++){

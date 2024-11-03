@@ -688,6 +688,7 @@ void ribf_encpid(int runN,TRandom *grand){
   for(int m=0;m<2;m++)AoQ57[m]  = Brho57 * Clight / (Gamma57[m]  * Beta57[m]  * Mnucleon);
   for(int m=0;m<2;m++)AoQ89[m]  = BrhoD7 * Clight / (Gamma89[m]  * Beta89[m]  * Mnucleon);
   for(int m=0;m<2;m++)AoQ911[m] = BrhoD8 * Clight / (Gamma911[m] * Beta911[m] * Mnucleon);
+  //cout << AoQ35[1] << endl;
 
   AoQ35_2  = Brho35_2 * Clight / (Gamma35_2  * Beta35_2  * Mnucleon);
   AoQ57_2  = Brho57_2 * Clight / (Gamma57_2  * Beta57_2  * Mnucleon);

@@ -248,12 +248,12 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   TH2D *hraw_PLA_T;
   hraw_PLA_T    = new TH2D("hraw_PLA_T",   Form("Plastic T | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long/F3-2/F5-2/F7-2;T(ns)"    ,runN),22,0,22,600,-300,300);
   TH1D *hraw_PLA_T1[3][2];
-  hraw_PLA_T1[0][0]= new TH1D("hraw_PLA_T_00",   Form("F3Pla-L T | run%04d;T(ns)" ,runN),600,-300,300);
-  hraw_PLA_T1[0][1]= new TH1D("hraw_PLA_T_01",   Form("F3Pla-R T | run%04d;T(ns)" ,runN),600,-300,300);
-  hraw_PLA_T1[1][0]= new TH1D("hraw_PLA_T_10",   Form("F5Pla-L T | run%04d;T(ns)" ,runN),600,-300,300);
-  hraw_PLA_T1[1][1]= new TH1D("hraw_PLA_T_11",   Form("F5Pla-R T | run%04d;T(ns)" ,runN),600,-300,300);
-  hraw_PLA_T1[2][0]= new TH1D("hraw_PLA_T_20",   Form("F7Pla-L T | run%04d;T(ns)" ,runN),600,-300,300);
-  hraw_PLA_T1[2][1]= new TH1D("hraw_PLA_T_21",   Form("F7Pla-R T | run%04d;T(ns)" ,runN),600,-300,300);
+  hraw_PLA_T1[0][0]= new TH1D("hraw_PLA_T_00",   Form("F3Pla-L T | run%04d;T(ns)" ,runN),600,10000,20000);
+  hraw_PLA_T1[0][1]= new TH1D("hraw_PLA_T_01",   Form("F3Pla-R T | run%04d;T(ns)" ,runN),600,10000,20000);
+  hraw_PLA_T1[1][0]= new TH1D("hraw_PLA_T_10",   Form("F5Pla-L T | run%04d;T(ns)" ,runN),600,10000,20000);
+  hraw_PLA_T1[1][1]= new TH1D("hraw_PLA_T_11",   Form("F5Pla-R T | run%04d;T(ns)" ,runN),600,10000,20000);
+  hraw_PLA_T1[2][0]= new TH1D("hraw_PLA_T_20",   Form("F7Pla-L T | run%04d;T(ns)" ,runN),600,10000,20000);
+  hraw_PLA_T1[2][1]= new TH1D("hraw_PLA_T_21",   Form("F7Pla-R T | run%04d;T(ns)" ,runN),600,10000,20000);
   TH2D *hraw_PLA_QTC;
   hraw_PLA_QTC  = new TH2D("hraw_PLA_QTC", Form("Plastic QTC | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;QTC (ns)"              ,runN),16,0,16,500,-50,950);
   TH2D *hraw_PLA_Qraw;
@@ -264,6 +264,10 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hraw_PLA_Qraw2[2] = new TH2D("hraw_PLA_Qraw2_2", Form("F7Pla Q (L vs R)| run%04d;Q_L(ch);Q_R(ch)" ,runN),600,0,3000,600,0,3000);
   TH2D *hraw_PLA_Mhit;
   hraw_PLA_Mhit = new TH2D("hraw_PLA_Mhit",Form("Ratio of Multiplicity | run%04d;F3/F5/F7/F8/F9/F11/F8VETO/F11Long;Multiplicity",runN),16,0,16,5,0,5);
+  TH1D *hraw_TOF[3];
+  hraw_TOF[0] = new TH1D("hraw_TOF_0", Form("TOF35| run%04d;TOF35 (ns);counts", runN), 600, 0, 300);
+  hraw_TOF[1] = new TH1D("hraw_TOF_1", Form("TOF57| run%04d;TOF57 (ns);counts", runN), 600, 0, 300);
+  hraw_TOF[2] = new TH1D("hraw_TOF_2", Form("TOF37| run%04d;TOF37 (ns);counts", runN), 600, 0, 300);
   //===== MUSIC ==========
   TH2D *hraw_IC_Eraw[4];
   hraw_IC_Eraw[0] = new TH2D("hraw_IC_Eraw_F07",Form("F07IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 8400,-200, 8400);
@@ -271,8 +275,24 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hraw_IC_Eraw[2] = new TH2D("hraw_IC_Eraw_F11",Form("F11IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 430,-100, 4200);
   hraw_IC_Eraw[3] = new TH2D("hraw_IC_Eraw_F03",Form("F03IC Eraw | run%04d;ID;Eraw (ch)",runN),6,0,6, 860,-200, 8400);
   TH1D *hraw_IC_Esum[2];
-  hraw_IC_Esum[0] = new TH1D("hraw_IC_Esum_F03",Form("F03IC Esum | run%04d;ID;Eraw (ch)",runN),10e3, 0, 60e3);
-  hraw_IC_Esum[1] = new TH1D("hraw_IC_Esum_F07",Form("F07IC Esum | run%04d;ID;Eraw (ch)",runN),10e3, 0, 60e3);
+  hraw_IC_Esum[0] = new TH1D("hraw_IC_Esum_F03",Form("F03IC Esum | run%04d;ID;Eraw (ch)",runN),1e3, 0, 60e3);
+  hraw_IC_Esum[1] = new TH1D("hraw_IC_Esum_F07",Form("F07IC Esum | run%04d;ID;Eraw (ch)",runN),1e3, 0, 60e3);
+  //===== PID_raw ==========
+  TH2D *hraw_PID[3];
+  hraw_PID[0] = new TH2D("hraw_PID_0",Form("PID raw (TOF35 vs F3MUSIC Esum) | run%04d;TOF35 (ns);F3MUSIC Esum (ch)",runN),400,90,150, 1e3,0,20e3); 
+  hraw_PID[1] = new TH2D("hraw_PID_1",Form("PID raw (TOF57 vs F7MUSIC Esum) | run%04d;TOF57 (ns);F7MUSIC Esum (ch)",runN),400,120,200,1e3,0,20e3); 
+  hraw_PID[2] = new TH2D("hraw_PID_2",Form("PID raw (TOF37 vs F7MUSIC Esum) | run%04d;TOF37 (ns);F7MUSIC Esum (ch)",runN),400,210,350,1e3,0,20e3); 
+  //===== PID_calib ==========
+  TH2D *hcalib_PID[3];
+  hcalib_PID[0] = new TH2D("hcalib_PID_0",Form("PID calib (AoQ35 vs Z3) | run%04d;AoQ35;Z3",runN),1e3,2.0,2.6,1e3,0,50); 
+  hcalib_PID[1] = new TH2D("hcalib_PID_1",Form("PID calib (AoQ57 vs Z5) | run%04d;AoQ57;Z5",runN),1e3,2.0,2.6,1e3,0,50); 
+  hcalib_PID[2] = new TH2D("hcalib_PID_2",Form("PID calib (AoQ37 vs Z5) | run%04d;AoQ37;Z5",runN),1e3,2.0,2.6,1e3,0,50); 
+  //===== PID_calib2 ==========
+  TH2D *hcalib_PID2[3];
+  hcalib_PID2[0] = new TH2D("hcalib_PID2_0",Form("PID calib2 (AoQ35_2 vs Z3) | run%04d;AoQ35;Z3",runN),1e3,2.0,2.6,1e3,0,50); 
+  hcalib_PID2[1] = new TH2D("hcalib_PID2_1",Form("PID calib2 (AoQ57_2 vs Z5) | run%04d;AoQ57;Z5",runN),1e3,2.0,2.6,1e3,0,50); 
+  hcalib_PID2[2] = new TH2D("hcalib_PID2_2",Form("PID calib2 (AoQ37_2 vs Z5) | run%04d;AoQ37;Z5",runN),1e3,2.0,2.6,1e3,0,50); 
+
   //===== Ge =============
   TH2D *hraw_Ge_Eraw[2];
   hraw_Ge_Eraw[0] = new TH2D("hraw_Ge_Eraw_F07",Form("F07Ge Eraw | run%04d;ID;Eraw (ch)",runN),32,0,32, 8000,-200,8400);
@@ -395,7 +415,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   hcalib_PLA_Qdiff_Pos[6] = new TH2D("hcalib_PLA_Qdiff_Pos_F8VETO", Form("F8VETO LQ-RQ vs F08X  | run%04d;F08X (mm);LQ-RQ (ch)",runN),  300,-50,50,300,-1000,1000);
   hcalib_PLA_Qdiff_Pos[7] = new TH2D("hcalib_PLA_Qdiff_Pos_F11Long",Form("F11Long LQ-RQ vs F11X | run%04d;F11X (mm);LQ-RQ (ch)",runN), 300,-50,50,300,-1000,1000);
 
-
   TH2D *hcalib_PPAC_fX[7];
   hcalib_PPAC_fX[0] = new TH2D("hcalib_PPAC_fX_F03",Form("F03PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
   hcalib_PPAC_fX[1] = new TH2D("hcalib_PPAC_fX_F05",Form("F05PPAC fX | run%04d;ID;fired(1) or not(0)",runN),4,0,4,2,0,2);
@@ -454,7 +473,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
 		 Form("F11IC_Esum for %sPPAC-%s-%s (Fired) | run%04d;F11IC_Esum (MeV);#it{N} (events)",tlabel_eff2D1[ii].c_str(),tlabel_eff2D3[kk].c_str(),tlabel_eff2D2[1].c_str(), runN),
 		 100,0,200);
     }
-
 
   //========================================================================
   TH2D *hana_PID35[4];
@@ -735,7 +753,6 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<6;n++)hraw_adc[2]->Fill(n,adc[2][n]);
     for(int n=0;n<6;n++)hraw_adc[3]->Fill(n,adc[3][n]);
 
-
     // PPAC Anode
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[0][n+ 4])hraw_PPAC_v1190[0]->Fill(n,v1190raw[0][n+ 4][m]); // F03
     for(int n=0;n<4;n++)for(int m=0;m<N_Mhit;m++)if(m<v1190num[1][n+96])hraw_PPAC_v1190[1]->Fill(n,v1190raw[1][n+96][m]); // F05
@@ -819,9 +836,13 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<2;n++)hraw_PLA_T->Fill(n+16,F3PLA2_T[n]);
     for(int n=0;n<2;n++)hraw_PLA_T->Fill(n+18,F5PLA2_T[n]);
     for(int n=0;n<2;n++)hraw_PLA_T->Fill(n+20,F7PLA2_T[n]);
-    for(int lr=0;lr<2;lr++)hraw_PLA_T1[0][lr]->Fill(F3PLA2_T[lr]);
-    for(int lr=0;lr<2;lr++)hraw_PLA_T1[1][lr]->Fill(F5PLA2_T[lr]);
-    for(int lr=0;lr<2;lr++)hraw_PLA_T1[2][lr]->Fill(F7PLA2_T[lr]);
+    //cout << PLA_T[3][0] << endl;
+    for(int lr=0;lr<2;lr++)hraw_PLA_T1[0][lr]->Fill(PLA_T[3][lr]);
+    for(int lr=0;lr<2;lr++)hraw_PLA_T1[1][lr]->Fill(PLA_T[5][lr]);
+    for(int lr=0;lr<2;lr++)hraw_PLA_T1[2][lr]->Fill(PLA_T[7][lr]);
+    hraw_TOF[0]->Fill(TOF35);
+    hraw_TOF[1]->Fill(TOF57);
+    hraw_TOF[2]->Fill(TOF37);
     //===== PLA-QTC ==========
     for(int n=0;n<2;n++)hraw_PLA_QTC->Fill(n   ,PLA_QTC[ 3][n]);
     for(int n=0;n<2;n++)hraw_PLA_QTC->Fill(n+ 2,PLA_QTC[ 5][n]);
@@ -857,6 +878,19 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     for(int n=0;n<6;n++)hraw_IC_Eraw[3]->Fill(n, F3IC_Eraw[n]);
     hraw_IC_Esum[0]->Fill(F3IC_Eraw[0]+F3IC_Eraw[1]+F3IC_Eraw[2]+F3IC_Eraw[3]+F3IC_Eraw[4]+F3IC_Eraw[5]); 
     hraw_IC_Esum[1]->Fill(F7IC_Eraw[0]+F7IC_Eraw[1]+F7IC_Eraw[2]+F7IC_Eraw[3]+F7IC_Eraw[4]+F7IC_Eraw[5]);
+    //===== PID raw ==========
+    hraw_PID[0]->Fill(TOF35, F3IC_Eraw[0]+F3IC_Eraw[1]+F3IC_Eraw[2]+F3IC_Eraw[3]+F3IC_Eraw[4]+F3IC_Eraw[5]);
+    hraw_PID[1]->Fill(TOF57, F7IC_Eraw[0]+F7IC_Eraw[1]+F7IC_Eraw[2]+F7IC_Eraw[3]+F7IC_Eraw[5]);
+    hraw_PID[2]->Fill(TOF37, F7IC_Eraw[0]+F7IC_Eraw[1]+F7IC_Eraw[2]+F7IC_Eraw[3]+F7IC_Eraw[5]);
+    //===== PID calib ========
+    hcalib_PID[0]->Fill(AoQ35[0], Zet3);
+    hcalib_PID[1]->Fill(AoQ57[0], Zet7);
+    hcalib_PID[2]->Fill(AoQ37, Zet7);
+    //===== PID calib #2 ========
+    hcalib_PID2[0]->Fill(AoQ35[1], Zet3);
+    hcalib_PID2[1]->Fill(AoQ57[1], Zet7);
+    hcalib_PID2[2]->Fill(AoQ37, Zet7);
+ 
     //===== Ge-Eraw ==========
     for(int n=0;n<32;n++)hraw_Ge_Eraw[0]->Fill(n, F7Ge_Eraw[n]);
     for(int n=0;n<32;n++)hraw_Ge_Eraw[1]->Fill(n, F7Ge2_Eraw[n]);
@@ -1320,14 +1354,14 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   cPPAC->Write();
 
   // ====== IC canvas =======================================================
-  TCanvas *cIC = new TCanvas("cIC","cIC",1200,1200*0.7);
-  cIC->Divide(2, 1);
+  TCanvas *cMUSIC = new TCanvas("cMUSIC","cMUSIC",1200,1200*0.7);
+  cMUSIC->Divide(2, 1);
   for (int ii = 0; ii < 2; ii++) {
-    cIC->cd(ii + 1); hraw_IC_Esum[ii]->Draw("");
+    cMUSIC->cd(ii + 1); hraw_IC_Esum[ii]->Draw("");
   }
-  cIC->Modified();
-  cIC->Update();
-  cIC->Write();
+  cMUSIC->Modified();
+  cMUSIC->Update();
+  cMUSIC->Write();
 
   // ====== PLA canvas ======================================================
   TCanvas *cPLA = new TCanvas("cPLA","cPLA",1200,1200*0.7);
@@ -1338,6 +1372,38 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
   cPLA->Modified();
   cPLA->Update();
   cPLA->Write();
+
+  // ====== TOF canvas ======================================================
+  TCanvas *cTOF = new TCanvas("cTOF","cTOF",1200,1200*0.7);
+  cTOF->Divide(1,3);
+  cTOF->cd(1);hraw_TOF[0]->Draw("colz");
+  cTOF->cd(2);hraw_TOF[1]->Draw("colz");
+  cTOF->cd(3);hraw_TOF[2]->Draw("colz");
+  cTOF->Modified();cTOF->Update();cTOF->Write();
+
+  // ====== PIDraw canvas ===================================================
+  TCanvas *cPIDraw = new TCanvas("cPIDraw","cPIDraw",1200,1200*0.7);
+  cPIDraw->Divide(2,2);
+  cPIDraw->cd(1);hraw_PID[0]->Draw("colz");
+  cPIDraw->cd(2);hraw_PID[1]->Draw("colz");
+  cPIDraw->cd(3);hraw_PID[2]->Draw("colz");
+  cPIDraw->Modified();cPIDraw->Update();cPIDraw->Write();
+
+  // ====== PIDcalib canvas ===================================================
+  TCanvas *cPIDcalib = new TCanvas("cPIDcalib","cPIDcalib",1200,1200*0.7);
+  cPIDcalib->Divide(2,2);
+  cPIDcalib->cd(1);hcalib_PID[0]->Draw("colz");
+  cPIDcalib->cd(2);hcalib_PID[1]->Draw("colz");
+  cPIDcalib->cd(3);hcalib_PID[2]->Draw("colz");
+  cPIDcalib->Modified();cPIDcalib->Update();cPIDcalib->Write();
+
+  // ====== PIDcalib #2 canvas ===================================================
+  TCanvas *cPIDcalib2 = new TCanvas("cPIDcalib2","cPIDcalib2",1200,1200*0.7);
+  cPIDcalib2->Divide(2,2);
+  cPIDcalib2->cd(1);hcalib_PID2[0]->Draw("colz");
+  cPIDcalib2->cd(2);hcalib_PID2[1]->Draw("colz");
+  cPIDcalib2->cd(3);hcalib_PID2[2]->Draw("colz");
+  cPIDcalib2->Modified();cPIDcalib2->Update();cPIDcalib2->Write();
 
   if(file_output){
 
