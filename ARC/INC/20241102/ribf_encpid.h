@@ -40,9 +40,6 @@ void var_init(){
   for(int l=0; l<12; l++)PLA_Save[l]=-9999.;
   for(int l=0; l<12; l++)PLA_Tdiff[l]=-9999.;
   for(int l=0; l<12; l++)PLA_Sdiff[l]=-9999.;
-  for(int l=0; l<12; l++)for(int m=0; m<2; m++)PLA_QTC[l][m]=-9999.;
-  for(int l=0; l<12; l++)for(int m=0; m<2; m++)PLA_QTCave[l][m]=-9999.;
-  for(int l=0; l<12; l++)PLA_QTCdiff[l]=-9999.;
 
   // F8VETO
   for(int m=0; m<2; m++)F8VETO_Q[m] = -9999.;
@@ -51,9 +48,6 @@ void var_init(){
   F8VETO_Qdiff = -9999.;
   F8VETO_Tave = -9999.;
   F8VETO_Tdiff = -9999.;
-  for(int m=0; m<2; m++)F8VETO_QTC[m] = -9999.;
-  for(int m=0; m<2; m++)F8VETO_QTCave[m] = -9999.;
-  F8VETO_QTCdiff = -9999.;
 
   // F11Long
   for(int m=0; m<2; m++)F11Long_Q[m] = -9999.;
@@ -62,9 +56,6 @@ void var_init(){
   F11Long_Qdiff = -9999.;
   F11Long_Tave = -9999.;
   F11Long_Tdiff = -9999.;
-  for(int m=0; m<2; m++)F11Long_QTC[m] = -9999.;
-  for(int m=0; m<2; m++)F11Long_QTCave[m] = -9999.;
-  F11Long_QTCdiff = -9999.;
 
   // IC     
   for(int m=0; m<6; m++)F3IC_E[m] = 0.;
@@ -75,13 +66,6 @@ void var_init(){
   F7IC_Esum = 0.;
   F8IC_Esum = 0.;
   F11IC_Esum = 0.;
-
-  // F7Ge
-  for(int m=0; m<8; m++)F7Ge_E[m] = -999.;
-  for(int m=0; m<2; m++)F7Ge_Esum[m] = -999.;
-  for(int m=0; m<8; m++)F7Ge2_E[m] = -999.;
-  for(int m=0; m<2; m++)F7Ge2_Esum[m] = -999.;
-  for(int m=0; m<17; m++)for(int n=0; n<5; n++)F7Ge_T[m][n] = -999.;
 
   // Brho
   for(int l=0; l<6; l++)Delta[l] = -9999.;
@@ -340,22 +324,15 @@ void ribf_encpid(int runN,TRandom *grand){
     if(Use_PL[l]){
 
       for(int m=0; m<2; m++){
-	//	PLA_Q[l][m] = ch2MeV_PLA[0][l][m] * ( (double)PLA_Qraw[l][m] - ch2MeV_PLA[1][l][m] );
-	//	PLA_T[l][m] = ch2ns_PLA[l][m] * (double)PLA_Traw[l][m];
 	PLA_Q[l][m] = ch2MeV_PLA[0][l][m] * ( (double)PLA_Qraw[l][m] + grand->Uniform(0,1) - ch2MeV_PLA[1][l][m] );
 	PLA_T[l][m] = ch2ns_PLA[l][m] * ( (double)PLA_Traw[l][m] + grand->Uniform(0,1) );
 	PLA_S[l][m] = PLA_T[l][m] - ( Slew_PLA[0][l][m] * pow(PLA_Q[l][m],Slew_PLA[1][l][m]) + Slew_PLA[2][l][m] );
-	PLA_QTC[l][m] = ch2MeV_PLA_QTC[0][l][m] * ( (double)PLA_QTCraw[l][m] + grand->Uniform(0,1) - ch2MeV_PLA_QTC[1][l][m] );
       }
     
       PLA_Qave[l][0] = 0.5 * ( PLA_Q[l][0] + PLA_Q[l][1] );
       PLA_Qave[l][1] = TMath::Sqrt(PLA_Q[l][0] * PLA_Q[l][1]);
       PLA_Qdiff[l] = ( PLA_Q[l][0] - PLA_Q[l][1] );
 
-      PLA_QTCave[l][0] = 0.5 * ( PLA_QTC[l][0] + PLA_QTC[l][1] );
-      PLA_QTCave[l][1] = TMath::Sqrt(PLA_QTC[l][0] * PLA_QTC[l][1]);
-      PLA_QTCdiff[l] = ( PLA_QTC[l][0] - PLA_QTC[l][1] );
-      
       PLA_Tave[l] = 0.5 * ( PLA_T[l][0] + PLA_T[l][1] );
       PLA_Save[l] = 0.5 * ( PLA_S[l][0] + PLA_S[l][1] );
       PLA_Tdiff[l] = PLA_T[l][0] - PLA_T[l][1];
@@ -374,16 +351,11 @@ void ribf_encpid(int runN,TRandom *grand){
     //    F8VETO_T[m] = ch2ns_F8VETO[m] * (double)F8VETO_Traw[m];
     F8VETO_Q[m] = ch2MeV_F8VETO[0][m] * ( (double)F8VETO_Qraw[m] + grand->Uniform(0,1) - ch2MeV_F8VETO[1][m] );
     F8VETO_T[m] = ch2ns_F8VETO[m] * ( (double)F8VETO_Traw[m] + grand->Uniform(0,1) );
-    F8VETO_QTC[m] = ch2MeV_F8VETO_QTC[0][m] * ( (double)F8VETO_QTCraw[m] + grand->Uniform(0,1) - ch2MeV_F8VETO_QTC[1][m] );
   }
   
   F8VETO_Qave[0] = 0.5 * ( F8VETO_Q[0] + F8VETO_Q[1] );
   F8VETO_Qave[1] = sqrt( F8VETO_Q[0] * F8VETO_Q[1] );
   F8VETO_Qdiff = ( F8VETO_Q[0] - F8VETO_Q[1] );
-
-  F8VETO_QTCave[0] = 0.5 * ( F8VETO_QTC[0] + F8VETO_QTC[1] );
-  F8VETO_QTCave[1] = sqrt( F8VETO_QTC[0] * F8VETO_QTC[1] );
-  F8VETO_QTCdiff = ( F8VETO_QTC[0] - F8VETO_QTC[1] );
 
   F8VETO_Tave = 0.5 * ( F8VETO_T[0] + F8VETO_T[1] );
   F8VETO_Tdiff = ( F8VETO_T[0] - F8VETO_T[1] );
@@ -395,16 +367,11 @@ void ribf_encpid(int runN,TRandom *grand){
     //    F11Long_T[m] = ch2ns_F11Long[m] * (double)F11Long_Traw[m];
     F11Long_Q[m] = ch2MeV_F11Long[0][m] * ( (double)F11Long_Qraw[m] + grand->Uniform(0,1) - ch2MeV_F11Long[1][m] );
     F11Long_T[m] = ch2ns_F11Long[m] * ( (double)F11Long_Traw[m] + grand->Uniform(0,1) );
-    F11Long_QTC[m] = ch2MeV_F11Long_QTC[0][m] * ( (double)F11Long_QTCraw[m] + grand->Uniform(0,1) - ch2MeV_F11Long_QTC[1][m] );
   }
   
   F11Long_Qave[0] = 0.5 * ( F11Long_Q[0] + F11Long_Q[1] );
   F11Long_Qave[1] = sqrt( F11Long_Q[0] * F11Long_Q[1] );
   F11Long_Qdiff = ( F11Long_Q[0] - F11Long_Q[1] );
-
-  F11Long_QTCave[0] = 0.5 * ( F11Long_QTC[0] + F11Long_QTC[1] );
-  F11Long_QTCave[1] = sqrt( F11Long_QTC[0] * F11Long_QTC[1] );
-  F11Long_QTCdiff = ( F11Long_QTC[0] - F11Long_QTC[1] );
 
   F11Long_Tave = 0.5 * ( F11Long_T[0] + F11Long_T[1] );
   F11Long_Tdiff = ( F11Long_T[0] - F11Long_T[1] );
@@ -438,7 +405,7 @@ void ribf_encpid(int runN,TRandom *grand){
     F11IC_E[m] = ch2MeV_IC[0][2][m] * (F11IC_Eraw[m] + grand->Uniform(0,1) - ch2MeV_IC[1][2][m]);
     F11IC_Esum += F11IC_E[m];
   }
-
+  
   //===== F7Ge =============================================
   for(int m=0;m<8;m++){
     F7Ge_E[m] = ch2keV_F7Ge[m][0] * (F7Ge_Eraw[m] + grand->Uniform(0,1\
@@ -453,7 +420,7 @@ void ribf_encpid(int runN,TRandom *grand){
       F7Ge_T[m][n] = ch2ns_F7Ge[m] * F7Ge_Traw[m][n];
     }
   }
-
+  
   //===== Brho =============================================
   for(int l=0;l<6;l++){
     

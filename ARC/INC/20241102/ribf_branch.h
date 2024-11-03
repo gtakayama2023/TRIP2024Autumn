@@ -1,3 +1,5 @@
+//===== this function won't be used in ribf_encpid ======================
+
 void ribf_branch_raw(TTree *tree){
 
   tree->Branch("Nevent",&Nevent,"Nevent/I");
@@ -7,6 +9,7 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("sva_Nevent",sva_Nevent,"sva_Nevent[2]/i");
   tree->Branch("sva_10kclock",sva_10kclock,"sva_10kclock[2]/i");
   tree->Branch("F7GeScaler",F7Ge_Scaler,"F7Ge_Scaler[32]/i");
+
   //===== time stemp =====
   //  tree->Branch("mpv_Nevent",mpv_Nevent,"mpv_Nevent[3]/i");
   //  tree->Branch("mpv_ts0",mpv_ts0,"mpv_ts0[3][2]/l");
@@ -16,24 +19,27 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("mpv_ts0",mpv_ts0,"mpv_ts0[6][2]/l");
   tree->Branch("mpv_ts",mpv_ts,"mpv_ts[6]/l");
   tree->Branch("mpv_10kclock",mpv_10kclock,"mpv_10kclock[6]/i");
+  
   //===== V1190 =====
-  tree->Branch("v1190",v1190,Form("v1190[4][128][%d]/L",N_Mhit));
-  tree->Branch("v1190raw",v1190raw,Form("v1190raw[4][128][%d]/L",N_Mhit));
-  tree->Branch("v1190num",v1190num,"v1190num[4][128]/I");
+  tree->Branch("v1190",v1190,Form("v1190[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190raw",v1190raw,Form("v1190raw[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190num",v1190num,"v1190num[3][128]/I");
+  
   //===== V1290 =====
   // Leading
   tree->Branch("v1290L",v1290L,Form("v1290L[2][32][%d]/L",N_Mhit));
   tree->Branch("v1290Lraw",v1290Lraw,Form("v1290Lraw[2][32][%d]/L",N_Mhit));
   tree->Branch("v1290Lnum",v1290Lnum,"v1290Lnum[2][32]/I");
   tree->Branch("v1290Lnum2",v1290Lnum2,"v1290Lnum2[2][32]/I");
+  
   // Trailing
   tree->Branch("v1290T",v1290T,Form("v1290T[2][32][%d]/L",N_Mhit));
   tree->Branch("v1290Traw",v1290Traw,Form("v1290Traw[2][32][%d]/L",N_Mhit));
   tree->Branch("v1290Tnum",v1290Tnum,"v1290Tnum[2][32]/I");
+  
   //===== QDC/ADC =====
   tree->Branch("qdc",qdc,"qdc[32]/I");
   tree->Branch("adc",adc,"adc[6][32]/I");
-
 
   //===== PPAC =====
   //  tree->Branch("PPAC_Qraw",PPAC_Qraw,Form("PPAC_Qraw[%d][4][4]/I",Nfpl_PPAC));
@@ -44,19 +50,14 @@ void ribf_branch_raw(TTree *tree){
   //===== PLA =====
   tree->Branch("PLA_Qraw",PLA_Qraw,Form("PLA_Qraw[%d][2]/I",Nfpl_PLA));
   tree->Branch("PLA_Traw",PLA_Traw,Form("PLA_Traw[%d][2]/I",Nfpl_PLA));
-  tree->Branch("PLA_QTCraw",PLA_QTCraw,Form("PLA_QTCraw[%d][2]/I",Nfpl_PLA));
-  //  tree->Branch("PLA2_Qraw",PLA2_Qraw,Form("PLA2_Qraw[%d][2]/I",Nfpl_PLA));
-  //  tree->Branch("PLA2_Traw",PLA2_Traw,Form("PLA2_Traw[%d][2]/I",Nfpl_PLA));
 
   //===== F8VETO =====
   tree->Branch("F8VETO_Qraw",F8VETO_Qraw,"F8VETO_Qraw[2]/I");
   tree->Branch("F8VETO_Traw",F8VETO_Traw,"F8VETO_Traw[2]/I");
-  tree->Branch("F8VETO_QTCraw",F8VETO_QTCraw,"F8VETO_Qraw[2]/I");
 
   //===== F11Long =====
   tree->Branch("F11Long_Qraw",F11Long_Qraw,"F11Long_Qraw[2]/I");
   tree->Branch("F11Long_Traw",F11Long_Traw,"F11Long_Traw[2]/I");
-  tree->Branch("F11Long_QTCraw",F11Long_Qraw,"F11Long_Qraw[2]/I");
 
   //===== IC =====
   tree->Branch("F3IC_Eraw",F3IC_Eraw,"F3IC_Eraw[6]/I");
@@ -67,11 +68,14 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("F7IC_Gas",&F7IC_Gas,"F7IC_Gas/I");
   tree->Branch("F8IC_Gas",&F8IC_Gas,"F8IC_Gas/I");
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
-
+  
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
+  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[8]/I");
+  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_E",F7Ge_E,"F7Ge_E[8]/D");
+  tree->Branch("F7Ge2_E",F7Ge2_E,"F7Ge2_E[8]/D");
+  tree->Branch("F7Ge_T",F7Ge_T,"F7Ge_T[17][5]/D");
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -125,17 +129,12 @@ void ribf_branch_raw_read(TTree *tree2){
   
   tree2->SetBranchAddress("PLA_Qraw",PLA_Qraw);  
   tree2->SetBranchAddress("PLA_Traw",PLA_Traw);  
-  tree2->SetBranchAddress("PLA_QTCraw",PLA_QTCraw);  
-  //  tree2->SetBranchAddress("PLA2_Qraw",PLA2_Qraw);  
-  //  tree2->SetBranchAddress("PLA2_Traw",PLA2_Traw);  
 
   tree2->SetBranchAddress("F8VETO_Qraw",F8VETO_Qraw);  
   tree2->SetBranchAddress("F8VETO_Traw",F8VETO_Traw);  
-  tree2->SetBranchAddress("F8VETO_QTCraw",F8VETO_QTCraw);  
 
   tree2->SetBranchAddress("F11Long_Qraw",F11Long_Qraw);  
   tree2->SetBranchAddress("F11Long_Traw",F11Long_Traw);  
-  tree2->SetBranchAddress("F11Long_QTCraw",F11Long_QTCraw);  
 
   tree2->SetBranchAddress("F3IC_Eraw",F3IC_Eraw);  
   tree2->SetBranchAddress("F7IC_Eraw",F7IC_Eraw);  
@@ -163,6 +162,7 @@ void ribf_branch_raw_read(TTree *tree2){
 
 }
 
+//===== ribf_encpid call this function ======================
 
 void ribf_branch(TTree *tree){
   //===== Raw data ==========================================
@@ -176,6 +176,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("sva_Nevent",sva_Nevent,"sva_Nevent[2]/i");
   tree->Branch("sva_10kclock",sva_10kclock,"sva_10kclock[2]/i");
   tree->Branch("F7GeScaler",F7Ge_Scaler,"F7Ge_Scaler[32]/i");
+
   //===== time stemp =====
   //  tree->Branch("mpv_Nevent",mpv_Nevent,"mpv_Nevent[3]/i");
   //  tree->Branch("mpv_ts0",mpv_ts0,"mpv_ts0[3][2]/l");
@@ -185,10 +186,12 @@ void ribf_branch(TTree *tree){
   tree->Branch("mpv_ts0",mpv_ts0,"mpv_ts0[6][2]/l");
   tree->Branch("mpv_ts",mpv_ts,"mpv_ts[6]/l");
   tree->Branch("mpv_10kclock",mpv_10kclock,"mpv_10kclock[6]/i");
+
   //===== V1190 =====
-  tree->Branch("v1190",v1190,Form("v1190[4][128][%d]/L",N_Mhit));
-  tree->Branch("v1190raw",v1190raw,Form("v1190raw[4][128][%d]/L",N_Mhit));
-  tree->Branch("v1190num",v1190num,"v1190num[4][128]/I");
+  tree->Branch("v1190",v1190,Form("v1190[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190raw",v1190raw,Form("v1190raw[3][128][%d]/L",N_Mhit));
+  tree->Branch("v1190num",v1190num,"v1190num[3][128]/I");
+
   //===== V1290 =====
   // Leading
   tree->Branch("v1290L",v1290L,Form("v1290L[2][32][%d]/L",N_Mhit));
@@ -199,10 +202,10 @@ void ribf_branch(TTree *tree){
   tree->Branch("v1290T",v1290T,Form("v1290T[2][32][%d]/L",N_Mhit));
   tree->Branch("v1290Traw",v1290Traw,Form("v1290Traw[2][32][%d]/L",N_Mhit));
   tree->Branch("v1290Tnum",v1290Tnum,"v1290Tnum[2][32]/I");
+
   //===== QDC/ADC =====
   tree->Branch("qdc",qdc,"qdc[32]/I");
   tree->Branch("adc",adc,"adc[6][32]/I");
-
 
   //===== PPAC =====
   //  tree->Branch("PPAC_Qraw",PPAC_Qraw,Form("PPAC_Qraw[%d][4][4]/I",Nfpl_PPAC));
@@ -212,20 +215,14 @@ void ribf_branch(TTree *tree){
 
   //===== PLA =====
   tree->Branch("PLA_Qraw",PLA_Qraw,Form("PLA_Qraw[%d][2]/I",Nfpl_PLA));
-  tree->Branch("PLA_Traw",PLA_Traw,Form("PLA_Traw[%d][2]/I",Nfpl_PLA));
-  tree->Branch("PLA_QTCraw",PLA_QTCraw,Form("PLA_QTCraw[%d][2]/I",Nfpl_PLA));
-  //  tree->Branch("PLA2_Qraw",PLA2_Qraw,Form("PLA2_Qraw[%d][2]/I",Nfpl_PLA));
-  //  tree->Branch("PLA2_Traw",PLA2_Traw,Form("PLA2_Traw[%d][2]/I",Nfpl_PLA));
 
   //===== F8VETO =====
   tree->Branch("F8VETO_Qraw",F8VETO_Qraw,"F8VETO_Qraw[2]/I");
   tree->Branch("F8VETO_Traw",F8VETO_Traw,"F8VETO_Traw[2]/I");
-  tree->Branch("F8VETO_QTCraw",F8VETO_QTCraw,"F8VETO_Qraw[2]/I");
 
   //===== F11Long =====
   tree->Branch("F11Long_Qraw",F11Long_Qraw,"F11Long_Qraw[2]/I");
   tree->Branch("F11Long_Traw",F11Long_Traw,"F11Long_Traw[2]/I");
-  tree->Branch("F11Long_QTCraw",F11Long_Qraw,"F11Long_Qraw[2]/I");
 
   //===== IC =====
   tree->Branch("F3IC_Eraw",F3IC_Eraw,"F3IC_Eraw[6]/I");
@@ -243,7 +240,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[17][5]/I");
   tree->Branch("F7Ge_E",F7Ge_E,"F7Ge_E[8]/D");
   tree->Branch("F7Ge2_E",F7Ge2_E,"F7Ge2_E[8]/D");
-  tree->Branch("F7Ge_T",F7Ge_T,"F7Ge_T[17][5]/D");
+  tree->Branch("F7Ge_T",F7Ge_T,"F7Ge_T[17][5]/D")
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -296,9 +293,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("PLA_Save",PLA_Save,Form("PLA_Save[%d]/D",Nfpl_PLA));
   tree->Branch("PLA_Tdiff",PLA_Tdiff,Form("PLA_Tdiff[%d]/D",Nfpl_PLA));
   tree->Branch("PLA_Sdiff",PLA_Sdiff,Form("PLA_Sdiff[%d]/D",Nfpl_PLA));
-  tree->Branch("PLA_QTC",PLA_QTC,Form("PLA_QTC[%d][2]/D",Nfpl_PLA));
-  tree->Branch("PLA_QTCave",PLA_QTCave,Form("PLA_QTCave[%d][2]/D",Nfpl_PLA));
-  tree->Branch("PLA_QTCdiff",PLA_QTCdiff,Form("PLA_QTCdiff[%d]/D",Nfpl_PLA));
+
   //===== F8VETO ===================================================
   tree->Branch("F8VETO_Q",F8VETO_Q,"F8VETO_Q[2]/D");
   tree->Branch("F8VETO_T",F8VETO_T,"F8VETO_T[2]/D");
@@ -306,9 +301,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("F8VETO_Qdiff",&F8VETO_Qdiff,"F8VETO_Qdiff/D");
   tree->Branch("F8VETO_Tave",&F8VETO_Tave,"F8VETO_Tave/D");
   tree->Branch("F8VETO_Tdiff",&F8VETO_Tdiff,"F8VETO_Tdiff/D");
-  tree->Branch("F8VETO_QTC",F8VETO_QTC,"F8VETO_QTC[2]/D");
-  tree->Branch("F8VETO_QTCave",F8VETO_QTCave,"F8VETO_QTCave[2]/D");
-  tree->Branch("F8VETO_QTCdiff",&F8VETO_QTCdiff,"F8VETO_QTCdiff/D");
+
   //===== F11Long ===================================================
   tree->Branch("F11Long_Q",F11Long_Q,"F11Long_Q[2]/D");
   tree->Branch("F11Long_T",F11Long_T,"F11Long_T[2]/D");
@@ -316,9 +309,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("F11Long_Qdiff",&F11Long_Qdiff,"F11Long_Qdiff/D");
   tree->Branch("F11Long_Tave",&F11Long_Tave,"F11Long_Tave/D");
   tree->Branch("F11Long_Tdiff",&F11Long_Tdiff,"F11Long_Tdiff/D");
-  tree->Branch("F11Long_QTC",F11Long_QTC,"F11Long_QTC[2]/D");
-  tree->Branch("F11Long_QTCave",F11Long_QTCave,"F11Long_QTCave[2]/D");
-  tree->Branch("F11Long_QTCdiff",&F11Long_QTCdiff,"F11Long_QTCdiff/D");
+
   //===== IC ======================================================
   tree->Branch("F3IC_E",F3IC_E,"F3IC_E[6]/D");
   tree->Branch("F7IC_E",F7IC_E,"F7IC_E[6]/D");
@@ -328,6 +319,7 @@ void ribf_branch(TTree *tree){
   tree->Branch("F7IC_Esum",&F7IC_Esum,"F7IC_Esum/D");
   tree->Branch("F8IC_Esum",&F8IC_Esum,"F8IC_Esum/D");
   tree->Branch("F11IC_Esum",&F11IC_Esum,"F11IC_Esum/D");
+
   //===== Ge ======================================================
   //tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
   //tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[32]/I");
@@ -476,17 +468,12 @@ void ribf_branch_read(TTree *tree2){
   
   tree2->SetBranchAddress("PLA_Qraw",PLA_Qraw);  
   tree2->SetBranchAddress("PLA_Traw",PLA_Traw);  
-  tree2->SetBranchAddress("PLA_QTCraw",PLA_QTCraw);  
-  //  tree2->SetBranchAddress("PLA2_Qraw",PLA2_Qraw);  
-  //  tree2->SetBranchAddress("PLA2_Traw",PLA2_Traw);  
 
   tree2->SetBranchAddress("F8VETO_Qraw",F8VETO_Qraw);  
   tree2->SetBranchAddress("F8VETO_Traw",F8VETO_Traw);  
-  tree2->SetBranchAddress("F8VETO_QTCraw",F8VETO_QTCraw);  
 
   tree2->SetBranchAddress("F11Long_Qraw",F11Long_Qraw);  
   tree2->SetBranchAddress("F11Long_Traw",F11Long_Traw);  
-  tree2->SetBranchAddress("F11Long_QTCraw",F11Long_QTCraw);  
 
   tree2->SetBranchAddress("F3IC_Eraw",F3IC_Eraw);  
   tree2->SetBranchAddress("F7IC_Eraw",F7IC_Eraw);  
@@ -534,9 +521,6 @@ void ribf_branch_read(TTree *tree2){
   tree2->SetBranchAddress("PLA_Save",PLA_Save);
   tree2->SetBranchAddress("PLA_Tdiff",PLA_Tdiff);
   tree2->SetBranchAddress("PLA_Sdiff",PLA_Sdiff);
-  tree2->SetBranchAddress("PLA_QTC",PLA_QTC);
-  tree2->SetBranchAddress("PLA_QTCave",PLA_QTCave);
-  tree2->SetBranchAddress("PLA_QTCdiff",PLA_QTCdiff);
   
   tree2->SetBranchAddress("F8VETO_Q",F8VETO_Q);
   tree2->SetBranchAddress("F8VETO_T",F8VETO_T);
@@ -544,9 +528,7 @@ void ribf_branch_read(TTree *tree2){
   tree2->SetBranchAddress("F8VETO_Qdiff",&F8VETO_Qdiff);
   tree2->SetBranchAddress("F8VETO_Tave",&F8VETO_Tave);
   tree2->SetBranchAddress("F8VETO_Tdiff",&F8VETO_Tdiff);
-  tree2->SetBranchAddress("F8VETO_QTC",F8VETO_QTC);
-  tree2->SetBranchAddress("F8VETO_QTCave",F8VETO_QTCave);
-  tree2->SetBranchAddress("F8VETO_QTCdiff",&F8VETO_QTCdiff);
+
   //===== F11Long ===================================================
   tree2->SetBranchAddress("F11Long_Q",F11Long_Q);
   tree2->SetBranchAddress("F11Long_T",F11Long_T);
@@ -554,9 +536,7 @@ void ribf_branch_read(TTree *tree2){
   tree2->SetBranchAddress("F11Long_Qdiff",&F11Long_Qdiff);
   tree2->SetBranchAddress("F11Long_Tave",&F11Long_Tave);
   tree2->SetBranchAddress("F11Long_Tdiff",&F11Long_Tdiff);
-  tree2->SetBranchAddress("F11Long_QTC",F11Long_QTC);
-  tree2->SetBranchAddress("F11Long_QTCave",F11Long_QTCave);
-  tree2->SetBranchAddress("F11Long_QTCdiff",&F11Long_QTCdiff);
+  
   //===== IC ======================================================
   tree2->SetBranchAddress("F3IC_E",F3IC_E);
   tree2->SetBranchAddress("F7IC_E",F7IC_E);
@@ -663,15 +643,12 @@ void ribf_branch_read(TTree *tree2){
   
   tree2->SetBranchStatus("PLA_Qraw");  
   tree2->SetBranchStatus("PLA_Traw");  
-  tree2->SetBranchStatus("PLA_QTCraw");  
 
   tree2->SetBranchStatus("F8VETO_Qraw");  
   tree2->SetBranchStatus("F8VETO_Traw");  
-  tree2->SetBranchStatus("F8VETO_QTCraw");  
 
   tree2->SetBranchStatus("F11Long_Qraw");  
   tree2->SetBranchStatus("F11Long_Traw");  
-  tree2->SetBranchStatus("F11Long_QTCraw");  
 
   tree2->SetBranchStatus("F7IC_Eraw");  
   tree2->SetBranchStatus("F8IC_Eraw");  
@@ -722,33 +699,6 @@ void ribf_branch_read(TTree *tree2){
   tree2->SetBranchStatus("PLA_Save");
   tree2->SetBranchStatus("PLA_Tdiff");
   tree2->SetBranchStatus("PLA_Sdiff");
-  tree2->SetBranchStatus("PLA_QTC");
-  tree2->SetBranchStatus("PLA_QTCave");
-  tree2->SetBranchStatus("PLA_QTCdiff");
-  */
-
-  /*
-  tree2->SetBranchStatus("F8VETO_Q");
-  tree2->SetBranchStatus("F8VETO_T");
-  tree2->SetBranchStatus("F8VETO_Qave");
-  tree2->SetBranchStatus("F8VETO_Qdiff");
-  tree2->SetBranchStatus("F8VETO_Tave");
-  tree2->SetBranchStatus("F8VETO_Tdiff");
-  tree2->SetBranchStatus("F8VETO_QTC");
-  tree2->SetBranchStatus("F8VETO_QTCave");
-  tree2->SetBranchStatus("F8VETO_QTCdiff");
-  */
-
-  /*
-  tree2->SetBranchStatus("F11Long_Q");
-  tree2->SetBranchStatus("F11Long_T");
-  tree2->SetBranchStatus("F11Long_Qave");
-  tree2->SetBranchStatus("F11Long_Qdiff");
-  tree2->SetBranchStatus("F11Long_Tave");
-  tree2->SetBranchStatus("F11Long_Tdiff");
-  tree2->SetBranchStatus("F11Long_QTC");
-  tree2->SetBranchStatus("F11Long_QTCave");
-  tree2->SetBranchStatus("F11Long_QTCdiff");
   */
 
   /*

@@ -28,17 +28,12 @@ void rawdata_reset(){
 
   for(int n=0;n<12;n++)for(int m=0;m<2;m++)PLA_Qraw[n][m]= -9999;
   for(int n=0;n<12;n++)for(int m=0;m<2;m++)PLA_Traw[n][m]=-99999;
-  for(int n=0;n<12;n++)for(int m=0;m<2;m++)PLA_QTCraw[n][m]= -99999;
-  //  for(int n=0;n<12;n++)for(int m=0;m<2;m++)PLA2_Qraw[n][m]= -9999;
-  //  for(int n=0;n<12;n++)for(int m=0;m<2;m++)PLA2_Traw[n][m]=-9999;
 
   for(int m=0;m<2;m++)F8VETO_Qraw[m]= -9999;
   for(int m=0;m<2;m++)F8VETO_Traw[m]=-99999;
-  for(int m=0;m<2;m++)F8VETO_QTCraw[m]= -99999;
 
   for(int m=0;m<2;m++)F11Long_Qraw[m]= -9999;
   for(int m=0;m<2;m++)F11Long_Traw[m]=-99999;
-  for(int m=0;m<2;m++)F11Long_QTCraw[m]= -99999;
 
   for(int l=0;l<12;l++)for(int m=0;m<2;m++)for(int n=0;n<N_Mhit;n++)PLA_MT[l][m][n] = -2e6;
   for(int l=0;l<12;l++)for(int m=0;m<2;m++)PLA_Mhit[l][m] = 0;
@@ -185,7 +180,6 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     }
     
     if(nj==0 && neve==0 && geo==6)cout << Form("V1290 (geo=%02d) for Plastic-T",geo) << endl;
-    if(nj==0 && neve==0 && geo==9)cout << Form("V1290 (geo=%02d) for Plastic-QTC",geo) << endl;
     return;
 
   }
@@ -344,6 +338,11 @@ void rawdata_fill(){
 	  if(   vgate_PLA_T[l][n][0] < v1290Lraw[0][ n + temp_CHid_plat[l] ][o] 
 	     && vgate_PLA_T[l][n][1] > v1290Lraw[0][ n + temp_CHid_plat[l] ][o] ){
 	    PLA_Traw[l][n] = v1290L[0][ n + temp_CHid_plat[l] ][o];
+	    // to fill F*PLA2_Traw, directly set proper v1290L ch
+      // now PLA_Traw[3], [5], and [7] is the same as F*PLA2_Traw
+      PLA_Traw[3][n] = v1290L[0][ n + 16][o];
+      PLA_Traw[5][n] = v1290L[0][ n + 18][o];
+      PLA_Traw[7][n] = v1290L[0][ n + 20][o];
 	    break;
 	  }
 	}// for N_Mhit loop
@@ -400,50 +399,6 @@ void rawdata_fill(){
       if(   vgate_F11Long_T[n][0] < v1290Lraw[0][n+30][o] 
 	 && vgate_F11Long_T[n][1] > v1290Lraw[0][n+30][o] ){
 	F11Long_Traw[n] = v1290L[0][n+30][o];
-	break;
-      }
-    }// for N_Mhit loop
-  }// n loop
-
-
-  //===== Plastic QTC =============================
-  int temp_CHid_plaqtc[12]={0,0,0,0,0,2,0,4,6,12,0,8};
-
-  for(int l=0;l<12;l++){
-    if(Use_PL[l]){
-
-      for(int n=0;n<2;n++){
-
-	for(int o=0;o<N_Mhit;o++){
-	  if(   vgate_PLA_QTC[l][n][0] < v1290Lraw[1][ n + temp_CHid_plaqtc[l] ][o] 
-	     && vgate_PLA_QTC[l][n][1] > v1290Lraw[1][ n + temp_CHid_plaqtc[l] ][o] ){
-	    PLA_QTCraw[l][n] = v1290T[1][ n + temp_CHid_plaqtc[l] ][o] - v1290L[1][ n + temp_CHid_plaqtc[l] ][o];
-	    break;
-	  }
-	}// for N_Mhit loop
-
-      }// n loop
-  
-    }// if Use_PPAC
-  }// for l
-
-  //===== F8VETO QTC =============================
-  for(int n=0;n<2;n++){
-    for(int o=0;o<N_Mhit;o++){
-      if(   vgate_F8VETO_QTC[n][0] < v1290Lraw[1][n+10][o] 
-	 && vgate_F8VETO_QTC[n][1] > v1290Lraw[1][n+10][o] ){
-	F8VETO_QTCraw[n] = v1290T[1][n+10][o] - v1290L[1][n+10][o];
-	break;
-      }
-    }// for N_Mhit loop
-  }// n loop
-
-  //===== F11Long QTC =============================
-  for(int n=0;n<2;n++){
-    for(int o=0;o<N_Mhit;o++){
-      if(   vgate_F11Long_QTC[n][0] < v1290Lraw[1][n+14][o] 
-	 && vgate_F11Long_QTC[n][1] > v1290Lraw[1][n+14][o] ){
-	F11Long_QTCraw[n] = v1290T[1][n+14][o] - v1290L[1][n+14][o];
 	break;
       }
     }// for N_Mhit loop
