@@ -69,9 +69,9 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[32]/I");
+  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[32]/I");
+  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[32]/I");
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -238,9 +238,9 @@ void ribf_branch(TTree *tree){
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[32]/I");
+  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[32]/I");
+  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[32]/I");
   tree->Branch("F7Ge_E",F7Ge_E,"F7Ge_E[8]/D");
   tree->Branch("F7Ge2_E",F7Ge2_E,"F7Ge2_E[8]/D");
   tree->Branch("F7Ge_T",F7Ge_T,"F7Ge_T[17][5]/D");
@@ -566,13 +566,6 @@ void ribf_branch_read(TTree *tree2){
   tree2->SetBranchAddress("F7IC_Esum",&F7IC_Esum);
   tree2->SetBranchAddress("F8IC_Esum",&F8IC_Esum);
   tree2->SetBranchAddress("F11IC_Esum",&F11IC_Esum);
-
-  //===== F7Ge ================================================
-  tree2->SetBranchAddress("F7Ge_E",&F7Ge_E);
-  tree2->SetBranchAddress("F7Ge_Esum",&F7Ge_Esum);
-  tree2->SetBranchAddress("F7Ge2_E",&F7Ge2_E);
-  tree2->SetBranchAddress("F7Ge2_Esum",&F7Ge2_Esum);
-  tree2->SetBranchAddress("F7Ge_T",&F7Ge_T);
 
   //===== Reconstruction =========================================
   tree2->SetBranchAddress("RecoF8Angle",RecoF8Angle);

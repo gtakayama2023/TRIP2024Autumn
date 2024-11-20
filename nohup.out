@@ -1,0 +1,2188 @@
+add include path : /home/exp/ANAROOT/anaroot/include
+reading libXMLParser.so
+reading libananadeko.so
+reading libanacore.so
+reading libanabrips.so
+reading libanadali.so
+reading libanasamurai.so
+reading libanacatana.so
+reading libanaespri.so
+reading libanawinds.so
+reading libanaloop.so
+reading libanaloopexample.so
+reading libanaloopencexample.so
+
+Processing ./ANA/ridf2root.cpp++g(297, "f7ge_calib", true, 1000000000)...
+Info in <TUnixSystem::ACLiC>: creating shared library /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root_cpp.so
+In file included from input_line_9:6:
+./././ANA/ridf2root.cpp:580:95: warning: invalid conversion specifier ')' [-Wformat-invalid-specifier]
+        hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
+                                                                                                    ~^
+./././ANA/ridf2root.cpp:580:117: warning: invalid conversion specifier ')' [-Wformat-invalid-specifier]
+        hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
+                                                                                                                          ~^
+./././ANA/ridf2root.cpp:416:3: warning: array index 7 is past the end of the array (that has type 'TH2D *[7]') [-Warray-bounds]
+  hcalib_PLA_LRQ[7] = new TH2D("hcalib_PLA_LRQ_F11Long",Form("F11Long LQ vs RQ | run%04d;LQ (ch);RQ (ch)" ,runN), 430,-100,4200,430,-100,4200);
+  ^              ~
+./././ANA/ridf2root.cpp:408:3: note: array 'hcalib_PLA_LRQ' declared here
+  TH2D *hcalib_PLA_LRQ[7];
+  ^
+./././ANA/ridf2root.cpp:426:3: warning: array index 7 is past the end of the array (that has type 'TH2D *[7]') [-Warray-bounds]
+  hcalib_PLA_LRQTC[7] = new TH2D("hcalib_PLA_LRQTC_F11Long",Form("F11Long QTC LQ vs RQ | run%04d;LQ (ns);RQ (ns)" ,runN),400,-10, 700,400,-10, 700);
+  ^                ~
+./././ANA/ridf2root.cpp:418:3: note: array 'hcalib_PLA_LRQTC' declared here
+  TH2D *hcalib_PLA_LRQTC[7];
+  ^
+./././ANA/ridf2root.cpp:436:3: warning: array index 7 is past the end of the array (that has type 'TH2D *[7]') [-Warray-bounds]
+  hcalib_PLA_Qdiff_Pos[7] = new TH2D("hcalib_PLA_Qdiff_Pos_F11Long",Form("F11Long LQ-RQ vs F11X | run%04d;F11X (mm);LQ-RQ (ch)",runN), 300,-50,50,300,-1000,1000);
+  ^                    ~
+./././ANA/ridf2root.cpp:428:3: note: array 'hcalib_PLA_Qdiff_Pos' declared here
+  TH2D *hcalib_PLA_Qdiff_Pos[7];
+  ^
+In file included from /home/exp/ROOT/root/include/TDictionary.h:44,
+                 from /home/exp/ROOT/root/include/TClass.h:23,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root_cpp_ACLiC_dict.cxx:14:
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawSegmentObject.hh:6,
+                 from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:6,
+                 from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtStoreManager.hh:9,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:30,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root_cpp_ACLiC_dict.cxx:41:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawDataObject.hh:36:16: note:   by ‘virtual void TArtRawDataObject::Clear()’
+   36 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawSegmentObject.hh:13:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawTacquilaDataObject.hh:31:16: note:   by ‘virtual void TArtRawTacquilaDataObject::Clear()’
+   31 |   virtual void Clear() {
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawSegmentObject.hh:42:16: note:   by ‘virtual void TArtRawSegmentObject::Clear()’
+   42 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:7:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawScalerObject.hh:34:16: note:   by ‘virtual void TArtRawScalerObject::Clear()’
+   34 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:55:22: warning: ‘virtual void TNamed::Print(Option_t*) const’ was hidden [-Woverloaded-virtual=]
+   55 |             void     Print(Option_t *option="") const override;
+      |                      ^~~~~
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:33:16: note:   by ‘virtual void TArtRawEventObject::Print()’
+   33 |   virtual void Print();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:32:16: note:   by ‘virtual void TArtRawEventObject::Clear()’
+   32 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtEventStore.hh:20,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:31:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRunInfo.hh:12:16: note:   by ‘virtual void TArtRunInfo::Clear()’
+   12 |   virtual void Clear(){
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:32:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtEventInfo.hh:11:16: note:   by ‘virtual void TArtEventInfo::Clear()’
+   11 |   virtual void Clear(){runnumber=-1;eventnumber=-1;timestamp=0;comp_val=-1;fBit=0x0;}
+      |                ^~~~~
+In file included from /home/exp/ROOT/root/include/TNamed.h:25:
+/home/exp/ROOT/root/include/TObject.h:124:24: warning: ‘virtual void TObject::Delete(Option_t*)’ was hidden [-Woverloaded-virtual=]
+  124 |    virtual void        Delete(Option_t *option=""); // *MENU*
+      |                        ^~~~~~
+In file included from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:33:
+/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/include/TArtBigRIPSParameters.hh:34:15: note:   by ‘static void TArtBigRIPSParameters::Delete()’
+   34 |   static void Delete();
+      |               ^~~~~~
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp: In function ‘void ridf2root(int, TString, bool, int)’:
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:580:102: warning: unknown conversion type character ‘)’ in format [-Wformat=]
+  580 |         hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
+      |                                                                                                      ^
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:580:124: warning: unknown conversion type character ‘)’ in format [-Wformat=]
+  580 |         hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
+      |                                                                                                                            ^
+In file included from /home/exp/ROOT/root/include/TDictionary.h:44,
+                 from /home/exp/ROOT/root/include/TClass.h:23,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root_cpp_ACLiC_dict.cxx:14:
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawSegmentObject.hh:6,
+                 from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:6,
+                 from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtStoreManager.hh:9,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:30,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root_cpp_ACLiC_dict.cxx:41:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawDataObject.hh:36:16: note:   by ‘virtual void TArtRawDataObject::Clear()’
+   36 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawSegmentObject.hh:13:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawTacquilaDataObject.hh:31:16: note:   by ‘virtual void TArtRawTacquilaDataObject::Clear()’
+   31 |   virtual void Clear() {
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawSegmentObject.hh:42:16: note:   by ‘virtual void TArtRawSegmentObject::Clear()’
+   42 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:7:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawScalerObject.hh:34:16: note:   by ‘virtual void TArtRawScalerObject::Clear()’
+   34 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:55:22: warning: ‘virtual void TNamed::Print(Option_t*) const’ was hidden [-Woverloaded-virtual=]
+   55 |             void     Print(Option_t *option="") const override;
+      |                      ^~~~~
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:33:16: note:   by ‘virtual void TArtRawEventObject::Print()’
+   33 |   virtual void Print();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRawEventObject.hh:32:16: note:   by ‘virtual void TArtRawEventObject::Clear()’
+   32 |   virtual void Clear();
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/ANAROOT/anaroot/sources/Core/include/TArtEventStore.hh:20,
+                 from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:31:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtRunInfo.hh:12:16: note:   by ‘virtual void TArtRunInfo::Clear()’
+   12 |   virtual void Clear(){
+      |                ^~~~~
+/home/exp/ROOT/root/include/TNamed.h:42:22: warning: ‘virtual void TNamed::Clear(Option_t*)’ was hidden [-Woverloaded-virtual=]
+   42 |             void     Clear(Option_t *option ="") override;
+      |                      ^~~~~
+In file included from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:32:
+/home/exp/ANAROOT/anaroot/sources/Core/include/TArtEventInfo.hh:11:16: note:   by ‘virtual void TArtEventInfo::Clear()’
+   11 |   virtual void Clear(){runnumber=-1;eventnumber=-1;timestamp=0;comp_val=-1;fBit=0x0;}
+      |                ^~~~~
+In file included from /home/exp/ROOT/root/include/TNamed.h:25:
+/home/exp/ROOT/root/include/TObject.h:124:24: warning: ‘virtual void TObject::Delete(Option_t*)’ was hidden [-Woverloaded-virtual=]
+  124 |    virtual void        Delete(Option_t *option=""); // *MENU*
+      |                        ^~~~~~
+In file included from /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:33:
+/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/include/TArtBigRIPSParameters.hh:34:15: note:   by ‘static void TArtBigRIPSParameters::Delete()’
+   34 |   static void Delete();
+      |               ^~~~~~
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp: In function ‘void ridf2root(int, TString, bool, int)’:
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:580:102: warning: unknown conversion type character ‘)’ in format [-Wformat=]
+  580 |         hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
+      |                                                                                                      ^
+/home/exp/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/././ANA/ridf2root.cpp:580:124: warning: unknown conversion type character ‘)’ in format [-Wformat=]
+  580 |         hana_emt[i][j][4] = new TH1D(Form("EMT_D_%d_%d",i,j),Form("Delta57 %s %s | run%04d;Delta57 (%);#it{N} (events/0.05%)",label_emt1[i].c_str(),label_emt2[j].c_str(),runN),10*(int)range[4], -1.*range[4], range[4]);
+      |                                                                                                                            ^
+  RIBFROOT-Info : [TArtStoreManager] Constructor
+  RIBFROOT-Info : [TArtEventStore] Constructor
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Core/src/TArtStoreManager.cc] regist raw data container in store manager : RawEvent
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : RunInfo
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Core/src/TArtStoreManager.cc] Regist data container in store manager : EventInfo
+  RIBFROOT-Info : [TArtFileDataSource] File = ./RIDF/f7ge_calib0297.ridf
+  RIBFROOT-Info : [TArtFileDataSource] Size = 6210.60 (MB)
+  RIBFROOT-Info : [TArtFileDataSource] Format = RIDF
+  RIBFROOT-Info : [TArtFileDataSource] Run name   = f7ge_calib
+  RIBFROOT-Info : [TArtFileDataSource] Run number = 0297
+  RIBFROOT-Info : [TArtFileDataSource] Start time = 16:22:23
+  RIBFROOT-Info : [TArtFileDataSource] Stop time  = 17:03:05
+  RIBFROOT-Info : [TArtFileDataSource] Date       = 12-Nov-24
+  RIBFROOT-Info : [TArtFileDataSource] Header     = F7Ge Eff.|133Ba 453kBq@6mmStopper upstream|again
+  RIBFROOT-Info : [TArtFileDataSource] Ender      = 
+==== 2D gate =====================================================================
+ tgate[XX]           Gate name           VarX           VarY             Comment
+----------------------------------------------------------------------------------
+A gate2d_00 cannot be loaded.
+A gate2d_01 cannot be loaded.
+=================================================================================
+  RIBFROOT-Info : [TArtParserRIDF] Run number = 0297
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Core/src/TArtParserRIDF.cc] status data:
+<babild>
+ <runstatus>
+  <dipole>
+   <name>D1</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D2</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D3</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D4</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D5</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D6</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D7</name>
+   <brho>0.0000</brho>
+   <nmr>0</nmr>
+  </dipole>
+  <dipole>
+   <name>D8</name>
+   <brho>0.0000</brho>
+   <nmr>0</nmr>
+  </dipole>
+ </runstatus>
+</babild>
+
+===== Load Dipole Brho ======================================================================
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Creating bigrips/zerodegree pid setup...
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Core/src/TArtStoreManager.cc] regist parameter in store manager : BigRIPSParameters
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] start LoadDipoleBrho()
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D1, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D2, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D3, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D4, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D5, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D6, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D7, brho:0.000000
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Reconstruction/BigRIPS/src/TArtBigRIPSParameters.cc] Load brho val of name:D8, brho:0.000000
+=============================================================================================
+(SEG,EFN)=(  0, 91) (dev,fpl,det,mod,geo)=( 57,  7,  7, 24,  0) (ndata)=(  7)  V1190 (geo=00) for Ge-T
+(SEG,EFN)=(  1, 91) (dev,fpl,det,mod,geo)=( 57,  7,  6, 32,  0) (ndata)=(  8)  MADC32 for F7Ge
+(SEG,EFN)=(  2, 91) (dev,fpl,det,mod,geo)=( 57,  7,  6, 32,  1) (ndata)=(  8)  MADC32 for F7Ge#2
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+(SEG,EFN)=(  3, 91) (dev,fpl,det,mod,geo)=( 57,  7, 63, 36,  0) (ndata)=( 32)  Scaler for F7Ge
+(SEG,EFN)=(  4, 91) (dev,fpl,det,mod,geo)=( 57, 63, 60,  8,  0) (ndata)=(  4)  1-event data size | 67700 bytes
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+dev: 57, fpl: 7, det: 63, mod: 36, EFN: 91, num: 32, 
+     10000 events;      1 s;  10000 cps
+     20000 events;      2 s;  10000 cps
+     30000 events;      4 s;   7500 cps
+     40000 events;      5 s;   8000 cps
+     50000 events;      6 s;   8333 cps
+     60000 events;      8 s;   7500 cps
+     70000 events;      9 s;   7778 cps
+     80000 events;     10 s;   8000 cps
+     90000 events;     12 s;   7500 cps
+    100000 events;     14 s;   7143 cps
+    110000 events;     15 s;   7333 cps
+    120000 events;     17 s;   7059 cps
+    130000 events;     19 s;   6842 cps
+    140000 events;     22 s;   6364 cps
+    150000 events;     23 s;   6522 cps
+    160000 events;     25 s;   6400 cps
+    170000 events;     27 s;   6296 cps
+    180000 events;     29 s;   6207 cps
+    190000 events;     31 s;   6129 cps
+    200000 events;     33 s;   6061 cps
+    210000 events;     36 s;   5833 cps
+    220000 events;     38 s;   5789 cps
+    230000 events;     40 s;   5750 cps
+    240000 events;     41 s;   5854 cps
+    250000 events;     43 s;   5814 cps
+    260000 events;     44 s;   5909 cps
+    270000 events;     46 s;   5870 cps
+    280000 events;     48 s;   5833 cps
+    290000 events;     50 s;   5800 cps
+    300000 events;     52 s;   5769 cps
+    310000 events;     54 s;   5741 cps
+    320000 events;     56 s;   5714 cps
+    330000 events;     58 s;   5690 cps
+    340000 events;     62 s;   5484 cps
+    350000 events;     64 s;   5469 cps
+    360000 events;     65 s;   5538 cps
+    370000 events;     67 s;   5522 cps
+    380000 events;     69 s;   5507 cps
+    390000 events;     71 s;   5493 cps
+    400000 events;     73 s;   5479 cps
+    410000 events;     77 s;   5325 cps
+    420000 events;     78 s;   5385 cps
+    430000 events;     80 s;   5375 cps
+    440000 events;     82 s;   5366 cps
+    450000 events;     84 s;   5357 cps
+    460000 events;     86 s;   5349 cps
+    470000 events;     88 s;   5341 cps
+    480000 events;     91 s;   5275 cps
+    490000 events;     92 s;   5326 cps
+    500000 events;     94 s;   5319 cps
+    510000 events;     96 s;   5312 cps
+    520000 events;     98 s;   5306 cps
+    530000 events;     99 s;   5354 cps
+    540000 events;    101 s;   5347 cps
+    550000 events;    104 s;   5288 cps
+    560000 events;    105 s;   5333 cps
+    570000 events;    107 s;   5327 cps
+    580000 events;    109 s;   5321 cps
+    590000 events;    110 s;   5364 cps
+    600000 events;    112 s;   5357 cps
+    610000 events;    114 s;   5351 cps
+    620000 events;    116 s;   5345 cps
+    630000 events;    118 s;   5339 cps
+    640000 events;    119 s;   5378 cps
+    650000 events;    121 s;   5372 cps
+    660000 events;    122 s;   5410 cps
+    670000 events;    124 s;   5403 cps
+    680000 events;    128 s;   5312 cps
+    690000 events;    129 s;   5349 cps
+    700000 events;    131 s;   5344 cps
+    710000 events;    132 s;   5379 cps
+    720000 events;    134 s;   5373 cps
+    730000 events;    135 s;   5407 cps
+    740000 events;    137 s;   5401 cps
+    750000 events;    140 s;   5357 cps
+    760000 events;    142 s;   5352 cps
+    770000 events;    143 s;   5385 cps
+    780000 events;    145 s;   5379 cps
+    790000 events;    146 s;   5411 cps
+    800000 events;    148 s;   5405 cps
+    810000 events;    150 s;   5400 cps
+    820000 events;    152 s;   5395 cps
+    830000 events;    154 s;   5390 cps
+    840000 events;    155 s;   5419 cps
+    850000 events;    157 s;   5414 cps
+    860000 events;    159 s;   5409 cps
+    870000 events;    161 s;   5404 cps
+    880000 events;    162 s;   5432 cps
+    890000 events;    165 s;   5394 cps
+    900000 events;    167 s;   5389 cps
+    910000 events;    169 s;   5385 cps
+    920000 events;    170 s;   5412 cps
+    930000 events;    172 s;   5407 cps
+    940000 events;    173 s;   5434 cps
+    950000 events;    175 s;   5429 cps
+    960000 events;    177 s;   5424 cps
+    970000 events;    179 s;   5419 cps
+    980000 events;    181 s;   5414 cps
+    990000 events;    182 s;   5440 cps
+   1000000 events;    184 s;   5435 cps
+   1010000 events;    185 s;   5459 cps
+   1020000 events;    189 s;   5397 cps
+   1030000 events;    190 s;   5421 cps
+   1040000 events;    192 s;   5417 cps
+   1050000 events;    194 s;   5412 cps
+   1060000 events;    195 s;   5436 cps
+   1070000 events;    197 s;   5431 cps
+   1080000 events;    198 s;   5455 cps
+   1090000 events;    202 s;   5396 cps
+   1100000 events;    203 s;   5419 cps
+   1110000 events;    205 s;   5415 cps
+   1120000 events;    207 s;   5411 cps
+   1130000 events;    209 s;   5407 cps
+   1140000 events;    211 s;   5403 cps
+   1150000 events;    213 s;   5399 cps
+   1160000 events;    216 s;   5370 cps
+   1170000 events;    218 s;   5367 cps
+   1180000 events;    219 s;   5388 cps
+   1190000 events;    221 s;   5385 cps
+   1200000 events;    224 s;   5357 cps
+   1210000 events;    226 s;   5354 cps
+   1220000 events;    227 s;   5374 cps
+   1230000 events;    231 s;   5325 cps
+   1240000 events;    232 s;   5345 cps
+   1250000 events;    234 s;   5342 cps
+   1260000 events;    236 s;   5339 cps
+   1270000 events;    237 s;   5359 cps
+   1280000 events;    239 s;   5356 cps
+   1290000 events;    241 s;   5353 cps
+   1300000 events;    243 s;   5350 cps
+   1310000 events;    245 s;   5347 cps
+   1320000 events;    247 s;   5344 cps
+   1330000 events;    248 s;   5363 cps
+   1340000 events;    250 s;   5360 cps
+   1350000 events;    251 s;   5378 cps
+   1360000 events;    255 s;   5333 cps
+   1370000 events;    256 s;   5352 cps
+   1380000 events;    258 s;   5349 cps
+   1390000 events;    259 s;   5367 cps
+   1400000 events;    261 s;   5364 cps
+   1410000 events;    263 s;   5361 cps
+   1420000 events;    264 s;   5379 cps
+   1430000 events;    268 s;   5336 cps
+   1440000 events;    269 s;   5353 cps
+   1450000 events;    271 s;   5351 cps
+   1460000 events;    272 s;   5368 cps
+   1470000 events;    274 s;   5365 cps
+   1480000 events;    276 s;   5362 cps
+   1490000 events;    277 s;   5379 cps
+   1500000 events;    280 s;   5357 cps
+   1510000 events;    281 s;   5374 cps
+   1520000 events;    283 s;   5371 cps
+   1530000 events;    284 s;   5387 cps
+   1540000 events;    286 s;   5385 cps
+   1550000 events;    288 s;   5382 cps
+   1560000 events;    289 s;   5398 cps
+   1570000 events;    292 s;   5377 cps
+   1580000 events;    294 s;   5374 cps
+   1590000 events;    296 s;   5372 cps
+   1600000 events;    298 s;   5369 cps
+   1610000 events;    299 s;   5385 cps
+   1620000 events;    301 s;   5382 cps
+   1630000 events;    302 s;   5397 cps
+   1640000 events;    305 s;   5377 cps
+   1650000 events;    307 s;   5375 cps
+   1660000 events;    309 s;   5372 cps
+   1670000 events;    310 s;   5387 cps
+   1680000 events;    312 s;   5385 cps
+   1690000 events;    313 s;   5399 cps
+   1700000 events;    317 s;   5363 cps
+   1710000 events;    318 s;   5377 cps
+   1720000 events;    320 s;   5375 cps
+   1730000 events;    321 s;   5389 cps
+   1740000 events;    323 s;   5387 cps
+   1750000 events;    325 s;   5385 cps
+   1760000 events;    326 s;   5399 cps
+   1770000 events;    330 s;   5364 cps
+   1780000 events;    331 s;   5378 cps
+   1790000 events;    333 s;   5375 cps
+   1800000 events;    334 s;   5389 cps
+   1810000 events;    336 s;   5387 cps
+   1820000 events;    338 s;   5385 cps
+   1830000 events;    339 s;   5398 cps
+   1840000 events;    341 s;   5396 cps
+   1850000 events;    343 s;   5394 cps
+   1860000 events;    345 s;   5391 cps
+   1870000 events;    347 s;   5389 cps
+   1880000 events;    349 s;   5387 cps
+   1890000 events;    351 s;   5385 cps
+   1900000 events;    353 s;   5382 cps
+   1910000 events;    356 s;   5365 cps
+   1920000 events;    358 s;   5363 cps
+   1930000 events;    360 s;   5361 cps
+   1940000 events;    361 s;   5374 cps
+   1950000 events;    363 s;   5372 cps
+   1960000 events;    364 s;   5385 cps
+   1970000 events;    366 s;   5383 cps
+   1980000 events;    369 s;   5366 cps
+   1990000 events;    372 s;   5349 cps
+   2000000 events;    374 s;   5348 cps
+   2010000 events;    375 s;   5360 cps
+   2020000 events;    377 s;   5358 cps
+   2030000 events;    379 s;   5356 cps
+   2040000 events;    383 s;   5326 cps
+   2050000 events;    385 s;   5325 cps
+   2060000 events;    386 s;   5337 cps
+   2070000 events;    388 s;   5335 cps
+   2080000 events;    389 s;   5347 cps
+   2090000 events;    391 s;   5345 cps
+   2100000 events;    392 s;   5357 cps
+   2110000 events;    396 s;   5328 cps
+   2120000 events;    397 s;   5340 cps
+   2130000 events;    399 s;   5338 cps
+   2140000 events;    401 s;   5337 cps
+   2150000 events;    402 s;   5348 cps
+   2160000 events;    404 s;   5347 cps
+   2170000 events;    406 s;   5345 cps
+   2180000 events;    409 s;   5330 cps
+   2190000 events;    410 s;   5341 cps
+   2200000 events;    412 s;   5340 cps
+   2210000 events;    414 s;   5338 cps
+   2220000 events;    416 s;   5337 cps
+   2230000 events;    418 s;   5335 cps
+   2240000 events;    420 s;   5333 cps
+   2250000 events;    423 s;   5319 cps
+   2260000 events;    425 s;   5318 cps
+   2270000 events;    428 s;   5304 cps
+   2280000 events;    430 s;   5302 cps
+   2290000 events;    431 s;   5313 cps
+   2300000 events;    433 s;   5312 cps
+   2310000 events;    435 s;   5310 cps
+   2320000 events;    438 s;   5297 cps
+   2330000 events;    440 s;   5295 cps
+   2340000 events;    442 s;   5294 cps
+   2350000 events;    444 s;   5293 cps
+   2360000 events;    445 s;   5303 cps
+   2370000 events;    447 s;   5302 cps
+   2380000 events;    452 s;   5265 cps
+   2390000 events;    453 s;   5276 cps
+   2400000 events;    455 s;   5275 cps
+   2410000 events;    456 s;   5285 cps
+   2420000 events;    458 s;   5284 cps
+   2430000 events;    459 s;   5294 cps
+   2440000 events;    461 s;   5293 cps
+   2450000 events;    464 s;   5280 cps
+   2460000 events;    466 s;   5279 cps
+   2470000 events;    468 s;   5278 cps
+   2480000 events;    469 s;   5288 cps
+   2490000 events;    471 s;   5287 cps
+   2500000 events;    474 s;   5274 cps
+   2510000 events;    476 s;   5273 cps
+   2520000 events;    479 s;   5261 cps
+   2530000 events;    480 s;   5271 cps
+   2540000 events;    482 s;   5270 cps
+   2550000 events;    484 s;   5269 cps
+   2560000 events;    486 s;   5267 cps
+   2570000 events;    487 s;   5277 cps
+   2580000 events;    489 s;   5276 cps
+   2590000 events;    492 s;   5264 cps
+   2600000 events;    493 s;   5274 cps
+   2610000 events;    495 s;   5273 cps
+   2620000 events;    497 s;   5272 cps
+   2630000 events;    498 s;   5281 cps
+   2640000 events;    500 s;   5280 cps
+   2650000 events;    501 s;   5289 cps
+   2660000 events;    504 s;   5278 cps
+   2670000 events;    506 s;   5277 cps
+   2680000 events;    507 s;   5286 cps
+   2690000 events;    509 s;   5285 cps
+   2700000 events;    510 s;   5294 cps
+   2710000 events;    512 s;   5293 cps
+   2720000 events;    516 s;   5271 cps
+   2730000 events;    517 s;   5280 cps
+   2740000 events;    519 s;   5279 cps
+   2750000 events;    520 s;   5288 cps
+   2760000 events;    522 s;   5287 cps
+   2770000 events;    523 s;   5296 cps
+   2780000 events;    525 s;   5295 cps
+   2790000 events;    528 s;   5284 cps
+   2800000 events;    530 s;   5283 cps
+   2810000 events;    531 s;   5292 cps
+   2820000 events;    533 s;   5291 cps
+   2830000 events;    534 s;   5300 cps
+   2840000 events;    537 s;   5289 cps
+   2850000 events;    538 s;   5297 cps
+   2860000 events;    541 s;   5287 cps
+   2870000 events;    543 s;   5285 cps
+   2880000 events;    544 s;   5294 cps
+   2890000 events;    546 s;   5293 cps
+   2900000 events;    548 s;   5292 cps
+   2910000 events;    549 s;   5301 cps
+   2920000 events;    551 s;   5299 cps
+   2930000 events;    554 s;   5289 cps
+   2940000 events;    555 s;   5297 cps
+   2950000 events;    558 s;   5287 cps
+   2960000 events;    559 s;   5295 cps
+   2970000 events;    561 s;   5294 cps
+   2980000 events;    562 s;   5302 cps
+   2990000 events;    564 s;   5301 cps
+   3000000 events;    566 s;   5300 cps
+   3010000 events;    568 s;   5299 cps
+   3020000 events;    570 s;   5298 cps
+   3030000 events;    571 s;   5306 cps
+   3040000 events;    573 s;   5305 cps
+   3050000 events;    574 s;   5314 cps
+   3060000 events;    578 s;   5294 cps
+   3070000 events;    579 s;   5302 cps
+   3080000 events;    581 s;   5301 cps
+   3090000 events;    582 s;   5309 cps
+   3100000 events;    584 s;   5308 cps
+   3110000 events;    586 s;   5307 cps
+   3120000 events;    587 s;   5315 cps
+   3130000 events;    591 s;   5296 cps
+   3140000 events;    592 s;   5304 cps
+   3150000 events;    594 s;   5303 cps
+   3160000 events;    595 s;   5311 cps
+   3170000 events;    597 s;   5310 cps
+   3180000 events;    599 s;   5309 cps
+   3190000 events;    601 s;   5308 cps
+   3200000 events;    603 s;   5307 cps
+   3210000 events;    604 s;   5315 cps
+   3220000 events;    606 s;   5314 cps
+   3230000 events;    608 s;   5312 cps
+   3240000 events;    609 s;   5320 cps
+   3250000 events;    611 s;   5319 cps
+   3260000 events;    612 s;   5327 cps
+   3270000 events;    616 s;   5308 cps
+   3280000 events;    617 s;   5316 cps
+   3290000 events;    620 s;   5306 cps
+   3300000 events;    622 s;   5305 cps
+   3310000 events;    623 s;   5313 cps
+   3320000 events;    625 s;   5312 cps
+   3330000 events;    627 s;   5311 cps
+   3340000 events;    631 s;   5293 cps
+   3350000 events;    633 s;   5292 cps
+   3360000 events;    635 s;   5291 cps
+   3370000 events;    637 s;   5290 cps
+   3380000 events;    638 s;   5298 cps
+   3390000 events;    640 s;   5297 cps
+   3400000 events;    644 s;   5280 cps
+   3410000 events;    646 s;   5279 cps
+   3420000 events;    648 s;   5278 cps
+   3430000 events;    649 s;   5285 cps
+   3440000 events;    651 s;   5284 cps
+   3450000 events;    653 s;   5283 cps
+   3460000 events;    655 s;   5282 cps
+   3470000 events;    659 s;   5266 cps
+   3480000 events;    660 s;   5273 cps
+   3490000 events;    662 s;   5272 cps
+   3500000 events;    663 s;   5279 cps
+   3510000 events;    665 s;   5278 cps
+   3520000 events;    667 s;   5277 cps
+   3530000 events;    669 s;   5277 cps
+   3540000 events;    671 s;   5276 cps
+   3550000 events;    672 s;   5283 cps
+   3560000 events;    674 s;   5282 cps
+   3570000 events;    675 s;   5289 cps
+   3580000 events;    677 s;   5288 cps
+   3590000 events;    679 s;   5287 cps
+   3600000 events;    680 s;   5294 cps
+   3610000 events;    684 s;   5278 cps
+   3620000 events;    685 s;   5285 cps
+   3630000 events;    687 s;   5284 cps
+   3640000 events;    689 s;   5283 cps
+   3650000 events;    690 s;   5290 cps
+   3660000 events;    692 s;   5289 cps
+   3670000 events;    693 s;   5296 cps
+   3680000 events;    696 s;   5287 cps
+   3690000 events;    698 s;   5287 cps
+   3700000 events;    700 s;   5286 cps
+   3710000 events;    701 s;   5292 cps
+   3720000 events;    703 s;   5292 cps
+   3730000 events;    705 s;   5291 cps
+   3740000 events;    708 s;   5282 cps
+   3750000 events;    710 s;   5282 cps
+   3760000 events;    711 s;   5288 cps
+   3770000 events;    713 s;   5288 cps
+   3780000 events;    714 s;   5294 cps
+   3790000 events;    716 s;   5293 cps
+   3800000 events;    717 s;   5300 cps
+   3810000 events;    721 s;   5284 cps
+   3820000 events;    723 s;   5284 cps
+   3830000 events;    724 s;   5290 cps
+   3840000 events;    726 s;   5289 cps
+   3850000 events;    727 s;   5296 cps
+   3860000 events;    729 s;   5295 cps
+   3870000 events;    731 s;   5294 cps
+   3880000 events;    733 s;   5293 cps
+   3890000 events;    734 s;   5300 cps
+   3900000 events;    736 s;   5299 cps
+   3910000 events;    738 s;   5298 cps
+   3920000 events;    739 s;   5304 cps
+   3930000 events;    741 s;   5304 cps
+   3940000 events;    742 s;   5310 cps
+   3950000 events;    746 s;   5295 cps
+   3960000 events;    748 s;   5294 cps
+   3970000 events;    750 s;   5293 cps
+   3980000 events;    751 s;   5300 cps
+   3990000 events;    753 s;   5299 cps
+   4000000 events;    754 s;   5305 cps
+   4010000 events;    756 s;   5304 cps
+   4020000 events;    759 s;   5296 cps
+   4030000 events;    761 s;   5296 cps
+   4040000 events;    762 s;   5302 cps
+   4050000 events;    764 s;   5301 cps
+   4060000 events;    765 s;   5307 cps
+   4070000 events;    767 s;   5306 cps
+   4080000 events;    771 s;   5292 cps
+   4090000 events;    772 s;   5298 cps
+   4100000 events;    774 s;   5297 cps
+   4110000 events;    775 s;   5303 cps
+   4120000 events;    777 s;   5302 cps
+   4130000 events;    778 s;   5308 cps
+   4140000 events;    780 s;   5308 cps
+   4150000 events;    784 s;   5293 cps
+   4160000 events;    785 s;   5299 cps
+   4170000 events;    787 s;   5299 cps
+   4180000 events;    788 s;   5305 cps
+   4190000 events;    790 s;   5304 cps
+   4200000 events;    792 s;   5303 cps
+   4210000 events;    793 s;   5309 cps
+   4220000 events;    795 s;   5308 cps
+   4230000 events;    797 s;   5307 cps
+   4240000 events;    798 s;   5313 cps
+   4250000 events;    800 s;   5312 cps
+   4260000 events;    802 s;   5312 cps
+   4270000 events;    803 s;   5318 cps
+   4280000 events;    805 s;   5317 cps
+   4290000 events;    808 s;   5309 cps
+   4300000 events;    809 s;   5315 cps
+   4310000 events;    811 s;   5314 cps
+   4320000 events;    813 s;   5314 cps
+   4330000 events;    814 s;   5319 cps
+   4340000 events;    816 s;   5319 cps
+   4350000 events;    818 s;   5318 cps
+   4360000 events;    821 s;   5311 cps
+   4370000 events;    823 s;   5310 cps
+   4380000 events;    824 s;   5316 cps
+   4390000 events;    826 s;   5315 cps
+   4400000 events;    828 s;   5314 cps
+   4410000 events;    829 s;   5320 cps
+   4420000 events;    833 s;   5306 cps
+   4430000 events;    834 s;   5312 cps
+   4440000 events;    836 s;   5311 cps
+   4450000 events;    838 s;   5310 cps
+   4460000 events;    839 s;   5316 cps
+   4470000 events;    841 s;   5315 cps
+   4480000 events;    842 s;   5321 cps
+   4490000 events;    846 s;   5307 cps
+   4500000 events;    848 s;   5307 cps
+   4510000 events;    850 s;   5306 cps
+   4520000 events;    852 s;   5305 cps
+   4530000 events;    854 s;   5304 cps
+   4540000 events;    856 s;   5304 cps
+   4550000 events;    858 s;   5303 cps
+   4560000 events;    860 s;   5302 cps
+   4570000 events;    862 s;   5302 cps
+   4580000 events;    864 s;   5301 cps
+   4590000 events;    866 s;   5300 cps
+   4600000 events;    868 s;   5300 cps
+   4610000 events;    870 s;   5299 cps
+   4620000 events;    872 s;   5298 cps
+   4630000 events;    875 s;   5291 cps
+   4640000 events;    876 s;   5297 cps
+   4650000 events;    879 s;   5290 cps
+   4660000 events;    881 s;   5289 cps
+   4670000 events;    882 s;   5295 cps
+   4680000 events;    884 s;   5294 cps
+   4690000 events;    886 s;   5293 cps
+   4700000 events;    888 s;   5293 cps
+   4710000 events;    890 s;   5292 cps
+   4720000 events;    891 s;   5297 cps
+   4730000 events;    893 s;   5297 cps
+   4740000 events;    894 s;   5302 cps
+   4750000 events;    896 s;   5301 cps
+   4760000 events;    900 s;   5289 cps
+   4770000 events;    901 s;   5294 cps
+   4780000 events;    903 s;   5293 cps
+   4790000 events;    904 s;   5299 cps
+   4800000 events;    906 s;   5298 cps
+   4810000 events;    908 s;   5297 cps
+   4820000 events;    909 s;   5303 cps
+   4830000 events;    913 s;   5290 cps
+   4840000 events;    914 s;   5295 cps
+   4850000 events;    916 s;   5295 cps
+   4860000 events;    917 s;   5300 cps
+   4870000 events;    919 s;   5299 cps
+   4880000 events;    921 s;   5299 cps
+   4890000 events;    922 s;   5304 cps
+   4900000 events;    925 s;   5297 cps
+   4910000 events;    926 s;   5302 cps
+   4920000 events;    928 s;   5302 cps
+   4930000 events;    930 s;   5301 cps
+   4940000 events;    932 s;   5300 cps
+   4950000 events;    933 s;   5305 cps
+   4960000 events;    935 s;   5305 cps
+   4970000 events;    938 s;   5299 cps
+   4980000 events;    939 s;   5304 cps
+   4990000 events;    941 s;   5303 cps
+   5000000 events;    943 s;   5302 cps
+   5010000 events;    944 s;   5307 cps
+   5020000 events;    946 s;   5307 cps
+   5030000 events;    947 s;   5312 cps
+   5040000 events;    951 s;   5300 cps
+   5050000 events;    953 s;   5299 cps
+   5060000 events;    955 s;   5298 cps
+   5070000 events;    957 s;   5298 cps
+   5080000 events;    959 s;   5297 cps
+   5090000 events;    961 s;   5297 cps
+   5100000 events;    965 s;   5285 cps
+   5110000 events;    967 s;   5284 cps
+   5120000 events;    968 s;   5289 cps
+   5130000 events;    970 s;   5289 cps
+   5140000 events;    972 s;   5288 cps
+   5150000 events;    974 s;   5287 cps
+   5160000 events;    976 s;   5287 cps
+   5170000 events;    980 s;   5276 cps
+   5180000 events;    981 s;   5280 cps
+   5190000 events;    983 s;   5280 cps
+   5200000 events;    984 s;   5285 cps
+   5210000 events;    986 s;   5284 cps
+   5220000 events;    988 s;   5283 cps
+   5230000 events;    989 s;   5288 cps
+   5240000 events;    993 s;   5277 cps
+   5250000 events;    994 s;   5282 cps
+   5260000 events;    996 s;   5281 cps
+   5270000 events;    997 s;   5286 cps
+   5280000 events;    999 s;   5285 cps
+   5290000 events;   1001 s;   5285 cps
+   5300000 events;   1002 s;   5289 cps
+   5310000 events;   1005 s;   5284 cps
+   5320000 events;   1007 s;   5283 cps
+   5330000 events;   1009 s;   5282 cps
+   5340000 events;   1010 s;   5287 cps
+   5350000 events;   1012 s;   5287 cps
+   5360000 events;   1014 s;   5286 cps
+   5370000 events;   1015 s;   5291 cps
+   5380000 events;   1017 s;   5290 cps
+   5390000 events;   1019 s;   5289 cps
+   5400000 events;   1021 s;   5289 cps
+   5410000 events;   1022 s;   5294 cps
+   5420000 events;   1024 s;   5293 cps
+   5430000 events;   1025 s;   5298 cps
+   5440000 events;   1029 s;   5287 cps
+   5450000 events;   1030 s;   5291 cps
+   5460000 events;   1032 s;   5291 cps
+   5470000 events;   1034 s;   5290 cps
+   5480000 events;   1036 s;   5290 cps
+   5490000 events;   1038 s;   5289 cps
+   5500000 events;   1039 s;   5294 cps
+   5510000 events;   1043 s;   5283 cps
+   5520000 events;   1045 s;   5282 cps
+   5530000 events;   1046 s;   5287 cps
+   5540000 events;   1048 s;   5286 cps
+   5550000 events;   1049 s;   5291 cps
+   5560000 events;   1052 s;   5285 cps
+   5570000 events;   1053 s;   5290 cps
+   5580000 events;   1055 s;   5289 cps
+   5590000 events;   1057 s;   5289 cps
+   5600000 events;   1058 s;   5293 cps
+   5610000 events;   1060 s;   5292 cps
+   5620000 events;   1062 s;   5292 cps
+   5630000 events;   1064 s;   5291 cps
+   5640000 events;   1065 s;   5296 cps
+   5650000 events;   1068 s;   5290 cps
+   5660000 events;   1070 s;   5290 cps
+   5670000 events;   1072 s;   5289 cps
+   5680000 events;   1073 s;   5294 cps
+   5690000 events;   1075 s;   5293 cps
+   5700000 events;   1076 s;   5297 cps
+   5710000 events;   1078 s;   5297 cps
+   5720000 events;   1081 s;   5291 cps
+   5730000 events;   1083 s;   5291 cps
+   5740000 events;   1085 s;   5290 cps
+   5750000 events;   1086 s;   5295 cps
+   5760000 events;   1088 s;   5294 cps
+   5770000 events;   1089 s;   5298 cps
+   5780000 events;   1093 s;   5288 cps
+   5790000 events;   1094 s;   5293 cps
+   5800000 events;   1096 s;   5292 cps
+   5810000 events;   1098 s;   5291 cps
+   5820000 events;   1099 s;   5296 cps
+   5830000 events;   1101 s;   5295 cps
+   5840000 events;   1102 s;   5299 cps
+   5850000 events;   1106 s;   5289 cps
+   5860000 events;   1107 s;   5294 cps
+   5870000 events;   1109 s;   5293 cps
+   5880000 events;   1110 s;   5297 cps
+   5890000 events;   1112 s;   5297 cps
+   5900000 events;   1114 s;   5296 cps
+   5910000 events;   1116 s;   5296 cps
+   5920000 events;   1118 s;   5295 cps
+   5930000 events;   1119 s;   5299 cps
+   5940000 events;   1121 s;   5299 cps
+   5950000 events;   1122 s;   5303 cps
+   5960000 events;   1124 s;   5302 cps
+   5970000 events;   1126 s;   5302 cps
+   5980000 events;   1127 s;   5306 cps
+   5990000 events;   1131 s;   5296 cps
+   6000000 events;   1132 s;   5300 cps
+   6010000 events;   1134 s;   5300 cps
+   6020000 events;   1136 s;   5299 cps
+   6030000 events;   1137 s;   5303 cps
+   6040000 events;   1139 s;   5303 cps
+   6050000 events;   1140 s;   5307 cps
+   6060000 events;   1143 s;   5302 cps
+   6070000 events;   1145 s;   5301 cps
+   6080000 events;   1147 s;   5301 cps
+   6090000 events;   1149 s;   5300 cps
+   6100000 events;   1150 s;   5304 cps
+   6110000 events;   1152 s;   5304 cps
+   6120000 events;   1155 s;   5299 cps
+   6130000 events;   1156 s;   5303 cps
+   6140000 events;   1158 s;   5302 cps
+   6150000 events;   1159 s;   5306 cps
+   6160000 events;   1161 s;   5306 cps
+   6170000 events;   1163 s;   5305 cps
+   6180000 events;   1164 s;   5309 cps
+   6190000 events;   1168 s;   5300 cps
+   6200000 events;   1170 s;   5299 cps
+   6210000 events;   1171 s;   5303 cps
+   6220000 events;   1173 s;   5303 cps
+   6230000 events;   1175 s;   5302 cps
+   6240000 events;   1177 s;   5302 cps
+   6250000 events;   1179 s;   5301 cps
+   6260000 events;   1181 s;   5301 cps
+   6270000 events;   1182 s;   5305 cps
+   6280000 events;   1184 s;   5304 cps
+   6290000 events;   1186 s;   5304 cps
+   6300000 events;   1187 s;   5307 cps
+   6310000 events;   1189 s;   5307 cps
+   6320000 events;   1190 s;   5311 cps
+   6330000 events;   1194 s;   5302 cps
+   6340000 events;   1195 s;   5305 cps
+   6350000 events;   1197 s;   5305 cps
+   6360000 events;   1199 s;   5304 cps
+   6370000 events;   1200 s;   5308 cps
+   6380000 events;   1202 s;   5308 cps
+   6390000 events;   1203 s;   5312 cps
+   6400000 events;   1207 s;   5302 cps
+   6410000 events;   1209 s;   5302 cps
+   6420000 events;   1210 s;   5306 cps
+   6430000 events;   1212 s;   5305 cps
+   6440000 events;   1213 s;   5309 cps
+   6450000 events;   1215 s;   5309 cps
+   6460000 events;   1218 s;   5304 cps
+   6470000 events;   1220 s;   5303 cps
+   6480000 events;   1221 s;   5307 cps
+   6490000 events;   1223 s;   5307 cps
+   6500000 events;   1224 s;   5310 cps
+   6510000 events;   1226 s;   5310 cps
+   6520000 events;   1227 s;   5314 cps
+   6530000 events;   1231 s;   5305 cps
+   6540000 events;   1232 s;   5308 cps
+   6550000 events;   1234 s;   5308 cps
+   6560000 events;   1235 s;   5312 cps
+   6570000 events;   1237 s;   5311 cps
+   6580000 events;   1239 s;   5311 cps
+   6590000 events;   1241 s;   5310 cps
+   6600000 events;   1243 s;   5310 cps
+   6610000 events;   1244 s;   5314 cps
+   6620000 events;   1246 s;   5313 cps
+   6630000 events;   1247 s;   5317 cps
+   6640000 events;   1249 s;   5316 cps
+   6650000 events;   1251 s;   5316 cps
+   6660000 events;   1252 s;   5319 cps
+   6670000 events;   1255 s;   5315 cps
+   6680000 events;   1257 s;   5314 cps
+   6690000 events;   1259 s;   5314 cps
+   6700000 events;   1260 s;   5317 cps
+   6710000 events;   1262 s;   5317 cps
+   6720000 events;   1263 s;   5321 cps
+   6730000 events;   1265 s;   5320 cps
+   6740000 events;   1268 s;   5315 cps
+   6750000 events;   1270 s;   5315 cps
+   6760000 events;   1272 s;   5314 cps
+   6770000 events;   1274 s;   5314 cps
+   6780000 events;   1275 s;   5318 cps
+   6790000 events;   1277 s;   5317 cps
+   6800000 events;   1280 s;   5312 cps
+   6810000 events;   1281 s;   5316 cps
+   6820000 events;   1283 s;   5316 cps
+   6830000 events;   1284 s;   5319 cps
+   6840000 events;   1286 s;   5319 cps
+   6850000 events;   1288 s;   5318 cps
+   6860000 events;   1289 s;   5322 cps
+   6870000 events;   1293 s;   5313 cps
+   6880000 events;   1294 s;   5317 cps
+   6890000 events;   1296 s;   5316 cps
+   6900000 events;   1297 s;   5320 cps
+   6910000 events;   1299 s;   5319 cps
+   6920000 events;   1301 s;   5319 cps
+   6930000 events;   1302 s;   5323 cps
+   6940000 events;   1306 s;   5314 cps
+   6950000 events;   1307 s;   5318 cps
+   6960000 events;   1309 s;   5317 cps
+   6970000 events;   1310 s;   5321 cps
+   6980000 events;   1312 s;   5320 cps
+   6990000 events;   1314 s;   5320 cps
+   7000000 events;   1315 s;   5323 cps
+   7010000 events;   1318 s;   5319 cps
+   7020000 events;   1320 s;   5318 cps
+   7030000 events;   1323 s;   5314 cps
+   7040000 events;   1324 s;   5317 cps
+   7050000 events;   1326 s;   5317 cps
+   7060000 events;   1328 s;   5316 cps
+   7070000 events;   1330 s;   5316 cps
+   7080000 events;   1333 s;   5311 cps
+   7090000 events;   1336 s;   5307 cps
+   7100000 events;   1338 s;   5306 cps
+   7110000 events;   1339 s;   5310 cps
+   7120000 events;   1341 s;   5309 cps
+   7130000 events;   1343 s;   5309 cps
+   7140000 events;   1347 s;   5301 cps
+   7150000 events;   1348 s;   5304 cps
+   7160000 events;   1350 s;   5304 cps
+   7170000 events;   1352 s;   5303 cps
+   7180000 events;   1353 s;   5307 cps
+   7190000 events;   1355 s;   5306 cps
+   7200000 events;   1356 s;   5310 cps
+   7210000 events;   1360 s;   5301 cps
+   7220000 events;   1361 s;   5305 cps
+   7230000 events;   1363 s;   5304 cps
+   7240000 events;   1364 s;   5308 cps
+   7250000 events;   1366 s;   5307 cps
+   7260000 events;   1368 s;   5307 cps
+   7270000 events;   1369 s;   5310 cps
+   7280000 events;   1372 s;   5306 cps
+   7290000 events;   1373 s;   5310 cps
+   7300000 events;   1375 s;   5309 cps
+   7310000 events;   1376 s;   5312 cps
+   7320000 events;   1378 s;   5312 cps
+   7330000 events;   1380 s;   5312 cps
+   7340000 events;   1381 s;   5315 cps
+   7350000 events;   1384 s;   5311 cps
+   7360000 events;   1386 s;   5310 cps
+   7370000 events;   1388 s;   5310 cps
+   7380000 events;   1389 s;   5313 cps
+   7390000 events;   1391 s;   5313 cps
+   7400000 events;   1392 s;   5316 cps
+   7410000 events;   1394 s;   5316 cps
+   7420000 events;   1397 s;   5311 cps
+   7430000 events;   1399 s;   5311 cps
+   7440000 events;   1401 s;   5310 cps
+   7450000 events;   1402 s;   5314 cps
+   7460000 events;   1404 s;   5313 cps
+   7470000 events;   1405 s;   5317 cps
+   7480000 events;   1409 s;   5309 cps
+   7490000 events;   1410 s;   5312 cps
+   7500000 events;   1412 s;   5312 cps
+   7510000 events;   1413 s;   5315 cps
+   7520000 events;   1415 s;   5314 cps
+   7530000 events;   1416 s;   5318 cps
+   7540000 events;   1418 s;   5317 cps
+   7550000 events;   1421 s;   5313 cps
+   7560000 events;   1423 s;   5313 cps
+   7570000 events;   1424 s;   5316 cps
+   7580000 events;   1426 s;   5316 cps
+   7590000 events;   1427 s;   5319 cps
+   7600000 events;   1430 s;   5315 cps
+   7610000 events;   1431 s;   5318 cps
+   7620000 events;   1433 s;   5318 cps
+   7630000 events;   1434 s;   5321 cps
+   7640000 events;   1436 s;   5320 cps
+   7650000 events;   1438 s;   5320 cps
+   7660000 events;   1439 s;   5323 cps
+   7670000 events;   1441 s;   5323 cps
+   7680000 events;   1442 s;   5326 cps
+   7690000 events;   1446 s;   5318 cps
+   7700000 events;   1447 s;   5321 cps
+   7710000 events;   1449 s;   5321 cps
+   7720000 events;   1451 s;   5320 cps
+   7730000 events;   1452 s;   5324 cps
+   7740000 events;   1454 s;   5323 cps
+   7750000 events;   1455 s;   5326 cps
+   7760000 events;   1459 s;   5319 cps
+   7770000 events;   1461 s;   5318 cps
+   7780000 events;   1462 s;   5321 cps
+   7790000 events;   1464 s;   5321 cps
+   7800000 events;   1465 s;   5324 cps
+   7810000 events;   1467 s;   5324 cps
+   7820000 events;   1470 s;   5320 cps
+   7830000 events;   1471 s;   5323 cps
+   7840000 events;   1473 s;   5322 cps
+   7850000 events;   1474 s;   5326 cps
+   7860000 events;   1476 s;   5325 cps
+   7870000 events;   1477 s;   5328 cps
+   7880000 events;   1479 s;   5328 cps
+   7890000 events;   1483 s;   5320 cps
+   7900000 events;   1484 s;   5323 cps
+   7910000 events;   1486 s;   5323 cps
+   7920000 events;   1487 s;   5326 cps
+   7930000 events;   1489 s;   5326 cps
+   7940000 events;   1491 s;   5325 cps
+   7950000 events;   1492 s;   5328 cps
+   7960000 events;   1495 s;   5324 cps
+   7970000 events;   1497 s;   5324 cps
+   7980000 events;   1498 s;   5327 cps
+   7990000 events;   1500 s;   5327 cps
+   8000000 events;   1502 s;   5326 cps
+   8010000 events;   1503 s;   5329 cps
+   8020000 events;   1505 s;   5329 cps
+   8030000 events;   1508 s;   5325 cps
+   8040000 events;   1509 s;   5328 cps
+   8050000 events;   1512 s;   5324 cps
+   8060000 events;   1513 s;   5327 cps
+   8070000 events;   1515 s;   5327 cps
+   8080000 events;   1516 s;   5330 cps
+   8090000 events;   1518 s;   5329 cps
+   8100000 events;   1521 s;   5325 cps
+   8110000 events;   1523 s;   5325 cps
+   8120000 events;   1524 s;   5328 cps
+   8130000 events;   1526 s;   5328 cps
+   8140000 events;   1528 s;   5327 cps
+   8150000 events;   1529 s;   5330 cps
+   8160000 events;   1532 s;   5326 cps
+   8170000 events;   1533 s;   5329 cps
+   8180000 events;   1535 s;   5329 cps
+   8190000 events;   1536 s;   5332 cps
+   8200000 events;   1538 s;   5332 cps
+   8210000 events;   1540 s;   5331 cps
+   8220000 events;   1541 s;   5334 cps
+   8230000 events;   1545 s;   5327 cps
+   8240000 events;   1546 s;   5330 cps
+   8250000 events;   1548 s;   5329 cps
+   8260000 events;   1549 s;   5332 cps
+   8270000 events;   1551 s;   5332 cps
+   8280000 events;   1553 s;   5332 cps
+   8290000 events;   1554 s;   5335 cps
+   8300000 events;   1557 s;   5331 cps
+   8310000 events;   1559 s;   5330 cps
+   8320000 events;   1561 s;   5330 cps
+   8330000 events;   1563 s;   5329 cps
+   8340000 events;   1565 s;   5329 cps
+   8350000 events;   1567 s;   5329 cps
+   8360000 events;   1569 s;   5328 cps
+   8370000 events;   1572 s;   5324 cps
+   8380000 events;   1574 s;   5324 cps
+   8390000 events;   1576 s;   5324 cps
+   8400000 events;   1577 s;   5327 cps
+   8410000 events;   1579 s;   5326 cps
+   8420000 events;   1580 s;   5329 cps
+   8430000 events;   1582 s;   5329 cps
+   8440000 events;   1585 s;   5325 cps
+   8450000 events;   1587 s;   5325 cps
+   8460000 events;   1589 s;   5324 cps
+   8470000 events;   1590 s;   5327 cps
+   8480000 events;   1592 s;   5327 cps
+   8490000 events;   1593 s;   5330 cps
+   8500000 events;   1597 s;   5322 cps
+   8510000 events;   1598 s;   5325 cps
+   8520000 events;   1600 s;   5325 cps
+   8530000 events;   1601 s;   5328 cps
+   8540000 events;   1603 s;   5328 cps
+   8550000 events;   1604 s;   5330 cps
+   8560000 events;   1606 s;   5330 cps
+   8570000 events;   1610 s;   5323 cps
+   8580000 events;   1611 s;   5326 cps
+   8590000 events;   1613 s;   5325 cps
+   8600000 events;   1614 s;   5328 cps
+   8610000 events;   1616 s;   5328 cps
+   8620000 events;   1618 s;   5328 cps
+   8630000 events;   1619 s;   5330 cps
+   8640000 events;   1622 s;   5327 cps
+   8650000 events;   1624 s;   5326 cps
+   8660000 events;   1625 s;   5329 cps
+   8670000 events;   1627 s;   5329 cps
+   8680000 events;   1629 s;   5328 cps
+   8690000 events;   1630 s;   5331 cps
+   8700000 events;   1632 s;   5331 cps
+   8710000 events;   1635 s;   5327 cps
+   8720000 events;   1636 s;   5330 cps
+   8730000 events;   1639 s;   5326 cps
+   8740000 events;   1640 s;   5329 cps
+   8750000 events;   1642 s;   5329 cps
+   8760000 events;   1643 s;   5332 cps
+   8770000 events;   1645 s;   5331 cps
+   8780000 events;   1648 s;   5328 cps
+   8790000 events;   1650 s;   5327 cps
+   8800000 events;   1651 s;   5330 cps
+   8810000 events;   1653 s;   5330 cps
+   8820000 events;   1655 s;   5329 cps
+   8830000 events;   1656 s;   5332 cps
+   8840000 events;   1659 s;   5329 cps
+   8850000 events;   1661 s;   5328 cps
+   8860000 events;   1662 s;   5331 cps
+   8870000 events;   1664 s;   5331 cps
+   8880000 events;   1665 s;   5333 cps
+   8890000 events;   1667 s;   5333 cps
+   8900000 events;   1668 s;   5336 cps
+   8910000 events;   1672 s;   5329 cps
+   8920000 events;   1673 s;   5332 cps
+   8930000 events;   1675 s;   5331 cps
+   8940000 events;   1676 s;   5334 cps
+   8950000 events;   1678 s;   5334 cps
+   8960000 events;   1680 s;   5333 cps
+   8970000 events;   1681 s;   5336 cps
+   8980000 events;   1685 s;   5329 cps
+   8990000 events;   1686 s;   5332 cps
+   9000000 events;   1688 s;   5332 cps
+   9010000 events;   1690 s;   5331 cps
+   9020000 events;   1691 s;   5334 cps
+   9030000 events;   1693 s;   5334 cps
+   9040000 events;   1694 s;   5336 cps
+   9050000 events;   1698 s;   5330 cps
+   9060000 events;   1699 s;   5333 cps
+   9070000 events;   1702 s;   5329 cps
+   9080000 events;   1703 s;   5332 cps
+   9090000 events;   1705 s;   5331 cps
+   9100000 events;   1707 s;   5331 cps
+   9110000 events;   1709 s;   5331 cps
+   9120000 events;   1712 s;   5327 cps
+   9130000 events;   1714 s;   5327 cps
+   9140000 events;   1716 s;   5326 cps
+   9150000 events;   1718 s;   5326 cps
+   9160000 events;   1719 s;   5329 cps
+   9170000 events;   1721 s;   5328 cps
+   9180000 events;   1723 s;   5328 cps
+   9190000 events;   1725 s;   5328 cps
+   9200000 events;   1727 s;   5327 cps
+   9210000 events;   1728 s;   5330 cps
+   9220000 events;   1730 s;   5329 cps
+   9230000 events;   1731 s;   5332 cps
+   9240000 events;   1733 s;   5332 cps
+   9250000 events;   1736 s;   5328 cps
+   9260000 events;   1738 s;   5328 cps
+   9270000 events;   1739 s;   5331 cps
+   9280000 events;   1741 s;   5330 cps
+   9290000 events;   1742 s;   5333 cps
+   9300000 events;   1745 s;   5330 cps
+   9310000 events;   1746 s;   5332 cps
+   9320000 events;   1749 s;   5329 cps
+   9330000 events;   1751 s;   5328 cps
+   9340000 events;   1752 s;   5331 cps
+   9350000 events;   1754 s;   5331 cps
+   9360000 events;   1756 s;   5330 cps
+   9370000 events;   1757 s;   5333 cps
+   9380000 events;   1759 s;   5333 cps
+   9390000 events;   1762 s;   5329 cps
+   9400000 events;   1763 s;   5332 cps
+   9410000 events;   1766 s;   5328 cps
+   9420000 events;   1767 s;   5331 cps
+   9430000 events;   1769 s;   5331 cps
+   9440000 events;   1770 s;   5333 cps
+   9450000 events;   1772 s;   5333 cps
+   9460000 events;   1775 s;   5330 cps
+   9470000 events;   1777 s;   5329 cps
+   9480000 events;   1778 s;   5332 cps
+   9490000 events;   1780 s;   5331 cps
+   9500000 events;   1781 s;   5334 cps
+   9510000 events;   1783 s;   5334 cps
+   9520000 events;   1787 s;   5327 cps
+   9530000 events;   1788 s;   5330 cps
+   9540000 events;   1790 s;   5330 cps
+   9550000 events;   1791 s;   5332 cps
+   9560000 events;   1793 s;   5332 cps
+   9570000 events;   1795 s;   5331 cps
+   9580000 events;   1796 s;   5334 cps
+   9590000 events;   1800 s;   5328 cps
+   9600000 events;   1801 s;   5330 cps
+   9610000 events;   1803 s;   5330 cps
+   9620000 events;   1804 s;   5333 cps
+   9630000 events;   1806 s;   5332 cps
+   9640000 events;   1808 s;   5332 cps
+   9650000 events;   1809 s;   5334 cps
+   9660000 events;   1813 s;   5328 cps
+   9670000 events;   1814 s;   5331 cps
+   9680000 events;   1816 s;   5330 cps
+   9690000 events;   1818 s;   5330 cps
+   9700000 events;   1821 s;   5327 cps
+   9710000 events;   1823 s;   5326 cps
+   9720000 events;   1824 s;   5329 cps
+   9730000 events;   1827 s;   5326 cps
+   9740000 events;   1828 s;   5328 cps
+   9750000 events;   1831 s;   5325 cps
+   9760000 events;   1833 s;   5325 cps
+   9770000 events;   1834 s;   5327 cps
+   9780000 events;   1836 s;   5327 cps
+   9790000 events;   1838 s;   5326 cps
+   9800000 events;   1842 s;   5320 cps
+   9810000 events;   1844 s;   5320 cps
+   9820000 events;   1846 s;   5320 cps
+   9830000 events;   1848 s;   5319 cps
+   9840000 events;   1849 s;   5322 cps
+   9850000 events;   1851 s;   5321 cps
+   9860000 events;   1856 s;   5312 cps
+   9870000 events;   1857 s;   5315 cps
+   9880000 events;   1859 s;   5315 cps
+   9890000 events;   1861 s;   5314 cps
+   9900000 events;   1863 s;   5314 cps
+   9910000 events;   1865 s;   5314 cps
+   9920000 events;   1866 s;   5316 cps
+   9930000 events;   1871 s;   5307 cps
+   9940000 events;   1872 s;   5310 cps
+   9950000 events;   1874 s;   5309 cps
+   9960000 events;   1876 s;   5309 cps
+   9970000 events;   1878 s;   5309 cps
+   9980000 events;   1880 s;   5309 cps
+   9990000 events;   1882 s;   5308 cps
+  10000000 events;   1886 s;   5302 cps
+  10010000 events;   1887 s;   5305 cps
+  10020000 events;   1889 s;   5304 cps
+  10030000 events;   1891 s;   5304 cps
+  10040000 events;   1893 s;   5304 cps
+  10050000 events;   1895 s;   5303 cps
+  10060000 events;   1897 s;   5303 cps
+  10070000 events;   1900 s;   5300 cps
+  10080000 events;   1902 s;   5300 cps
+  10090000 events;   1904 s;   5299 cps
+  10100000 events;   1905 s;   5302 cps
+  10110000 events;   1907 s;   5302 cps
+  10120000 events;   1908 s;   5304 cps
+  10130000 events;   1910 s;   5304 cps
+  10140000 events;   1913 s;   5301 cps
+  10150000 events;   1915 s;   5300 cps
+  10160000 events;   1917 s;   5300 cps
+  10170000 events;   1918 s;   5302 cps
+  10180000 events;   1920 s;   5302 cps
+  10190000 events;   1922 s;   5302 cps
+  10200000 events;   1926 s;   5296 cps
+  10210000 events;   1927 s;   5298 cps
+  10220000 events;   1928 s;   5301 cps
+  10230000 events;   1930 s;   5301 cps
+  10240000 events;   1931 s;   5303 cps
+  10250000 events;   1933 s;   5303 cps
+  10260000 events;   1934 s;   5305 cps
+  10270000 events;   1938 s;   5299 cps
+  10280000 events;   1940 s;   5299 cps
+  10290000 events;   1942 s;   5299 cps
+  10300000 events;   1944 s;   5298 cps
+  10310000 events;   1945 s;   5301 cps
+  10320000 events;   1948 s;   5298 cps
+  10330000 events;   1950 s;   5297 cps
+  10340000 events;   1952 s;   5297 cps
+  10350000 events;   1954 s;   5297 cps
+  10360000 events;   1955 s;   5299 cps
+  10370000 events;   1957 s;   5299 cps
+  10380000 events;   1960 s;   5296 cps
+  10390000 events;   1961 s;   5298 cps
+  10400000 events;   1963 s;   5298 cps
+  10410000 events;   1967 s;   5292 cps
+  10420000 events;   1968 s;   5295 cps
+  10430000 events;   1970 s;   5294 cps
+  10440000 events;   1972 s;   5294 cps
+  10450000 events;   1973 s;   5297 cps
+  10460000 events;   1975 s;   5296 cps
+  10470000 events;   1976 s;   5299 cps
+  10480000 events;   1980 s;   5293 cps
+  10490000 events;   1982 s;   5293 cps
+  10500000 events;   1983 s;   5295 cps
+  10510000 events;   1985 s;   5295 cps
+  10520000 events;   1986 s;   5297 cps
+  10530000 events;   1988 s;   5297 cps
+  10540000 events;   1991 s;   5294 cps
+  10550000 events;   1993 s;   5294 cps
+  10560000 events;   1994 s;   5296 cps
+  10570000 events;   1996 s;   5296 cps
+  10580000 events;   1997 s;   5298 cps
+  10590000 events;   1999 s;   5298 cps
+  10600000 events;   2000 s;   5300 cps
+  10610000 events;   2004 s;   5294 cps
+  10620000 events;   2005 s;   5297 cps
+  10630000 events;   2007 s;   5296 cps
+  10640000 events;   2008 s;   5299 cps
+  10650000 events;   2010 s;   5299 cps
+  10660000 events;   2012 s;   5298 cps
+  10670000 events;   2014 s;   5298 cps
+  10680000 events;   2016 s;   5298 cps
+  10690000 events;   2017 s;   5300 cps
+  10700000 events;   2019 s;   5300 cps
+  10710000 events;   2021 s;   5299 cps
+  10720000 events;   2023 s;   5299 cps
+  10730000 events;   2025 s;   5299 cps
+  10740000 events;   2026 s;   5301 cps
+  10750000 events;   2029 s;   5298 cps
+  10760000 events;   2031 s;   5298 cps
+  10770000 events;   2033 s;   5298 cps
+  10780000 events;   2034 s;   5300 cps
+  10790000 events;   2036 s;   5300 cps
+  10800000 events;   2037 s;   5302 cps
+  10810000 events;   2039 s;   5302 cps
+  10820000 events;   2042 s;   5299 cps
+  10830000 events;   2044 s;   5298 cps
+  10840000 events;   2046 s;   5298 cps
+  10850000 events;   2047 s;   5300 cps
+  10860000 events;   2049 s;   5300 cps
+  10870000 events;   2050 s;   5302 cps
+  10880000 events;   2053 s;   5300 cps
+  10890000 events;   2055 s;   5299 cps
+  10900000 events;   2056 s;   5302 cps
+  10910000 events;   2058 s;   5301 cps
+  10920000 events;   2059 s;   5304 cps
+  10930000 events;   2061 s;   5303 cps
+  10940000 events;   2063 s;   5303 cps
+  10950000 events;   2066 s;   5300 cps
+  10960000 events;   2068 s;   5300 cps
+  10970000 events;   2069 s;   5302 cps
+  10980000 events;   2071 s;   5302 cps
+  10990000 events;   2072 s;   5304 cps
+  11000000 events;   2074 s;   5304 cps
+  11010000 events;   2076 s;   5303 cps
+  11020000 events;   2079 s;   5301 cps
+  11030000 events;   2081 s;   5300 cps
+  11040000 events;   2082 s;   5303 cps
+  11050000 events;   2084 s;   5302 cps
+  11060000 events;   2086 s;   5302 cps
+  11070000 events;   2087 s;   5304 cps
+  11080000 events;   2089 s;   5304 cps
+  11090000 events;   2092 s;   5301 cps
+  11100000 events;   2093 s;   5303 cps
+  11110000 events;   2095 s;   5303 cps
+  11120000 events;   2097 s;   5303 cps
+  11130000 events;   2098 s;   5305 cps
+  11140000 events;   2100 s;   5305 cps
+  11150000 events;   2101 s;   5307 cps
+  11160000 events;   2105 s;   5302 cps
+  11170000 events;   2107 s;   5301 cps
+  11180000 events;   2108 s;   5304 cps
+  11190000 events;   2110 s;   5303 cps
+  11200000 events;   2111 s;   5306 cps
+  11210000 events;   2113 s;   5305 cps
+  11220000 events;   2116 s;   5302 cps
+  11230000 events;   2117 s;   5305 cps
+  11240000 events;   2119 s;   5304 cps
+  11250000 events;   2120 s;   5307 cps
+  11260000 events;   2122 s;   5306 cps
+  11270000 events;   2124 s;   5306 cps
+  11280000 events;   2125 s;   5308 cps
+  11290000 events;   2129 s;   5303 cps
+  11300000 events;   2130 s;   5305 cps
+  11310000 events;   2132 s;   5305 cps
+  11320000 events;   2133 s;   5307 cps
+  11330000 events;   2135 s;   5307 cps
+  11340000 events;   2137 s;   5307 cps
+  11350000 events;   2138 s;   5309 cps
+  11360000 events;   2142 s;   5303 cps
+  11370000 events;   2143 s;   5306 cps
+  11380000 events;   2145 s;   5305 cps
+  11390000 events;   2146 s;   5308 cps
+  11400000 events;   2148 s;   5307 cps
+  11410000 events;   2150 s;   5307 cps
+  11420000 events;   2151 s;   5309 cps
+  11430000 events;   2155 s;   5304 cps
+  11440000 events;   2156 s;   5306 cps
+  11450000 events;   2158 s;   5306 cps
+  11460000 events;   2160 s;   5306 cps
+  11470000 events;   2161 s;   5308 cps
+  11480000 events;   2163 s;   5307 cps
+  11490000 events;   2164 s;   5310 cps
+  11500000 events;   2168 s;   5304 cps
+  11510000 events;   2170 s;   5304 cps
+  11520000 events;   2171 s;   5306 cps
+  11530000 events;   2173 s;   5306 cps
+  11540000 events;   2174 s;   5308 cps
+  11550000 events;   2176 s;   5308 cps
+  11560000 events;   2179 s;   5305 cps
+  11570000 events;   2180 s;   5307 cps
+  11580000 events;   2182 s;   5307 cps
+  11590000 events;   2183 s;   5309 cps
+  11600000 events;   2185 s;   5309 cps
+  11610000 events;   2186 s;   5311 cps
+  11620000 events;   2188 s;   5311 cps
+  11630000 events;   2192 s;   5306 cps
+  11640000 events;   2193 s;   5308 cps
+  11650000 events;   2195 s;   5308 cps
+  11660000 events;   2196 s;   5310 cps
+  11670000 events;   2198 s;   5309 cps
+  11680000 events;   2200 s;   5309 cps
+  11690000 events;   2201 s;   5311 cps
+  11700000 events;   2205 s;   5306 cps
+  11710000 events;   2207 s;   5306 cps
+  11720000 events;   2209 s;   5306 cps
+  11730000 events;   2210 s;   5308 cps
+  11740000 events;   2213 s;   5305 cps
+  11750000 events;   2215 s;   5305 cps
+  11760000 events;   2216 s;   5307 cps
+  11770000 events;   2220 s;   5302 cps
+  11780000 events;   2221 s;   5304 cps
+  11790000 events;   2223 s;   5304 cps
+  11800000 events;   2225 s;   5303 cps
+  11810000 events;   2226 s;   5305 cps
+  11820000 events;   2228 s;   5305 cps
+  11830000 events;   2229 s;   5307 cps
+  11840000 events;   2233 s;   5302 cps
+  11850000 events;   2235 s;   5302 cps
+  11860000 events;   2236 s;   5304 cps
+  11870000 events;   2238 s;   5304 cps
+  11880000 events;   2239 s;   5306 cps
+  11890000 events;   2241 s;   5306 cps
+  11900000 events;   2244 s;   5303 cps
+  11910000 events;   2246 s;   5303 cps
+  11920000 events;   2247 s;   5305 cps
+  11930000 events;   2249 s;   5305 cps
+  11940000 events;   2250 s;   5307 cps
+  11950000 events;   2252 s;   5306 cps
+  11960000 events;   2253 s;   5308 cps
+  11970000 events;   2257 s;   5304 cps
+  11980000 events;   2259 s;   5303 cps
+  11990000 events;   2260 s;   5305 cps
+  12000000 events;   2262 s;   5305 cps
+  12010000 events;   2263 s;   5307 cps
+  12020000 events;   2265 s;   5307 cps
+  12030000 events;   2267 s;   5307 cps
+  12040000 events;   2270 s;   5304 cps
+  12050000 events;   2272 s;   5304 cps
+  12060000 events;   2273 s;   5306 cps
+  12070000 events;   2275 s;   5305 cps
+  12080000 events;   2278 s;   5303 cps
+  12090000 events;   2280 s;   5303 cps
+  12100000 events;   2281 s;   5305 cps
+  12110000 events;   2285 s;   5300 cps
+  12120000 events;   2286 s;   5302 cps
+  12130000 events;   2288 s;   5302 cps
+  12140000 events;   2290 s;   5301 cps
+  12150000 events;   2291 s;   5303 cps
+  12160000 events;   2293 s;   5303 cps
+  12170000 events;   2294 s;   5305 cps
+  12180000 events;   2297 s;   5303 cps
+  12190000 events;   2300 s;   5300 cps
+  12200000 events;   2301 s;   5302 cps
+  12210000 events;   2303 s;   5302 cps
+  12220000 events;   2304 s;   5304 cps
+  12230000 events;   2306 s;   5304 cps
+  12240000 events;   2309 s;   5301 cps
+  12250000 events;   2311 s;   5301 cps
+  12260000 events;   2312 s;   5303 cps
+  12270000 events;   2314 s;   5303 cps
+  12280000 events;   2315 s;   5305 cps
+  12290000 events;   2317 s;   5304 cps
+  12300000 events;   2318 s;   5306 cps
+  12310000 events;   2322 s;   5301 cps
+  12320000 events;   2324 s;   5301 cps
+  12330000 events;   2325 s;   5303 cps
+  12340000 events;   2327 s;   5303 cps
+  12350000 events;   2328 s;   5305 cps
+  12360000 events;   2330 s;   5305 cps
+  12370000 events;   2332 s;   5304 cps
+  12380000 events;   2335 s;   5302 cps
+  12390000 events;   2336 s;   5304 cps
+  12400000 events;   2338 s;   5304 cps
+  12410000 events;   2340 s;   5303 cps
+  12420000 events;   2342 s;   5303 cps
+  12430000 events;   2344 s;   5303 cps
+  12440000 events;   2346 s;   5303 cps
+  12450000 events;   2350 s;   5298 cps
+  12460000 events;   2351 s;   5300 cps
+  12470000 events;   2354 s;   5297 cps
+  12480000 events;   2356 s;   5297 cps
+  12490000 events;   2357 s;   5299 cps
+  12500000 events;   2359 s;   5299 cps
+  12510000 events;   2361 s;   5299 cps
+  12520000 events;   2364 s;   5296 cps
+  12530000 events;   2367 s;   5294 cps
+  12540000 events;   2369 s;   5293 cps
+  12550000 events;   2371 s;   5293 cps
+  12560000 events;   2372 s;   5295 cps
+  12570000 events;   2374 s;   5295 cps
+  12580000 events;   2379 s;   5288 cps
+  12590000 events;   2380 s;   5290 cps
+  12600000 events;   2382 s;   5290 cps
+  12610000 events;   2384 s;   5289 cps
+  12620000 events;   2386 s;   5289 cps
+  12630000 events;   2388 s;   5289 cps
+  12640000 events;   2389 s;   5291 cps
+  12650000 events;   2393 s;   5286 cps
+  12660000 events;   2395 s;   5286 cps
+  12670000 events;   2397 s;   5286 cps
+  12680000 events;   2398 s;   5288 cps
+  12690000 events;   2400 s;   5288 cps
+  12700000 events;   2402 s;   5287 cps
+  12710000 events;   2403 s;   5289 cps
+  12720000 events;   2406 s;   5287 cps
+  12730000 events;   2407 s;   5289 cps
+  12740000 events;   2409 s;   5289 cps
+  12750000 events;   2411 s;   5288 cps
+  12760000 events;   2412 s;   5290 cps
+  12770000 events;   2414 s;   5290 cps
+  12780000 events;   2416 s;   5290 cps
+  12790000 events;   2419 s;   5287 cps
+  12800000 events;   2420 s;   5289 cps
+  12810000 events;   2422 s;   5289 cps
+  12820000 events;   2424 s;   5289 cps
+  12830000 events;   2425 s;   5291 cps
+  12840000 events;   2427 s;   5290 cps
+  12850000 events;   2428 s;   5292 cps
+  12860000 events;   2430 s;   5292 cps
+  12870000 events;   2432 s;   5292 cps
+  12880000 events;   2434 s;   5292 cps
+  12890000 events;   2435 s;   5294 cps
+  12900000 events;   2437 s;   5293 cps
+  12910000 events;   2438 s;   5295 cps
+  12920000 events;   2442 s;   5291 cps
+  12930000 events;   2444 s;   5291 cps
+  12940000 events;   2446 s;   5290 cps
+  12950000 events;   2447 s;   5292 cps
+  12960000 events;   2449 s;   5292 cps
+  12970000 events;   2451 s;   5292 cps
+  12980000 events;   2453 s;   5291 cps
+  12990000 events;   2457 s;   5287 cps
+  13000000 events;   2459 s;   5287 cps
+  13010000 events;   2460 s;   5289 cps
+  13020000 events;   2462 s;   5288 cps
+  13030000 events;   2463 s;   5290 cps
+  13040000 events;   2465 s;   5290 cps
+  13050000 events;   2467 s;   5290 cps
+  13060000 events;   2470 s;   5287 cps
+  13070000 events;   2471 s;   5289 cps
+  13080000 events;   2473 s;   5289 cps
+  13090000 events;   2475 s;   5289 cps
+  13100000 events;   2477 s;   5289 cps
+  13110000 events;   2479 s;   5288 cps
+  13120000 events;   2481 s;   5288 cps
+  13130000 events;   2484 s;   5286 cps
+  13140000 events;   2486 s;   5286 cps
+  13150000 events;   2488 s;   5285 cps
+  13160000 events;   2490 s;   5285 cps
+  13170000 events;   2491 s;   5287 cps
+  13180000 events;   2493 s;   5287 cps
+  13190000 events;   2494 s;   5289 cps
+  13200000 events;   2496 s;   5288 cps
+  13210000 events;   2498 s;   5288 cps
+  13220000 events;   2500 s;   5288 cps
+  13230000 events;   2502 s;   5288 cps
+  13240000 events;   2503 s;   5290 cps
+  13250000 events;   2505 s;   5289 cps
+  13260000 events;   2509 s;   5285 cps
+  13270000 events;   2510 s;   5287 cps
+  13280000 events;   2512 s;   5287 cps
+  13290000 events;   2513 s;   5288 cps
+  13300000 events;   2515 s;   5288 cps
+  13310000 events;   2516 s;   5290 cps
+  13320000 events;   2518 s;   5290 cps
+  13330000 events;   2521 s;   5288 cps
+  13340000 events;   2523 s;   5287 cps
+  13350000 events;   2524 s;   5289 cps
+  13360000 events;   2526 s;   5289 cps
+  13370000 events;   2528 s;   5289 cps
+  13380000 events;   2530 s;   5289 cps
+  13390000 events;   2531 s;   5290 cps
+  13400000 events;   2534 s;   5288 cps
+  13410000 events;   2536 s;   5288 cps
+  13420000 events;   2537 s;   5290 cps
+  13430000 events;   2539 s;   5289 cps
+  13440000 events;   2541 s;   5289 cps
+  13450000 events;   2542 s;   5291 cps
+  13460000 events;   2544 s;   5291 cps
+  13470000 events;   2547 s;   5289 cps
+  13480000 events;   2549 s;   5288 cps
+  13490000 events;   2551 s;   5288 cps
+  13500000 events;   2552 s;   5290 cps
+  13510000 events;   2554 s;   5290 cps
+  13520000 events;   2556 s;   5290 cps
+  13530000 events;   2557 s;   5291 cps
+  13540000 events;   2559 s;   5291 cps
+  13550000 events;   2561 s;   5291 cps
+  13560000 events;   2563 s;   5291 cps
+  13570000 events;   2564 s;   5293 cps
+  13580000 events;   2566 s;   5292 cps
+  13590000 events;   2567 s;   5294 cps
+  13600000 events;   2571 s;   5290 cps
+  13610000 events;   2573 s;   5290 cps
+  13620000 events;   2574 s;   5291 cps
+  13630000 events;   2576 s;   5291 cps
+  13640000 events;   2577 s;   5293 cps
+  13650000 events;   2579 s;   5293 cps
+  13660000 events;   2580 s;   5295 cps
+  13670000 events;   2584 s;   5290 cps
+  13680000 events;   2585 s;   5292 cps
+  13690000 events;   2587 s;   5292 cps
+  13700000 events;   2588 s;   5294 cps
+  13710000 events;   2590 s;   5293 cps
+  13720000 events;   2592 s;   5293 cps
+  13730000 events;   2593 s;   5295 cps
+  13740000 events;   2596 s;   5293 cps
+  13750000 events;   2597 s;   5295 cps
+  13760000 events;   2599 s;   5294 cps
+  13770000 events;   2601 s;   5294 cps
+  13780000 events;   2603 s;   5294 cps
+  13790000 events;   2604 s;   5296 cps
+  13800000 events;   2606 s;   5295 cps
+  13810000 events;   2609 s;   5293 cps
+  13820000 events;   2610 s;   5295 cps
+  13830000 events;   2612 s;   5295 cps
+  13840000 events;   2614 s;   5295 cps
+  13850000 events;   2615 s;   5296 cps
+  13860000 events;   2617 s;   5296 cps
+  13870000 events;   2618 s;   5298 cps
+  13880000 events;   2621 s;   5296 cps
+  13890000 events;   2623 s;   5295 cps
+  13900000 events;   2625 s;   5295 cps
+  13910000 events;   2626 s;   5297 cps
+  13920000 events;   2628 s;   5297 cps
+  13930000 events;   2630 s;   5297 cps
+  13940000 events;   2634 s;   5292 cps
+  13950000 events;   2635 s;   5294 cps
+  13960000 events;   2637 s;   5294 cps
+  13970000 events;   2638 s;   5296 cps
+  13980000 events;   2640 s;   5295 cps
+  13990000 events;   2641 s;   5297 cps
+  14000000 events;   2643 s;   5297 cps
+  14010000 events;   2646 s;   5295 cps
+  14020000 events;   2648 s;   5295 cps
+  14030000 events;   2649 s;   5296 cps
+  14040000 events;   2651 s;   5296 cps
+  14050000 events;   2653 s;   5296 cps
+  14060000 events;   2655 s;   5296 cps
+  14070000 events;   2656 s;   5297 cps
+  14080000 events;   2659 s;   5295 cps
+  14090000 events;   2660 s;   5297 cps
+  14100000 events;   2662 s;   5297 cps
+  14110000 events;   2663 s;   5299 cps
+  14120000 events;   2665 s;   5298 cps
+  14130000 events;   2667 s;   5298 cps
+  14140000 events;   2668 s;   5300 cps
+  14150000 events;   2672 s;   5296 cps
+  14160000 events;   2673 s;   5297 cps
+  14170000 events;   2675 s;   5297 cps
+  14180000 events;   2677 s;   5297 cps
+  14190000 events;   2678 s;   5299 cps
+  14200000 events;   2680 s;   5299 cps
+  14210000 events;   2681 s;   5300 cps
+  14220000 events;   2685 s;   5296 cps
+  14230000 events;   2687 s;   5296 cps
+  14240000 events;   2688 s;   5298 cps
+  14250000 events;   2690 s;   5297 cps
+  14260000 events;   2691 s;   5299 cps
+  14270000 events;   2693 s;   5299 cps
+  14280000 events;   2697 s;   5295 cps
+  14290000 events;   2698 s;   5297 cps
+  14300000 events;   2700 s;   5296 cps
+  14310000 events;   2701 s;   5298 cps
+  14320000 events;   2703 s;   5298 cps
+  14330000 events;   2704 s;   5300 cps
+  14340000 events;   2706 s;   5299 cps
+  14350000 events;   2710 s;   5295 cps
+  14360000 events;   2711 s;   5297 cps
+  14370000 events;   2713 s;   5297 cps
+  14380000 events;   2714 s;   5298 cps
+  14390000 events;   2716 s;   5298 cps
+  14400000 events;   2718 s;   5298 cps
+  14410000 events;   2719 s;   5300 cps
+  14420000 events;   2722 s;   5298 cps
+  14430000 events;   2723 s;   5299 cps
+  14440000 events;   2725 s;   5299 cps
+  14450000 events;   2726 s;   5301 cps
+  14460000 events;   2728 s;   5301 cps
+  14470000 events;   2730 s;   5300 cps
+  14480000 events;   2731 s;   5302 cps
+  14490000 events;   2734 s;   5300 cps
+  14500000 events;   2736 s;   5300 cps
+  14510000 events;   2738 s;   5299 cps
+  14520000 events;   2740 s;   5299 cps
+  14530000 events;   2741 s;   5301 cps
+  14540000 events;   2743 s;   5301 cps
+  14550000 events;   2744 s;   5302 cps
+  14560000 events;   2747 s;   5300 cps
+  14570000 events;   2749 s;   5300 cps
+  14580000 events;   2751 s;   5300 cps
+  14590000 events;   2752 s;   5302 cps
+  14600000 events;   2754 s;   5301 cps
+  14610000 events;   2755 s;   5303 cps
+  14620000 events;   2759 s;   5299 cps
+  14630000 events;   2761 s;   5299 cps
+  14640000 events;   2762 s;   5301 cps
+  14650000 events;   2764 s;   5300 cps
+  14660000 events;   2765 s;   5302 cps
+  14670000 events;   2767 s;   5302 cps
+  14680000 events;   2768 s;   5303 cps
+  14690000 events;   2772 s;   5299 cps
+  14700000 events;   2773 s;   5301 cps
+  14710000 events;   2775 s;   5301 cps
+  14720000 events;   2776 s;   5303 cps
+  14730000 events;   2778 s;   5302 cps
+  14740000 events;   2780 s;   5302 cps
+  14750000 events;   2782 s;   5302 cps
+  14760000 events;   2784 s;   5302 cps
+  14770000 events;   2785 s;   5303 cps
+  14780000 events;   2787 s;   5303 cps
+  14790000 events;   2788 s;   5305 cps
+  14800000 events;   2790 s;   5305 cps
+  14810000 events;   2792 s;   5304 cps
+  14820000 events;   2793 s;   5306 cps
+  14830000 events;   2797 s;   5302 cps
+  14840000 events;   2798 s;   5304 cps
+  14850000 events;   2800 s;   5304 cps
+  14860000 events;   2802 s;   5303 cps
+  14870000 events;   2803 s;   5305 cps
+  14880000 events;   2805 s;   5305 cps
+  14890000 events;   2806 s;   5306 cps
+  14900000 events;   2810 s;   5302 cps
+  14910000 events;   2812 s;   5302 cps
+  14920000 events;   2813 s;   5304 cps
+  14930000 events;   2815 s;   5304 cps
+  14940000 events;   2816 s;   5305 cps
+  14950000 events;   2818 s;   5305 cps
+  14960000 events;   2821 s;   5303 cps
+  14970000 events;   2823 s;   5303 cps
+  14980000 events;   2824 s;   5305 cps
+  14990000 events;   2826 s;   5304 cps
+  15000000 events;   2827 s;   5306 cps
+  15010000 events;   2829 s;   5306 cps
+  15020000 events;   2830 s;   5307 cps
+  15030000 events;   2834 s;   5303 cps
+  15040000 events;   2835 s;   5305 cps
+  15050000 events;   2837 s;   5305 cps
+  15060000 events;   2839 s;   5305 cps
+  15070000 events;   2840 s;   5306 cps
+  15080000 events;   2842 s;   5306 cps
+  15090000 events;   2844 s;   5306 cps
+  15100000 events;   2846 s;   5306 cps
+  15110000 events;   2847 s;   5307 cps
+  15120000 events;   2849 s;   5307 cps
+  15130000 events;   2851 s;   5307 cps
+  15140000 events;   2852 s;   5309 cps
+  15150000 events;   2854 s;   5308 cps
+  15160000 events;   2855 s;   5310 cps
+  15170000 events;   2859 s;   5306 cps
+  15180000 events;   2860 s;   5308 cps
+  15190000 events;   2863 s;   5306 cps
+  15200000 events;   2865 s;   5305 cps
+  15210000 events;   2866 s;   5307 cps
+  15220000 events;   2868 s;   5307 cps
+  15230000 events;   2870 s;   5307 cps
+  15240000 events;   2874 s;   5303 cps
+  15250000 events;   2876 s;   5303 cps
+  15260000 events;   2877 s;   5304 cps
+  15270000 events;   2879 s;   5304 cps
+  15280000 events;   2880 s;   5306 cps
+  15290000 events;   2882 s;   5305 cps
+  15300000 events;   2886 s;   5301 cps
+  15310000 events;   2887 s;   5303 cps
+  15320000 events;   2889 s;   5303 cps
+  15330000 events;   2890 s;   5304 cps
+  15340000 events;   2892 s;   5304 cps
+  15350000 events;   2894 s;   5304 cps
+  15360000 events;   2895 s;   5306 cps
+  15370000 events;   2899 s;   5302 cps
+  15380000 events;   2900 s;   5303 cps
+  15390000 events;   2902 s;   5303 cps
+  15400000 events;   2904 s;   5303 cps
+  15410000 events;   2906 s;   5303 cps
+  15420000 events;   2908 s;   5303 cps
+  15430000 events;   2910 s;   5302 cps
+  15440000 events;   2913 s;   5300 cps
+  15450000 events;   2915 s;   5300 cps
+  15460000 events;   2916 s;   5302 cps
+  15470000 events;   2918 s;   5302 cps
+  15480000 events;   2920 s;   5301 cps
+  15490000 events;   2922 s;   5301 cps
+  15500000 events;   2924 s;   5301 cps
+  15510000 events;   2928 s;   5297 cps
+  15520000 events;   2929 s;   5299 cps
+  15530000 events;   2931 s;   5299 cps
+  15540000 events;   2933 s;   5298 cps
+  15550000 events;   2934 s;   5300 cps
+  15560000 events;   2936 s;   5300 cps
+  15570000 events;   2938 s;   5300 cps
+  15580000 events;   2943 s;   5294 cps
+  15590000 events;   2946 s;   5292 cps
+  15600000 events;   2947 s;   5294 cps
+  15610000 events;   2949 s;   5293 cps
+  15620000 events;   2951 s;   5293 cps
+  15630000 events;   2953 s;   5293 cps
+  15640000 events;   2958 s;   5287 cps
+  15650000 events;   2960 s;   5287 cps
+  15660000 events;   2962 s;   5287 cps
+  15670000 events;   2963 s;   5289 cps
+  15680000 events;   2965 s;   5288 cps
+  15690000 events;   2967 s;   5288 cps
+  15700000 events;   2970 s;   5286 cps
+  15710000 events;   2975 s;   5281 cps
+  15720000 events;   2977 s;   5280 cps
+  15730000 events;   2979 s;   5280 cps
+  15740000 events;   2980 s;   5282 cps
+  15750000 events;   2982 s;   5282 cps
+  15760000 events;   2984 s;   5282 cps
+  15770000 events;   2985 s;   5283 cps
+  15780000 events;   2989 s;   5279 cps
+  15790000 events;   2991 s;   5279 cps
+  15800000 events;   2993 s;   5279 cps
+  15810000 events;   2994 s;   5281 cps
+  15820000 events;   2997 s;   5279 cps
+  15830000 events;   2999 s;   5278 cps
+  15840000 events;   3000 s;   5280 cps
+  15850000 events;   3004 s;   5276 cps
+  15860000 events;   3006 s;   5276 cps
+  15870000 events;   3008 s;   5276 cps
+  15880000 events;   3010 s;   5276 cps
+  15890000 events;   3012 s;   5276 cps
+  15900000 events;   3014 s;   5275 cps
+  15910000 events;   3016 s;   5275 cps
+  15920000 events;   3019 s;   5273 cps
+  15930000 events;   3022 s;   5271 cps
+  15940000 events;   3023 s;   5273 cps
+  15950000 events;   3025 s;   5273 cps
+  15960000 events;   3027 s;   5273 cps
+  15970000 events;   3029 s;   5272 cps
+  15980000 events;   3034 s;   5267 cps
+  15990000 events;   3035 s;   5269 cps
+  16000000 events;   3037 s;   5268 cps
+  16010000 events;   3039 s;   5268 cps
+  16020000 events;   3041 s;   5268 cps
+  16030000 events;   3043 s;   5268 cps
+  16040000 events;   3045 s;   5268 cps
+  16050000 events;   3049 s;   5264 cps
+  16060000 events;   3050 s;   5266 cps
+  16070000 events;   3052 s;   5265 cps
+  16080000 events;   3053 s;   5267 cps
+  16090000 events;   3055 s;   5267 cps
+  16100000 events;   3057 s;   5267 cps
+  16110000 events;   3058 s;   5268 cps
+  16120000 events;   3062 s;   5265 cps
+  16130000 events;   3063 s;   5266 cps
+  16140000 events;   3065 s;   5266 cps
+  16150000 events;   3066 s;   5267 cps
+  16160000 events;   3068 s;   5267 cps
+  16170000 events;   3070 s;   5267 cps
+  16180000 events;   3072 s;   5267 cps
+  16190000 events;   3074 s;   5267 cps
+  16200000 events;   3075 s;   5268 cps
+  16210000 events;   3077 s;   5268 cps
+  16220000 events;   3079 s;   5268 cps
+  16230000 events;   3080 s;   5269 cps
+  16240000 events;   3082 s;   5269 cps
+  16250000 events;   3083 s;   5271 cps
+  16260000 events;   3087 s;   5267 cps
+  16270000 events;   3089 s;   5267 cps
+  16280000 events;   3090 s;   5269 cps
+  16290000 events;   3092 s;   5268 cps
+  16300000 events;   3093 s;   5270 cps
+  16310000 events;   3095 s;   5270 cps
+  16320000 events;   3099 s;   5266 cps
+  16330000 events;   3100 s;   5268 cps
+  16340000 events;   3102 s;   5268 cps
+  16350000 events;   3103 s;   5269 cps
+  16360000 events;   3105 s;   5269 cps
+  16370000 events;   3107 s;   5269 cps
+  16380000 events;   3108 s;   5270 cps
+  16390000 events;   3112 s;   5267 cps
+  16400000 events;   3113 s;   5268 cps
+  16410000 events;   3115 s;   5268 cps
+  16420000 events;   3116 s;   5270 cps
+  16430000 events;   3118 s;   5269 cps
+  16440000 events;   3120 s;   5269 cps
+  16450000 events;   3122 s;   5269 cps
+  16460000 events;   3125 s;   5267 cps
+  16470000 events;   3127 s;   5267 cps
+  16480000 events;   3128 s;   5269 cps
+  16490000 events;   3130 s;   5268 cps
+  16500000 events;   3132 s;   5268 cps
+  16510000 events;   3134 s;   5268 cps
+  16520000 events;   3136 s;   5268 cps
+  16530000 events;   3138 s;   5268 cps
+  16540000 events;   3140 s;   5268 cps
+  16550000 events;   3142 s;   5267 cps
+  16560000 events;   3143 s;   5269 cps
+  16570000 events;   3145 s;   5269 cps
+  16580000 events;   3147 s;   5269 cps
+  16590000 events;   3148 s;   5270 cps
+  16600000 events;   3152 s;   5266 cps
+  16610000 events;   3154 s;   5266 cps
+  16620000 events;   3155 s;   5268 cps
+  16630000 events;   3157 s;   5268 cps
+  16640000 events;   3158 s;   5269 cps
+  16650000 events;   3160 s;   5269 cps
+  16660000 events;   3164 s;   5265 cps
+  16670000 events;   3165 s;   5267 cps
+  16680000 events;   3167 s;   5267 cps
+  16690000 events;   3168 s;   5268 cps
+  16700000 events;   3170 s;   5268 cps
+  16710000 events;   3172 s;   5268 cps
+  16720000 events;   3173 s;   5269 cps
+  16730000 events;   3177 s;   5266 cps
+  16740000 events;   3178 s;   5267 cps
+  16750000 events;   3180 s;   5267 cps
+  16760000 events;   3181 s;   5269 cps
+  16770000 events;   3183 s;   5269 cps
+  16780000 events;   3185 s;   5268 cps
+  16790000 events;   3186 s;   5270 cps
+  16800000 events;   3190 s;   5266 cps
+  16810000 events;   3191 s;   5268 cps
+  16820000 events;   3193 s;   5268 cps
+  16830000 events;   3195 s;   5268 cps
+  16840000 events;   3198 s;   5266 cps
+  16850000 events;   3199 s;   5267 cps
+  16860000 events;   3201 s;   5267 cps
+  16870000 events;   3204 s;   5265 cps
+  16880000 events;   3206 s;   5265 cps
+  16890000 events;   3208 s;   5265 cps
+  16900000 events;   3210 s;   5265 cps
+  16910000 events;   3212 s;   5265 cps
+  16920000 events;   3214 s;   5264 cps
+  16930000 events;   3215 s;   5266 cps
+  16940000 events;   3219 s;   5263 cps
+  16950000 events;   3222 s;   5261 cps
+  16960000 events;   3223 s;   5262 cps
+  16970000 events;   3225 s;   5262 cps
+  16980000 events;   3227 s;   5262 cps
+  16990000 events;   3229 s;   5262 cps
+  17000000 events;   3232 s;   5260 cps
+  17010000 events;   3234 s;   5260 cps
+  17020000 events;   3236 s;   5260 cps
+  17030000 events;   3237 s;   5261 cps
+  17040000 events;   3239 s;   5261 cps
+  17050000 events;   3241 s;   5261 cps
+  17060000 events;   3243 s;   5261 cps
+  17070000 events;   3247 s;   5257 cps
+  17080000 events;   3249 s;   5257 cps
+  17090000 events;   3251 s;   5257 cps
+  17100000 events;   3252 s;   5258 cps
+  17110000 events;   3254 s;   5258 cps
+  17120000 events;   3257 s;   5256 cps
+  17130000 events;   3258 s;   5258 cps
+  17140000 events;   3260 s;   5258 cps
+  17150000 events;   3262 s;   5258 cps
+  17160000 events;   3263 s;   5259 cps
+  17170000 events;   3265 s;   5259 cps
+  17180000 events;   3267 s;   5259 cps
+  17190000 events;   3268 s;   5260 cps
+  17200000 events;   3270 s;   5260 cps
+  17210000 events;   3273 s;   5258 cps
+  17220000 events;   3275 s;   5258 cps
+  17230000 events;   3277 s;   5258 cps
+  17240000 events;   3278 s;   5259 cps
+  17250000 events;   3280 s;   5259 cps
+  17260000 events;   3281 s;   5261 cps
+  17270000 events;   3283 s;   5260 cps
+  17280000 events;   3286 s;   5259 cps
+  17290000 events;   3288 s;   5259 cps
+  17300000 events;   3290 s;   5258 cps
+  17310000 events;   3291 s;   5260 cps
+  17320000 events;   3293 s;   5260 cps
+  17330000 events;   3294 s;   5261 cps
+  17340000 events;   3297 s;   5259 cps
+  17350000 events;   3299 s;   5259 cps
+  17360000 events;   3300 s;   5261 cps
+  17370000 events;   3302 s;   5260 cps
+  17380000 events;   3303 s;   5262 cps
+  17390000 events;   3305 s;   5262 cps
+  17400000 events;   3306 s;   5263 cps
+  17410000 events;   3310 s;   5260 cps
+  17420000 events;   3312 s;   5260 cps
+  17430000 events;   3314 s;   5260 cps
+  17440000 events;   3315 s;   5261 cps
+  17450000 events;   3317 s;   5261 cps
+  17460000 events;   3320 s;   5259 cps
+  17470000 events;   3321 s;   5260 cps
+  17480000 events;   3324 s;   5259 cps
+  17490000 events;   3326 s;   5259 cps
+  17500000 events;   3327 s;   5260 cps
+  17510000 events;   3329 s;   5260 cps
+  17520000 events;   3331 s;   5260 cps
+  17530000 events;   3332 s;   5261 cps
+  17540000 events;   3334 s;   5261 cps
+  17550000 events;   3337 s;   5259 cps
+  17560000 events;   3338 s;   5261 cps
+  17570000 events;   3340 s;   5260 cps
+  17580000 events;   3342 s;   5260 cps
+  17590000 events;   3343 s;   5262 cps
+  17600000 events;   3345 s;   5262 cps
+  17610000 events;   3346 s;   5263 cps
+  RIBFROOT-Info : [/home/exp/ANAROOT/anaroot/sources/Core/src/TArtParserRIDF.cc] status data:
+<babild>
+ <runstatus>
+  <dipole>
+   <name>D1</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D2</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D3</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D4</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D5</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D6</name>
+   <brho>0.0000</brho>
+   <nmr>-888.888</nmr>
+  </dipole>
+  <dipole>
+   <name>D7</name>
+   <brho>0.0000</brho>
+   <nmr>0</nmr>
+  </dipole>
+  <dipole>
+   <name>D8</name>
+   <brho>0.0000</brho>
+   <nmr>0</nmr>
+  </dipole>
+ </runstatus>
+</babild>
+
+  17615224 events;   3349 s;   5260 cps
+
+
+PPAC efficiency
+===== F03 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+===== F05 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+===== F07 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+===== F08 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+===== F09 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+===== F10 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+===== F11 =====================================
+1A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+1B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2A     X:   -nan +- -nan%   Y:   -nan +- -nan%
+2B     X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+OR efficiency
+PPAC1  X:   -nan +- -nan%   Y:   -nan +- -nan%
+PPAC2  X:   -nan +- -nan%   Y:   -nan +- -nan%
+
+Tracking efficiency
+       X:   -nan +- -nan%   Y:   -nan +- -nan%
+==============================================
+  17615224 events;   3349 s to load data
+                  +   202 s to write in output file.
+
+Output file : ./ROOT/f7ge_calib0297.root

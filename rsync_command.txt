@@ -1,0 +1,4 @@
+rsync -arv daq@gtn000:/raid/R103/trip2402/99Zr.ridf  /home/exp/EXP/RIBF/TRIP/2024/AUTUMN/DATA/RIDF/
+
+
+rcnpdaq

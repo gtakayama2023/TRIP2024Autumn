@@ -137,7 +137,12 @@ if (($handle = fopen($csvFile, 'r')) !== false) {
               <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/RIDF/gtn000to009' class='update_button' style='margin-right: 20px;'>rsync (gtn000 → gtn009)</a>
               <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/$subDir/RIDF/runsummary.sh' class='update_button' style='margin-right: 20px;'>一覧表の更新</a>
               <a href='https://docs.google.com/spreadsheets/d/1RUte0R5B9rzbLZ0xoQrSmysUAloWTyCzLD17C4qUaBs/edit?usp=sharing' class='update_button'>Run summary (Google Sheet)</a>
-          </div>";
+          </div>
+      	  <div style='display: flex; justify-content: center; align-items: center; margin-top: 10px;'>
+              <a href='/$base_url/gtn009/' class='small_button' style='margin-right: 10px; font-size: 12px; padding: 5px 10px; background-color: lightgray; border: 1px solid #ccc; border-radius: 5px; text-decoration: none; color: black;'>Online JSROOT (gtn009)</a>
+      	      <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/start_online' class='small_button' style='margin-right: 10px; font-size: 12px; padding: 5px 10px; background-color: lightgray; border: 1px solid #ccc; border-radius: 5px; text-decoration: none; color: black;'>起動</a>
+      	      <a href='/$base_url/cgi-bin/EXP/RIBF/TRIP/2024/AUTUMN/USR/default/WEB/stop_online' class='small_button' style='font-size: 12px; padding: 5px 10px; background-color: lightgray; border: 1px solid #ccc; border-radius: 5px; text-decoration: none; color: black;'>終了</a>
+      	  </div>";
 
 
     // HTMLテーブルの開始

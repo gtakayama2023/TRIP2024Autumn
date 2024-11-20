@@ -1,0 +1,20 @@
+#!/bin/bash
+# リモートサーバー上で loop.sh を開始するスクリプト
+
+# Content-type ヘッダーを追加
+echo "Content-type: text/plain"
+echo ""
+
+# リモートサーバーのユーザー名とホスト名
+REMOTE_USER="trip"
+REMOTE_HOST="iRIBF_trip_ana"
+
+# loop.sh のフルパス
+REMOTE_SCRIPT_PATH="/home/trip/S3CAN/2024/AUTUMN/users/default/SH/ONLINE/loop.sh"
+
+# SSH を使ってリモートで loop.sh をバックグラウンドで開始
+ssh ${REMOTE_USER}@${REMOTE_HOST} "nohup bash ${REMOTE_SCRIPT_PATH} > /dev/null 2>&1 &"
+
+# 開始メッセージ
+echo "loop.sh をリモートサーバー ${REMOTE_HOST} でバックグラウンドで開始しました。"
+

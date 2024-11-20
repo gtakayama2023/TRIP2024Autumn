@@ -1,0 +1,20 @@
+#!/bin/bash
+# リモートサーバー上で stop.sh を開始するスクリプト
+
+# Content-type ヘッダーを追加
+echo "Content-type: text/plain"
+echo ""
+
+# リモートサーバーのユーザー名とホスト名
+REMOTE_USER="trip"
+REMOTE_HOST="iRIBF_trip_ana"
+
+# stop.sh のフルパス
+REMOTE_SCRIPT_PATH="/home/trip/S3CAN/2024/AUTUMN/users/default/SH/ONLINE/stop.sh"
+
+# SSH を使ってリモートで stop.sh を実行
+ssh ${REMOTE_USER}@${REMOTE_HOST} "bash ${REMOTE_SCRIPT_PATH}"
+
+# 停止メッセージ
+echo "stop.sh をリモートサーバー ${REMOTE_HOST} で停止しました。"
+

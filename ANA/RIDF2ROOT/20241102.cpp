@@ -1387,12 +1387,9 @@ void ridf2root(int runN=48, TString runname="56Co", bool tree_output=0, int load
     ctrans->Write();
 #endif
 
-
-
     fout->Write();
     //    fout->Close();    
     //    if(runN!=9999)fout->Close();
-    
 
     TDatime *T2=new TDatime();
     int t2[3];

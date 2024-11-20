@@ -149,6 +149,7 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
     
     if(v1190num[geo-7][ch]<N_Mhit)v1190raw[geo-7][ch][v1190num[geo-7][ch]] = buf;
     v1190num[geo-7][ch]++;
+    //if(geo==9)cout << v1190num[2][ch] << ", " << v1190raw[2][ch][v1190num[2][ch]] << ", " << buf << ", ";
     
     if(nj==0 && neve==0)cout << Form("V1190 (geo=%02d) for PPAC-T",geo) << endl;
     return;
@@ -156,7 +157,7 @@ void moduledata_fill(int nj,int neve,int EFN,int dev,int fpl,int det,int mod,int
   if( dev==USERGR && fpl==F7 && det==SSDT && mod==V1190 && geo==0 ){
 
     if(edge==0){
-      
+
       if(v1190num[3][ch]<N_Mhit)v1190raw[3][ch][v1190num[3][ch]] = buf;
       v1190num[3][ch]++;
     }
@@ -266,8 +267,8 @@ void rawdata_fill(){
   v1190tref[1] = v1190raw[1][0][0]; // PPAC
   v1190tref[2] = v1190raw[2][0][0]; // PPAC
   v1190tref[3] = v1190raw[3][16][0]; // Ge-T
-  v1290tref[0] = v1290Lraw[0][0][0];
-  v1290tref[1] = v1290Lraw[1][31][0];
+  v1290tref[0] = v1290Lraw[0][31][0];
+  v1290tref[1] = v1290Lraw[1][31][0]; 
   for(int l=0;l<4;l++)for(int m=0;m<128;m++)for(int n=0;n<N_Mhit;n++)v1190[l][m][n] = v1190raw[l][m][n]-v1190tref[l];
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)v1290L[l][m][n] = v1290Lraw[l][m][n]-v1290tref[l];
   for(int l=0;l<2;l++)for(int m=0;m<32 ;m++)for(int n=0;n<N_Mhit;n++)v1290T[l][m][n] = v1290Traw[l][m][n]-v1290tref[l];
@@ -322,8 +323,8 @@ void rawdata_fill(){
   }// for l
    
   //===== Ge-T =========================
-  for (int l=0; l<17; l++){
-    for (int n=0; n<N_Mhit; n++) {
+  for (int l=0; l<32; l++){
+    for (int n=0; n<4; n++) {
       F7Ge_Traw[l][n] = v1190[3][l][n];
     }
   }
@@ -333,7 +334,8 @@ void rawdata_fill(){
 
   //===== Plastic T =============================
   //  int temp_CHid_plat[12]={0,0,0,16,0,18,0,20,22,28,0,24};
-  int temp_CHid_plat[12]={0,0,0,12,0, 8,0,14,22,28,0,24};
+  //                       F0, F1, F2, F3, F4, F5, F6, F7, F8, F9,F10,F11
+  int temp_CHid_plat[12]={  0,  0,  0, 16,  0, 18,  0, 20, 22, 28,  0, 24,};
 
   for(int l=0;l<12;l++){
     if(Use_PL[l]){
@@ -344,6 +346,7 @@ void rawdata_fill(){
 	  if(   vgate_PLA_T[l][n][0] < v1290Lraw[0][ n + temp_CHid_plat[l] ][o] 
 	     && vgate_PLA_T[l][n][1] > v1290Lraw[0][ n + temp_CHid_plat[l] ][o] ){
 	    PLA_Traw[l][n] = v1290L[0][ n + temp_CHid_plat[l] ][o];
+	    //cout << PLA_Traw[l][n] << endl;
 	    break;
 	  }
 	}// for N_Mhit loop
@@ -405,7 +408,6 @@ void rawdata_fill(){
     }// for N_Mhit loop
   }// n loop
 
-
   //===== Plastic QTC =============================
   int temp_CHid_plaqtc[12]={0,0,0,0,0,2,0,4,6,12,0,8};
 
@@ -451,8 +453,8 @@ void rawdata_fill(){
   
   //===== Plastic Q =================================
   for(int n=0;n<2;n++){
-    //    PLA_Qraw[3][n]   = qdc[n+0];
-    PLA_Qraw[3][n]   = qdc[n+10];
+    //PLA_Qraw[3][n]   = qdc[n+0];
+    //PLA_Qraw[3][n]   = qdc[n+10];
     PLA_Qraw[5][n]   = qdc[n+2];
     PLA_Qraw[7][n]   = qdc[n+4];
     PLA_Qraw[8][n]   = qdc[n+6];
@@ -461,16 +463,22 @@ void rawdata_fill(){
     F8VETO_Qraw[n]   = qdc[n+10];
     F11Long_Qraw[n]  = qdc[n+14];
   }
+    PLA_Qraw[3][0]   = qdc[12]; 
+    PLA_Qraw[3][1]   = qdc[13];
 
   //===== MUSIC ===================================
-  for(int n=0;n<8;n++)F7Ge_Eraw[n] = adc[4][Ge_MADC1_ch[n]];
-  for(int n=0;n<8;n++)F7Ge2_Eraw[n]= adc[5][Ge_MADC2_ch[n]];
   for(int n=0;n<6;n++)F3IC_Eraw[n]  = adc[3][n];
   for(int n=0;n<6;n++)F7IC_Eraw[n]  = adc[0][n];
   for(int n=0;n<3;n++)F8IC_Eraw[n]  = adc[1][n];
   for(int n=0;n<6;n++)F11IC_Eraw[n] = adc[2][n];
   F8IC_Gas = adc[1][4];
 
+  //===== Ge =================================================
+  //                      0   1   2   3   4   5   6   7
+  int temp_CHid_ge1[8]={  1,  3,  7,  8,  9, 15, 29, 30};
+  int temp_CHid_ge2[8]={ 16, 17, 18, 19, 20, 21, 22, 23};
+  for(int n=0;n<8;n++)F7Ge_Eraw[n] = adc[4][temp_CHid_ge1[n]];
+  for(int n=0;n<8;n++)F7Ge2_Eraw[n]= adc[5][temp_CHid_ge2[n]];
 
   //===== V1290 wide-range V1290 ==================
   for(int n=0;n<N_Mhit;n++){
@@ -525,9 +533,9 @@ void rawdata_fill(){
       for(int m=0;m<2;m++)F11Long_Mhit[m]  = v1290Lnum[0][m+30];
       for(int m=0;m<4;m++)F8PPACA_Mhit[m]  = v1290Lnum[0][m+ 4];
   */
-      for(int m=0;m<2;m++)PLA_Mhit[ 3][m]  = v1290Lnum[0][m+12];
-      for(int m=0;m<2;m++)PLA_Mhit[ 5][m]  = v1290Lnum[0][m+ 8];
-      for(int m=0;m<2;m++)PLA_Mhit[ 7][m]  = v1290Lnum[0][m+14];
+      for(int m=0;m<2;m++)PLA_Mhit[ 3][m]  = v1290Lnum[0][m+16];
+      for(int m=0;m<2;m++)PLA_Mhit[ 5][m]  = v1290Lnum[0][m+18];
+      for(int m=0;m<2;m++)PLA_Mhit[ 7][m]  = v1290Lnum[0][m+20];
       for(int m=0;m<2;m++)PLA_Mhit[ 8][m]  = v1290Lnum[0][m+22];
       for(int m=0;m<2;m++)PLA_Mhit[ 9][m]  = v1290Lnum[0][m+28];
       for(int m=0;m<2;m++)PLA_Mhit[11][m]  = v1290Lnum[0][m+24];
