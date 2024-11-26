@@ -2,12 +2,6 @@ const int Nfpl_PPAC = 12;
 const int Nfpl_PLA = 12;
 const int Nfpl_IC = 12;
 const int N_Mhit = 5;
-const int Ge_MADC1_ch[8] = {
-  1, 3, 7, 8, 9, 15, 29, 30
-};
-const int Ge_MADC2_ch[8] = {
-  16, 17, 18, 19, 20, 21, 22, 23
-};
 
 double inan=TMath::QuietNaN();
 
@@ -36,10 +30,10 @@ unsigned int  mpv_10kclock[6];
 //===== V1190 =================================
 // [32]: Channel
 // [10]: 1st/2nd/.../10th-hit event
-long long v1190[3][128][N_Mhit];
-long long v1190raw[3][128][N_Mhit];
-Int_t v1190num[3][128];
-long long v1190tref[3];
+long long v1190[4][128][N_Mhit];
+long long v1190raw[4][128][N_Mhit];
+Int_t v1190num[4][128];
+long long v1190tref[4];
 //===== V1290 =================================
 // [32]: Channel
 // [10]: 1st/2nd/.../10th-hit event
@@ -102,9 +96,9 @@ Int_t F7IC_Gas;
 Int_t F8IC_Gas;
 Int_t F11IC_Gas;
 //===== Ge ====================================
-Int_t F7Ge_Eraw[8];
-Int_t F7Ge2_Eraw[8];
-Int_t F7Ge_Traw[17][N_Mhit];
+Int_t F7Ge_Eraw[32];
+Int_t F7Ge2_Eraw[32];
+Int_t F7Ge_Traw[32][N_Mhit];
 Int_t F7Ge_Scaler[32];
 
 //===== Mhit TDC ========================
@@ -220,12 +214,13 @@ Double_t F3IC_Esum;
 Double_t F7IC_Esum;
 Double_t F8IC_Esum;
 Double_t F11IC_Esum;
-//===== F7Ge ===========================
+//===== F7Ge ==================================
 Double_t F7Ge_E[8];
 Double_t F7Ge_Esum[2];
 Double_t F7Ge2_E[8];
 Double_t F7Ge2_Esum[2];
-Double_t F7Ge_T[17][N_Mhit];
+Double_t F7Ge_T[32][N_Mhit];
+
 //===== Brho ==================================
 // [6] : 0 = F03-F05   1 = F05-F07   2 = F08-F09
 //       3 = F08-F10   4 = F09-F11   5 = F10-F11

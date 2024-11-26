@@ -17,9 +17,9 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("mpv_ts",mpv_ts,"mpv_ts[6]/l");
   tree->Branch("mpv_10kclock",mpv_10kclock,"mpv_10kclock[6]/i");
   //===== V1190 =====
-  tree->Branch("v1190",v1190,Form("v1190[3][128][%d]/L",N_Mhit));
-  tree->Branch("v1190raw",v1190raw,Form("v1190raw[3][128][%d]/L",N_Mhit));
-  tree->Branch("v1190num",v1190num,"v1190num[3][128]/I");
+  tree->Branch("v1190",v1190,Form("v1190[4][128][%d]/L",N_Mhit));
+  tree->Branch("v1190raw",v1190raw,Form("v1190raw[4][128][%d]/L",N_Mhit));
+  tree->Branch("v1190num",v1190num,"v1190num[4][128]/I");
   //===== V1290 =====
   // Leading
   tree->Branch("v1290L",v1290L,Form("v1290L[2][32][%d]/L",N_Mhit));
@@ -69,9 +69,9 @@ void ribf_branch_raw(TTree *tree){
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw", F7Ge_Traw, "F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_Eraw", F7Ge_Eraw, "F7Ge_Eraw[32]/I");
+  tree->Branch("F7Ge2_Eraw", F7Ge2_Eraw, "F7Ge2_Eraw[32]/I");
+  tree->Branch("F7Ge_Traw", F7Ge_Traw, Form("F7Ge_Traw[32][%d]/I",N_Mhit));
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -186,9 +186,9 @@ void ribf_branch(TTree *tree){
   tree->Branch("mpv_ts",mpv_ts,"mpv_ts[6]/l");
   tree->Branch("mpv_10kclock",mpv_10kclock,"mpv_10kclock[6]/i");
   //===== V1190 =====
-  tree->Branch("v1190",v1190,Form("v1190[3][128][%d]/L",N_Mhit));
-  tree->Branch("v1190raw",v1190raw,Form("v1190raw[3][128][%d]/L",N_Mhit));
-  tree->Branch("v1190num",v1190num,"v1190num[3][128]/I");
+  tree->Branch("v1190",v1190,Form("v1190[4][128][%d]/L",N_Mhit));
+  tree->Branch("v1190raw",v1190raw,Form("v1190raw[4][128][%d]/L",N_Mhit));
+  tree->Branch("v1190num",v1190num,"v1190num[4][128]/I");
   //===== V1290 =====
   // Leading
   tree->Branch("v1290L",v1290L,Form("v1290L[2][32][%d]/L",N_Mhit));
@@ -238,9 +238,12 @@ void ribf_branch(TTree *tree){
   tree->Branch("F11IC_Gas",&F11IC_Gas,"F11IC_Gas/I");
 
   //===== Ge =====
-  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
-  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[8]/I");
-  tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[17][5]/I");
+  tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[32]/I");
+  tree->Branch("F7Ge2_Eraw",F7Ge2_Eraw,"F7Ge2_Eraw[32]/I");
+  tree->Branch("F7Ge_Traw",F7Ge_Traw,Form("F7Ge_Traw[32][%d]/I",N_Mhit));
+  tree->Branch("F7Ge_E",F7Ge_E,"F7Ge_E[8]/D");
+  tree->Branch("F7Ge2_E",F7Ge2_E,"F7Ge2_E[8]/D");
+  tree->Branch("F7Ge_T",F7Ge_T,Form("F7Ge_T[32][%d]/D",N_Mhit));
 
   //===== Mhit TDC ========
   tree->Branch("PLA_MT",PLA_MT,Form("PLA_MT[%d][2][%d]/D",Nfpl_PLA,N_Mhit));
@@ -326,11 +329,8 @@ void ribf_branch(TTree *tree){
   tree->Branch("F8IC_Esum",&F8IC_Esum,"F8IC_Esum/D");
   tree->Branch("F11IC_Esum",&F11IC_Esum,"F11IC_Esum/D");
   //===== Ge ======================================================
-  tree->Branch("F7Ge_E", F7Ge_E, "F7Ge_E[8]/D");
-  tree->Branch("F7Ge_Esum", F7Ge_Esum, "F7Ge_Esum[2]/D");
-  tree->Branch("F7Ge2_E", F7Ge2_Eraw, "F7Ge2_E[8]/I");
-  tree->Branch("F7Ge2_Esum", F7Ge2_Esum, "F7Ge2_Esum[2]/I");
-  tree->Branch("F7Ge_T", F7Ge_T, "F7Ge_T[17][5]/I");
+  //tree->Branch("F7Ge_Eraw",F7Ge_Eraw,"F7Ge_Eraw[8]/I");
+  //tree->Branch("F7Ge_Traw",F7Ge_Traw,"F7Ge_Traw[32]/I");
 
   //===== Reconstruction =========================================
   tree->Branch("RecoF8Angle",RecoF8Angle,"RecoF8Angle[3]/D");
